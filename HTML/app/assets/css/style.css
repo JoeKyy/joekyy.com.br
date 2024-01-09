@@ -148,7 +148,7 @@ body {
 \*------------------------------------*/
 main.soon {
   position: relative;
-  height: 100vh;
+  height: 100dvh;
 }
 main.soon .container {
   position: absolute;
