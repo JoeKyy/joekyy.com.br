@@ -1,0 +1,29 @@
+@charset 'UTF-8';
+
+/// Função para limpeza da unidade de valores numéricos
+/// para facilitar as operações matemáticas
+///
+/// @group   Tools
+/// @access  private
+///
+/// @param   {number} $value - Value to be cleaned
+///
+/// @return  {number} - Cleaned value
+@function clean-unit($value) {
+  @if type-of($value) == 'number' {
+    @return strip-unit($value);
+  } @else {
+    @warn '"#{$value}" não é um número.';
+  }
+}
+
+/// Função para remover a unidade de um valor numérico
+///
+/// @access  private
+///
+/// @param   {number} $value - Value to have its unit stripped
+///
+/// @return  {number} - Value without unit
+@function strip-unit($value) {
+  @return $value / (1#{unit($value)});
+}
