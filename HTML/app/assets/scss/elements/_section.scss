@@ -1,3 +1,47 @@
 section {
-    
+    display: flex;
+
+    min-width: 100dvw;
+    height: 100dvh;
+    padding-left: 100px;
+
+    > header {
+        position: relative;
+        background-color: color(dark);
+        color: color(light);
+
+        width: 50px;
+        height: 100dvh;
+
+        h2 {
+            @include font(bold);
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            width: 45px;
+            height: 45px;
+
+            margin: 45px auto auto 20px;
+
+            transform: rotate(-90deg);
+        }
+    }
+
+    &#hello {
+        h3 {
+            @include font(base);
+
+            font-size: font-size(xxxbig);
+            line-height: .9;
+            text-shadow: 0px 4px 4px fade-out($color: color(dark), $amount: .75);
+
+            strong {
+                @include font(bold);
+            }
+        }
+    }
 }

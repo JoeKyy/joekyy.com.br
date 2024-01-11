@@ -110,6 +110,45 @@ strong {
 /*------------------------------------*\
     HEADER
 \*------------------------------------*/
+body > header {
+  position: fixed;
+  z-index: 10;
+  width: 105px;
+  height: 100dvh;
+  background-color: #FFC700;
+  border-right: 2px solid rgba(0, 0, 0, 0.1);
+}
+body > header .logo {
+  background-image: url("../../assets/img/sprite.png");
+  background-position: 0px 0px;
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  text-indent: -9999px;
+  margin: 16px 0;
+}
+body > header .logo a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+body > header nav ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  height: 80dvh;
+}
+body > header nav ul li {
+  transform: rotate(-90deg);
+}
+body > header nav ul li .selected {
+  font-family: "Montserrat";
+  font-weight: 700;
+}
+
 /*------------------------------------*\
     BODY
 \*------------------------------------*/
@@ -118,39 +157,46 @@ html {
   font-weight: 400;
   width: 100%;
   -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
+  overflow-y: hidden;
   font-size: 16px;
 }
 @media (min-width: 79.9375em) {
   html {
     -webkit-overflow-scrolling: inherit;
-    overflow-x: hidden;
+    overflow-y: hidden;
   }
 }
 
 body {
   font-family: "Montserrat";
   font-weight: 400;
+  display: flex;
   width: 100%;
   -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
+  overflow-y: hidden;
   background-color: #FFC700;
 }
 @media (min-width: 79.9375em) {
   body {
     -webkit-overflow-scrolling: inherit;
-    overflow-x: inherit;
+    overflow-y: inherit;
   }
 }
 
 /*------------------------------------*\
     MAIN
 \*------------------------------------*/
-main.soon {
+main {
+  display: flex;
+  min-width: 100dvw;
+  height: 100dvh;
+  margin-left: 105px;
+}
+main .soon {
   position: relative;
   height: 100dvh;
 }
-main.soon .container {
+main .soon .container {
   position: absolute;
   top: 0;
   left: 0;
@@ -163,6 +209,44 @@ main.soon .container {
 /*------------------------------------*\
     SECTION
 \*------------------------------------*/
+section {
+  display: flex;
+  min-width: 100dvw;
+  height: 100dvh;
+  padding-left: 100px;
+}
+section > header {
+  position: relative;
+  background-color: #000000;
+  color: #ffffff;
+  width: 50px;
+  height: 100dvh;
+}
+section > header h2 {
+  font-family: "Montserrat";
+  font-weight: 700;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 45px;
+  height: 45px;
+  margin: 45px auto auto 20px;
+  transform: rotate(-90deg);
+}
+section#hello h3 {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 0.9;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+section#hello h3 strong {
+  font-family: "Montserrat";
+  font-weight: 700;
+}
+
 /*------------------------------------*\
     FOOTER
 \*------------------------------------*/

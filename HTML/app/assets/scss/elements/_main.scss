@@ -1,5 +1,12 @@
 main {
-    &.soon {
+    display: flex;
+
+    min-width: 100dvw;
+    height: 100dvh;
+
+    margin-left: 105px;
+
+    .soon {
         position: relative;
         height: 100dvh;
 
