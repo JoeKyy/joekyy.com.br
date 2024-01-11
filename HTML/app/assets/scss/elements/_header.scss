@@ -35,7 +35,7 @@ body > header {
             li {
                 transform: rotate(-90deg);
 
-                .selected {
+                &.selected {
                     @include font(bold)
                 }
             }
