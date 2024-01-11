@@ -235,6 +235,12 @@ section > header h2 {
   margin: 45px auto auto 20px;
   transform: rotate(-90deg);
 }
+section#hello {
+  margin-left: -105px;
+}
+section#hello > div {
+  width: 100dvw;
+}
 section#hello h3 {
   font-family: "Montserrat";
   font-weight: 400;

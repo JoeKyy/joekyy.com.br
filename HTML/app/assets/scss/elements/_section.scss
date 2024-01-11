@@ -32,6 +32,12 @@ section {
     }
 
     &#hello {
+        margin-left: -105px;
+
+        > div {
+            width: 100dvw;
+        }
+
         h3 {
             @include font(base);
 
