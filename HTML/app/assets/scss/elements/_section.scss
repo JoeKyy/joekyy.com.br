@@ -110,7 +110,7 @@ section {
             p {
                 margin-bottom: space(g);
 
-                font-size: font-size(large);
+                font-size: font-size(medium);
                 line-height: 2;
 
                 span {
@@ -131,6 +131,9 @@ section {
             ul {
                 li {
                     margin: space(base) 0;
+
+                    font-size: font-size(medium);
+
                     span {
                         @include font(bold);
 

@@ -387,7 +387,7 @@ section#sobre article {
 }
 section#sobre article p {
   margin-bottom: 32px;
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 2;
 }
 section#sobre article p span {
@@ -403,6 +403,7 @@ section#sobre article p span {
 }
 section#sobre article ul li {
   margin: 16px 0;
+  font-size: 1rem;
 }
 section#sobre article ul li span {
   font-family: "Montserrat";
