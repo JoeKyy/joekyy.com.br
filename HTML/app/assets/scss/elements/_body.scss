@@ -8,7 +8,7 @@ html {
     width: 100%;
 
     -webkit-overflow-scrolling: touch;
-    overflow-y: hidden;
+    overflow-x: hidden;
 
     font-size: (font-size(medium, $rem: false));
 }
@@ -16,15 +16,16 @@ html {
 body {
     @include font(base);
     @include responsive(large) {
+        display: flex;
+
         -webkit-overflow-scrolling: inherit;
         overflow-y: inherit;
     }
 
-    display: flex;
     width: 100%;
 
     -webkit-overflow-scrolling: touch;
-    overflow-y: hidden;
+    overflow-x: hidden;
 
     background-color: color(primary);
 

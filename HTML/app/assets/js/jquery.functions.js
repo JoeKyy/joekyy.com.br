@@ -1,4 +1,24 @@
   $(function () {
+    $('.nav-button').click(function(){
+      if (!$(this).hasClass('is-active')) {
+        $(this).addClass('is-active');
+        $('body > header nav').addClass('nav-menu--open');
+        $('body > header nav').removeClass('nav-menu--close');
+      } else {
+        $(this).removeClass('is-active');
+        $('body > header nav').removeClass('nav-menu--open');
+        $('body > header nav').addClass('nav-menu--close');
+      }
+    });
+
+    $('body > header nav ul li a').click(function(){
+      if ($('.nav-button').hasClass('is-active')) {
+        $('.nav-button').removeClass('is-active');
+        $('body > header nav').removeClass('nav-menu--open');
+        $('body > header nav').addClass('nav-menu--close');
+      }
+    });
+
     function isMobileDevice() {
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }

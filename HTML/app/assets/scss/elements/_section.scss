@@ -1,47 +1,78 @@
 section {
-    display: flex;
+    @include responsive(large) {
+        display: flex;
+        min-width: 100dvw;
+        height: 100dvh;
 
-    min-width: 100dvw;
-    height: 100dvh;
-    padding-left: 100px;
+        padding-left: 100px;
+    }
+
+    width: 100vw;
+    height: 100vh;
+
+    padding-top: 110px;
 
     > header {
-        position: relative;
+        @include responsive(large) {
+            position: relative;
+
+            width: 50px;
+            height: 100dvh;
+
+            padding: 0;
+        }
+
+        width: 100vw;
+
+        padding: space(base);
+
         background-color: color(dark);
         color: color(light);
 
-        width: 50px;
-        height: 100dvh;
-
         h2 {
+            @include responsive(large) {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+
+                width: 45px;
+                height: 45px;
+
+                margin: 45px auto auto 20px;
+
+                transform: rotate(-90deg);
+            }
+
             @include font(bold);
-
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-
-            width: 45px;
-            height: 45px;
-
-            margin: 45px auto auto 20px;
-
-            transform: rotate(-90deg);
         }
     }
 
     &#hello {
-        margin-left: -105px;
+        @include responsive(large) {
+            margin-left: -105px;
+        }
+
+        margin: space(base) space(base);
 
         > div {
-            width: 100dvw;
+            width: 100vw;
         }
 
         h3 {
+            @include responsive(large) {
+                margin: 0;
+                font-size: font-size(xxxbig);
+                text-align: right
+            }
+
             @include font(base);
 
-            font-size: font-size(xxxbig);
+            margin: space(base) 0;
+
+            font-size: font-size(big);
+            text-align: center;
             line-height: .9;
             text-shadow: 0px 4px 4px fade-out($color: color(dark), $amount: .75);
 

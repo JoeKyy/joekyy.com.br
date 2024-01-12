@@ -1,10 +1,11 @@
 main {
-    display: flex;
+    @include responsive(large) {
+        display: flex;
+        min-width: 100dvw;
+        height: 100dvh;
 
-    min-width: 100dvw;
-    height: 100dvh;
-
-    margin-left: 105px;
+        margin-left: 105px;
+    }
 
     .soon {
         position: relative;
