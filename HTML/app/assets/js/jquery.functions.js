@@ -159,7 +159,7 @@
     // }
 
     function isMobileDevice() {
-      const maxMobileWidth = 1024; // Define o limite de largura para dispositivos móveis
+      const maxMobileWidth = 1050; // Define o limite de largura para dispositivos móveis
       return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= maxMobileWidth;
     }
 
