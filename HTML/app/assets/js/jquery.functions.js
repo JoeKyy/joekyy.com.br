@@ -59,30 +59,31 @@
       scrollToSection(hash);
     }
 
+    const sections = document.querySelectorAll('section');
+    let currentSectionIndex = 0;
+    let isScrolling = false;
+
+    $('nav ul li a').on('click', function(e) {
+      e.preventDefault();
+      const targetId = $(this).attr('href').replace('#', '');
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'start'
+        });
+        updateMenuLink(targetId);
+        updateURL(targetId);
+
+        // Atualiza o índice da seção atual com base no link clicado
+        const sectionIndex = Array.prototype.indexOf.call(sections, targetSection);
+        currentSectionIndex = sectionIndex >= 0 ? sectionIndex : currentSectionIndex;
+      }
+    });
+
     if (!isMobileDevice()) {
-      const sections = document.querySelectorAll('section');
-      let currentSectionIndex = 0;
-      let isScrolling = false;
-
-      $('nav ul li a').on('click', function(e) {
-        e.preventDefault();
-        const targetId = $(this).attr('href').replace('#', '');
-        const targetSection = document.getElementById(targetId);
-
-        if (targetSection) {
-          targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'start'
-          });
-          updateMenuLink(targetId);
-          updateURL(targetId);
-
-          // Atualiza o índice da seção atual com base no link clicado
-          const sectionIndex = Array.prototype.indexOf.call(sections, targetSection);
-          currentSectionIndex = sectionIndex >= 0 ? sectionIndex : currentSectionIndex;
-        }
-      });
 
       const onWheelEvent = (event) => {
         if (isScrolling) {

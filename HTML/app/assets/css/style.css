@@ -285,12 +285,14 @@ section {
   width: 100vw;
   height: 100vh;
   padding-top: 110px;
+  padding-left: 0;
 }
 @media (min-width: 79.9375em) {
   section {
     display: flex;
     min-width: 100dvw;
     height: 100dvh;
+    padding-top: 0;
     padding-left: 100px;
   }
 }
@@ -330,6 +332,7 @@ section#hello {
 }
 @media (min-width: 79.9375em) {
   section#hello {
+    margin: 0;
     margin-left: -105px;
   }
 }
