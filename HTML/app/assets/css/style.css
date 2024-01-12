@@ -121,13 +121,15 @@ button.btn {
 \*------------------------------------*/
 body > header {
   position: fixed;
+  top: 0;
+  left: 0;
   z-index: 10;
   width: 100vw;
   height: 110px;
   background-color: #FFC700;
   border-bottom: 3px solid #000000;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   body > header {
     width: 105px;
     height: 100dvh;
@@ -155,7 +157,7 @@ body > header .logo a {
 body > header nav {
   display: none;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   body > header nav {
     display: inherit;
   }
@@ -210,7 +212,7 @@ body > header .nav-button {
   padding: 8px;
   border: 0;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   body > header .nav-button {
     display: none;
   }
@@ -235,11 +237,9 @@ html {
   font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
   font-weight: 400;
   width: 100%;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
   font-size: 16px;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   html {
     -webkit-overflow-scrolling: inherit;
     overflow-y: hidden;
@@ -254,7 +254,7 @@ body {
   overflow-x: hidden;
   background-color: #FFC700;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   body {
     display: flex;
     -webkit-overflow-scrolling: inherit;
@@ -265,7 +265,10 @@ body {
 /*------------------------------------*\
     MAIN
 \*------------------------------------*/
-@media (min-width: 79.9375em) {
+main {
+  width: 100%;
+}
+@media (min-width: 78.75em) {
   main {
     display: flex;
     min-width: 100dvw;
@@ -291,12 +294,12 @@ main .soon .container {
     SECTION
 \*------------------------------------*/
 section {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   padding-top: 110px;
   padding-left: 0;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   section {
     display: flex;
     min-width: 100dvw;
@@ -306,12 +309,12 @@ section {
   }
 }
 section > header {
-  width: 100vw;
+  width: 100%;
   padding: 16px;
   background-color: #000000;
   color: #ffffff;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   section > header {
     position: relative;
     width: 50px;
@@ -323,7 +326,7 @@ section > header h2 {
   font-weight: 700;
   font-size: 0.875rem;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   section > header h2 {
     position: absolute;
     top: 0;
@@ -340,6 +343,7 @@ section article {
   display: flex;
   align-items: center;
   padding: 16px;
+  width: 100%;
 }
 section article h3 {
   font-family: "Montserrat";
@@ -350,16 +354,24 @@ section article h3 span {
   border-bottom: 3px solid #000000;
 }
 section#hello {
+  display: flex;
+  align-items: center;
   margin: 16px 16px;
+  margin-left: 0;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   section#hello {
     margin: 0;
     margin-left: -105px;
   }
 }
 section#hello > div {
-  width: 100vw;
+  width: 100%;
+}
+@media (min-width: 78.75em) {
+  section#hello > div {
+    width: 100vw;
+  }
 }
 section#hello h3 {
   font-family: "Montserrat";
@@ -370,7 +382,7 @@ section#hello h3 {
   line-height: 0.9;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   section#hello h3 {
     margin: 0;
     font-size: 3rem;
@@ -415,23 +427,27 @@ section#sobre article ul li span {
   line-height: 1.5;
 }
 section#portifolio {
-  width: max-content;
-  min-width: max-content;
+  width: 100%;
+  min-width: 100%;
+}
+@media (min-width: 78.75em) {
+  section#portifolio {
+    width: max-content;
+    min-width: max-content;
+  }
 }
 section#portifolio article {
-  display: flex;
   flex-direction: column;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   section#portifolio article {
+    display: flex;
     flex-direction: row;
   }
 }
-section#portifolio article > div:first-child {
-  width: 360px;
-}
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   section#portifolio article > div:first-child {
+    width: 360px;
     margin-right: 56px;
   }
 }
@@ -444,21 +460,23 @@ section#portifolio ul {
   display: flex;
   flex-direction: column;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   section#portifolio ul {
     flex-direction: row;
+    align-items: center;
   }
 }
 section#portifolio ul li {
-  width: 360px;
-  margin: 56px 0 0 0;
+  margin: 32px 0;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   section#portifolio ul li {
     margin: 0 56px 0 0;
+    width: 360px;
   }
 }
 section#portifolio ul img {
+  width: 100%;
   margin: 16px 0;
   border: 4px solid #000000;
 }
@@ -558,7 +576,7 @@ label {
 .position-absolute {
   position: relative !important;
 }
-@media (min-width: 79.9375em) {
+@media (min-width: 78.75em) {
   .position-absolute {
     position: absolute !important;
   }
