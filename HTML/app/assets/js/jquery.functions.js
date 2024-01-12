@@ -159,7 +159,8 @@
     // }
 
     function isMobileDevice() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const maxMobileWidth = 1024; // Define o limite de largura para dispositivos móveis
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= maxMobileWidth;
     }
 
     function updateMenuLink(sectionId) {
