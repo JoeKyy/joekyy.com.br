@@ -118,7 +118,7 @@ section {
 
                     display: inline;
 
-                    padding: 0 (space(p) / 1.5);
+                    padding: 0 calc(space(p) / 1.5);
 
                     background-color: color(dark);
                     color: color(light);
@@ -136,7 +136,7 @@ section {
 
                         display: inline-block;
 
-                        padding: 0 (space(p) / 1.5);
+                        padding: 0 calc(space(p) / 1.5);
 
                         background-color: color(dark);
                         color: color(light);
