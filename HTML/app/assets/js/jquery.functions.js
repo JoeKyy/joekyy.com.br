@@ -61,12 +61,7 @@
           return;
         }
 
-        if (isHorizontalScrollActive) {
-            horizontalScroll(event);
-            return;
-        } else {
-            horizontalScrollPerSection(event)
-        }
+        horizontalScroll(event);
       };
 
       document.addEventListener('wheel', onWheelEvent, { passive: false });
@@ -96,12 +91,12 @@
         case 'ArrowUp':
         case 'ArrowLeft':
         case 'PageUp':
-          horizontalScrollBy(-20);
+          horizontalScrollBy(-10);
           break;
         case 'ArrowDown':
         case 'ArrowRight':
         case 'PageDown':
-          horizontalScrollBy(20);
+          horizontalScrollBy(10);
           break;
       }
     });
@@ -132,7 +127,7 @@
       const element = document.querySelector("body");
       event.preventDefault();
       element.scrollBy({
-          left: event.deltaY < 0 ? -20 : 20
+          left: event.deltaY < 0 ? -10 : 10
       });
     }
 
