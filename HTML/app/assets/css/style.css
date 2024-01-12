@@ -413,6 +413,67 @@ section#sobre article ul li span {
   color: #ffffff;
   line-height: 1.5;
 }
+section#portifolio {
+  width: max-content;
+  min-width: max-content;
+}
+section#portifolio article {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 79.9375em) {
+  section#portifolio article {
+    flex-direction: row;
+  }
+}
+section#portifolio article > div:first-child {
+  width: 360px;
+}
+@media (min-width: 79.9375em) {
+  section#portifolio article > div:first-child {
+    margin-right: 56px;
+  }
+}
+section#portifolio h4 {
+  font-family: "Montserrat";
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+section#portifolio ul {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 79.9375em) {
+  section#portifolio ul {
+    flex-direction: row;
+  }
+}
+section#portifolio ul li {
+  width: 360px;
+  margin: 56px 0 0 0;
+}
+@media (min-width: 79.9375em) {
+  section#portifolio ul li {
+    margin: 0 56px 0 0;
+  }
+}
+section#portifolio ul img {
+  margin: 16px 0;
+}
+section#portifolio ul p {
+  margin-top: 16px;
+  font-size: 0.75rem;
+}
+section#clientes .clientes--content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 81px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  padding: 32px 16px;
+}
 
 /*------------------------------------*\
     FOOTER

@@ -146,4 +146,75 @@ section {
             }
         }
     }
+
+    &#portifolio {
+        width: max-content;
+        min-width: max-content;
+
+        article {
+            @include responsive(large) {
+                flex-direction: row;
+            }
+
+            display: flex;
+            flex-direction: column;
+
+            > div {
+                &:first-child {
+                    @include responsive(large) {
+                        margin-right: space(xg);
+                    }
+
+                    width: 360px;
+                }
+            }
+        }
+
+        h4 {
+            @include font(bold);
+
+            font-size: font-size(large);
+        }
+        ul {
+            @include responsive(large) {
+                flex-direction: row;
+            }
+
+            display: flex;
+            flex-direction: column;
+
+            li {
+                @include responsive(large) {
+                    margin: 0 space(xg) 0 0;
+                }
+                width: 360px;
+
+                margin: space(xg) 0 0 0;
+            }
+
+            img {
+                margin: space(base) 0;
+            }
+
+            p {
+                margin-top: space(base);
+
+                font-size: font-size(small);
+            }
+        }
+    }
+
+    &#clientes {
+        & .clientes--content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            gap: 81px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+
+            padding: space(g) space(base);
+        }
+    }
 }
