@@ -24,6 +24,32 @@
     let isHorizontalScrollActive = false;
     const sections = document.querySelectorAll('section');
 
+    const observerOptions = {
+      root: null, // Usa a viewport como contêiner anfitrião
+      rootMargin: '0px',
+      threshold: 0.2 // Ativa quando 50% do item está visível
+    };
+
+    // Callback para o observador
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Atualiza o menu com o ID da seção atual
+          updateMenuLink(entry.target.id);
+
+          if (entry.target.id === 'portifolio') {
+            isHorizontalScrollActive = true;
+            return;
+          } else {
+            isHorizontalScrollActive = false;
+          }
+        }
+      });
+    };
+
+    // Cria o observador
+     const observer = new IntersectionObserver(observerCallback, observerOptions);
+
     if (window.location.hash) {
       const hash = window.location.hash.substring(1);
       scrollToSection(hash);
@@ -35,18 +61,11 @@
           return;
         }
 
-        const targetSectionId = sections[currentSectionIndex].id;
-
-        if (targetSectionId === 'portifolio') {
-            isHorizontalScrollActive = true;
+        if (isHorizontalScrollActive) {
             horizontalScroll(event);
             return;
         } else {
-            isHorizontalScrollActive = false;
-        }
-
-        if (!isHorizontalScrollActive) {
-          horizontalScrollPerSection(event)
+            horizontalScrollPerSection(event)
         }
       };
 
@@ -72,6 +91,26 @@
       }
     });
 
+    document.addEventListener('keydown', function(event) {
+      switch (event.key) {
+        case 'ArrowUp':
+        case 'ArrowLeft':
+        case 'PageUp':
+          horizontalScrollBy(-20);
+          break;
+        case 'ArrowDown':
+        case 'ArrowRight':
+        case 'PageDown':
+          horizontalScrollBy(20);
+          break;
+      }
+    });
+
+    // Observa todas as seções
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
     function scrollToSection(sectionId) {
       const sections = document.querySelectorAll('section');
       const targetSection = document.getElementById(sectionId);
@@ -95,6 +134,11 @@
       element.scrollBy({
           left: event.deltaY < 0 ? -20 : 20
       });
+    }
+
+    function horizontalScrollBy(amount) {
+      const element = document.querySelector("body");
+      element.scrollBy({ left: amount });
     }
 
     function horizontalScrollPerSection(event) {
