@@ -83,7 +83,11 @@ gulp.task('watch', function () {
 
 gulp.task('useref', function () {
   return gulp
-    .src('app/*.html')
+    .src([
+      'app/*.html',
+      'app/*/*.html',
+      'app/*/*/*.html',
+    ])
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify().on('error', function (e) {
       console.log(e);

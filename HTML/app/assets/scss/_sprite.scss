@@ -1,13 +1,23 @@
+$img-logo-en-us-x: 70px;
+$img-logo-en-us-y: 0px;
+$img-logo-en-us-offset-x: -70px;
+$img-logo-en-us-offset-y: 0px;
+$img-logo-en-us-width: 68px;
+$img-logo-en-us-height: 70px;
+$img-logo-en-us-total-width: 138px;
+$img-logo-en-us-total-height: 70px;
+$img-logo-en-us-image: '../../assets/img/sprite.png';
+$img-logo-en-us: 70px 0px -70px 0px 68px 70px 138px 70px '../../assets/img/sprite.png';
 $img-logo-x: 0px;
 $img-logo-y: 0px;
 $img-logo-offset-x: 0px;
 $img-logo-offset-y: 0px;
 $img-logo-width: 70px;
 $img-logo-height: 70px;
-$img-logo-total-width: 70px;
+$img-logo-total-width: 138px;
 $img-logo-total-height: 70px;
 $img-logo-image: '../../assets/img/sprite.png';
-$img-logo: 0px 0px 0px 0px 70px 70px 70px 70px '../../assets/img/sprite.png';
+$img-logo: 0px 0px 0px 0px 70px 70px 138px 70px '../../assets/img/sprite.png';
 
 @mixin sprite-width($sprite) {
   width: nth($sprite, 5);
