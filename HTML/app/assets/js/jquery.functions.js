@@ -93,7 +93,7 @@
       const element = document.querySelector("body");
       event.preventDefault();
       element.scrollBy({
-          left: event.deltaY < 0 ? -30 : 30
+          left: event.deltaY < 0 ? -20 : 20
       });
     }
 

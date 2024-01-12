@@ -194,12 +194,12 @@ section {
 
             img {
                 margin: space(base) 0;
+
+                border: 4px solid color(dark);
             }
 
             p {
                 margin-top: space(base);
-
-                font-size: font-size(small);
             }
         }
     }
