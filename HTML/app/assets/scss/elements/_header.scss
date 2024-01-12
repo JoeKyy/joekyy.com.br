@@ -2,7 +2,7 @@ body > header {
     @include responsive(large) {
         width: 105px;
         height: 100dvh;
-        border-right: 2px solid fade-out($color: color(dark), $amount: .9);
+        border-right: 3px solid color(dark);
 
     }
 
@@ -13,7 +13,7 @@ body > header {
     height: 110px;
 
     background-color: color(primary);
-    border-bottom: 2px solid fade-out($color: color(dark), $amount: .9);
+    border-bottom: 3px solid color(dark);
 
     .logo {
         @include sprite($img-logo);

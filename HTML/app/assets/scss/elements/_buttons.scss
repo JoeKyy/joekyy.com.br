@@ -1,6 +1,11 @@
 a,
 [type="submit"],
 button{
-	&.btn {		
+	&.btn {
+		@include font(bold);
+
+		padding: space(p);
+
+		border-bottom: 1px dotted color(dark);
 	}
 }

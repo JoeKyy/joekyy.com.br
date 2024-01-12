@@ -2,14 +2,14 @@ section {
     @include responsive(large) {
         display: flex;
         min-width: 100dvw;
-        height: 100dvh;
+        min-height: 100dvh;
 
         padding-top: 0;
         padding-left: 100px;
     }
 
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 
     padding-top: 110px;
     padding-left: 0;
@@ -19,9 +19,7 @@ section {
             position: relative;
 
             width: 50px;
-            height: 100dvh;
-
-            padding: 0;
+            height: 100vh;
         }
 
         width: 100vw;
@@ -39,7 +37,7 @@ section {
                 right: 0;
                 bottom: 0;
 
-                width: 45px;
+                width: 35px;
                 height: 45px;
 
                 margin: 45px auto auto 20px;
@@ -48,6 +46,24 @@ section {
             }
 
             @include font(bold);
+            font-size: font-size(normal);
+        }
+    }
+
+    article {
+        display: flex;
+        align-items: center;
+
+        padding: space(base);
+
+        h3 {
+            @include font(bold);
+
+            font-size: font-size(big);
+
+            span {
+                border-bottom: 3px solid color(dark);
+            }
         }
     }
 
@@ -81,6 +97,52 @@ section {
 
             strong {
                 @include font(bold);
+            }
+        }
+    }
+
+    &#sobre {
+        article {
+            width: 100%;
+
+            padding: space(xg) space(g);
+
+            p {
+                margin-bottom: space(g);
+
+                font-size: font-size(large);
+                line-height: 2;
+
+                span {
+                    @include font(bold);
+
+                    display: inline;
+
+                    padding: 0 (space(p) / 1.5);
+
+                    background-color: color(dark);
+                    color: color(light);
+                    line-height: 1.5;
+                    white-space: wrap;
+                    word-break: break-word;
+                }
+            }
+
+            ul {
+                li {
+                    margin: space(base) 0;
+                    span {
+                        @include font(bold);
+
+                        display: inline-block;
+
+                        padding: 0 (space(p) / 1.5);
+
+                        background-color: color(dark);
+                        color: color(light);
+                        line-height: 1.5;
+                    }
+                }
             }
         }
     }
