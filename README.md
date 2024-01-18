@@ -5,5 +5,3 @@
 Layout desenvolvido utilizando [Figma](https://www.figma.com/file/faQt6qJ1h7TzEREfXP0DeC/JoeKyy---Solu%C3%A7%C3%B5es-em-TI-e-WEB?type=design&node-id=1%3A43&mode=design&t=mibgW7dqFnBKiTLx-1)
 
 Tema da estrutura do site desenvolvida utilizando o [Skeleton](https://github.com/JoeKyy/skeleton) como base, um modelo criado via Gulp.
-
-Site desenvolvido em WordPress para atualizar e divulgar meus trabalhos mais recentes.
