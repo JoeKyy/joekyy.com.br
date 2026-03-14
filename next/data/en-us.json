@@ -10,7 +10,7 @@
     "contact": "contact"
   },
   "hero": {
-    "html": "<strong>Hello!</strong><br />I am<br /><strong>Jhomar</strong>,<br />but you can<br />call me<br /><strong>Joe</strong>.<br /><br />And I create <strong>websites</strong>.",
+    "html": "<strong>Hello!</strong><br />I am<br /><strong>Jhomar</strong>,<br />but you can<br />call me<br /><strong>Joe</strong>.<br /><br />And I create <br /><strong>websites</strong>.",
     "avatarAlt": "Hi, I am Goku, I mean, Joe!"
   },
   "about": {
