@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:deploy": "mkdir -p public/docs && cp '../docs/Jhomar Nando - Resume Portuguese.docx' public/docs/resume-pt.docx && cp '../docs/Jhomar Nando - Resume English.docx' public/docs/resume-en.docx && next build && (cd out && zip -r ../site.zip .)",
     "start": "next start",
     "lint": "eslint"
   },

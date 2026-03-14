@@ -39,8 +39,6 @@ export const siteConfig = {
       icon: "FaWhatsapp",
     },
   ],
-  resumePtUrl:
-    "https://www.dropbox.com/scl/fi/28bggr7nkh0rnmon8q0fm/Jhomar-Nando-Resume-Portuguese.pdf?rlkey=qg9ombnlakwvwaps5pfpselme&dl=0",
-  resumeEnUrl:
-    "https://www.dropbox.com/scl/fi/23gent56pfgt720bjc34x/Jhomar-Nando-Resume-English.pdf?rlkey=dm3mp5e4gdohfqr99c01ucxnh&dl=0",
+  resumePtUrl: "/docs/resume-pt.docx",
+  resumeEnUrl: "/docs/resume-en.docx",
 };
