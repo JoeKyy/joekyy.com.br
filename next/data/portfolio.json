@@ -1,0 +1,123 @@
+[
+  {
+    "id": "esg-lana",
+    "slug": "esg-lana-pinheiro",
+    "titlePt": "ESG por Lana Pinheiro",
+    "titleEn": "ESG by Lana Pinheiro",
+    "descriptionPt": "Site desenvolvido para a jornalista <strong>Lana Pinheiro</strong>. Um site rápido, prático, <strong>responsivo</strong> e <strong>mobile</strong>. O projeto foi desenvolvido de forma <strong>freelance</strong>. Além do <strong>desenvolvimento</strong>, também foi feito o <strong>design</strong>.",
+    "descriptionEn": "Website developed for journalist <strong>Lana Pinheiro</strong>. A fast, practical, <strong>responsive</strong>, and <strong>mobile-friendly</strong> site. The project was developed on a <strong>freelance</strong> basis. Besides the <strong>development</strong>, the <strong>design</strong> was also done by me.",
+    "image": "portifolio-esg.png",
+    "type": "freelance",
+    "order": 1
+  },
+  {
+    "id": "escola-itv",
+    "slug": "escola-itv",
+    "titlePt": "Escola ITV",
+    "titleEn": "ITV School",
+    "descriptionPt": "Site desenvolvido para o <strong>Instituto Teotônio Vilela</strong>, uma plataforma de ensino EAD. O projeto foi <strong>desenvolvido</strong> de modo <strong>freelance</strong> e em <strong>WordPress</strong>.",
+    "descriptionEn": "Website developed for the <strong>Instituto Teotônio Vilela</strong>, an DL teaching platform. The project was <strong>developed</strong> on a <strong>freelance</strong> basis and in <strong>WordPress</strong>.",
+    "image": "portifolio-itv.png",
+    "type": "freelance",
+    "order": 2
+  },
+  {
+    "id": "miguel-44",
+    "slug": "miguel-44",
+    "titlePt": "Miguel 44",
+    "titleEn": "Miguel 44",
+    "descriptionPt": "Site desenvolvido para o candidato <strong>Miguel</strong> para sua campanha eleitoral. O projeto foi <strong>desenvolvido</strong> de modo <strong>freelance</strong>.",
+    "descriptionEn": "Website developed for the candidate <strong>Miguel</strong> for his electoral campaign. The project was <strong>developed</strong> on a <strong>freelance</strong> basis.",
+    "image": "portifolio-miguel.jpg",
+    "type": "freelance",
+    "order": 3
+  },
+  {
+    "id": "bora-paraiba",
+    "slug": "bora-paraiba",
+    "titlePt": "Bora Paraiba!",
+    "titleEn": "Bora Paraiba!",
+    "descriptionPt": "Site desenvolvido para a campanha eleitoral <strong>Bora Paraiba</strong>. O projeto foi <strong>desenvolvido</strong> de modo <strong>freelance</strong>.",
+    "descriptionEn": "Website developed for the <strong>Bora Paraiba</strong> electoral campaign. The project was <strong>developed</strong> on a <strong>freelance</strong> basis.",
+    "image": "portifolio-bora.jpg",
+    "type": "freelance",
+    "order": 4
+  },
+  {
+    "id": "revista-koreain",
+    "slug": "revista-koreain",
+    "titlePt": "Revista Koreain",
+    "titleEn": "Koreain Magazine",
+    "descriptionPt": "Site desenvolvido para a <strong>Revista Koreain</strong>. O projeto foi <strong>desenvolvido</strong> em WordPress e o <strong>design</strong> remodelado em modo <strong>freelance</strong>.",
+    "descriptionEn": "Website developed for <strong>Koreain Magazine</strong>. The project was <strong>developed</strong> in WordPress and the <strong>design</strong> was remodeled on a <strong>freelance</strong> basis.",
+    "image": "portifolio-koreainn.jpg",
+    "type": "freelance",
+    "order": 5
+  },
+  {
+    "id": "portal-investidor-b3",
+    "slug": "portal-investidor-b3",
+    "titlePt": "Portal do Investidor",
+    "titleEn": "Investor Portal",
+    "descriptionPt": "Site desenvolvido para a <strong>B3</strong>. O projeto foi <strong>desenvolvido</strong> com Angular 10, como <strong>prestação de serviço</strong> para a <strong>Microsoft</strong>.",
+    "descriptionEn": "Website developed for <strong>B3</strong>. The project was <strong>developed</strong> using Angular 10, as a <strong>service provision</strong> for <strong>Microsoft</strong>.",
+    "image": "portifolio-b3.jpeg",
+    "type": "service",
+    "order": 6
+  },
+  {
+    "id": "culturice",
+    "slug": "culturice",
+    "titlePt": "Culturice",
+    "titleEn": "Culturice",
+    "descriptionPt": "Site desenvolvido para a jornalista <strong>Fabiana Seragusa</strong>. Um site rápido, prático, <strong>responsivo</strong> e <strong>mobile</strong>. O projeto foi desenvolvido de forma <strong>freelance</strong>. Além do <strong>desenvolvimento</strong>, também foi feito o <strong>design</strong>.",
+    "descriptionEn": "Website developed for journalist <strong>Fabiana Seragusa</strong>. A fast, practical, <strong>responsive</strong>, and <strong>mobile-friendly</strong> site. The project was developed on a <strong>freelance</strong> basis. In addition to <strong>development</strong>, the <strong>design</strong> was also done by me.",
+    "image": "portifolio-culturice.png",
+    "type": "freelance",
+    "order": 7
+  },
+  {
+    "id": "theo-aasp",
+    "slug": "theo-aasp",
+    "titlePt": "Theo - Gerenciador de escritório",
+    "titleEn": "Theo - Office Manager",
+    "descriptionPt": "Site desenvolvido para a <strong>AASP</strong>. O projeto \"Theo\" foi <strong>desenvolvido</strong> com ReactJS, como <strong>prestação de serviço</strong> para a <strong>7Comn</strong>.",
+    "descriptionEn": "Website developed for <strong>AASP</strong>. The \"Theo\" project was <strong>developed</strong> using ReactJS, as a <strong>service provision</strong> for <strong>7Comn</strong>.",
+    "image": "portifolio-aasp.jpg",
+    "type": "service",
+    "order": 8
+  },
+  {
+    "id": "portal-amil",
+    "slug": "portal-amil",
+    "titlePt": "Portal do Credenciado da Amil",
+    "titleEn": "Amil Affiliated Portal",
+    "descriptionPt": "Site desenvolvido para a <strong>Amil</strong>. O projeto foi <strong>desenvolvido</strong> com Angular, como <strong>prestação de serviço</strong> para a <strong>Cubo</strong>.",
+    "descriptionEn": "Website developed for <strong>Amil</strong>. The project was <strong>developed</strong> using Angular, as a <strong>service provision</strong> for <strong>Cubo</strong>.",
+    "image": "portifolio-amil.png",
+    "type": "service",
+    "order": 9
+  },
+  {
+    "id": "campanha-azul",
+    "slug": "campanha-azul",
+    "titlePt": "Campanha Azul",
+    "titleEn": "Azul Campaign",
+    "descriptionPt": "Site desenvolvido para a <strong>Azul</strong>. O projeto foi <strong>desenvolvido</strong> com HTML, CSS e JS, de modo <strong>freelance</strong>.",
+    "descriptionEn": "Website developed for <strong>Azul</strong>. The project was <strong>developed</strong> using HTML, CSS, and JS, on a <strong>freelance</strong> basis.",
+    "image": "portifolio-azul.jpg",
+    "type": "freelance",
+    "order": 10
+  },
+  {
+    "id": "nucleo-capivara",
+    "slug": "nucleo-capivara",
+    "titlePt": "Núcleo Capivara",
+    "titleEn": "Capivara Core",
+    "descriptionPt": "Site desenvolvido para a <strong>Núcleo Capivara</strong>. O projeto foi <strong>desenvolvido</strong> com HTML, CSS e JS, de modo <strong>freelance</strong>.",
+    "descriptionEn": "Website developed for <strong>Capivara Core</strong>. The project was <strong>developed</strong> using HTML, CSS, and JS, on a <strong>freelance</strong> basis.",
+    "image": "portifolio-capivara.jpg",
+    "type": "freelance",
+    "order": 11
+  }
+]

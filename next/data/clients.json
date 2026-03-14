@@ -1,0 +1,21 @@
+[
+  { "id": "client-01", "name": "Cliente 01", "logo": "clientes-01.png", "order": 1 },
+  { "id": "client-02", "name": "Cliente 02", "logo": "clientes-02.png", "order": 2 },
+  { "id": "client-03", "name": "Cliente 03", "logo": "clientes-03.png", "order": 3 },
+  { "id": "client-04", "name": "Cliente 04", "logo": "clientes-04.png", "order": 4 },
+  { "id": "client-05", "name": "Cliente 05", "logo": "clientes-05.png", "order": 5 },
+  { "id": "client-06", "name": "Cliente 06", "logo": "clientes-06.png", "order": 6 },
+  { "id": "client-07", "name": "Cliente 07", "logo": "clientes-07.png", "order": 7 },
+  { "id": "client-08", "name": "Cliente 08", "logo": "clientes-08.png", "order": 8 },
+  { "id": "client-09", "name": "Cliente 09", "logo": "clientes-09.png", "order": 9 },
+  { "id": "client-10", "name": "Cliente 10", "logo": "clientes-010.png", "order": 10 },
+  { "id": "client-11", "name": "Cliente 11", "logo": "clientes-011.png", "order": 11 },
+  { "id": "client-12", "name": "Cliente 12", "logo": "clientes-012.png", "order": 12 },
+  { "id": "client-13", "name": "Cliente 13", "logo": "clientes-013.png", "order": 13 },
+  { "id": "client-14", "name": "Cliente 14", "logo": "clientes-014.png", "order": 14 },
+  { "id": "client-15", "name": "Cliente 15", "logo": "clientes-015.png", "order": 15 },
+  { "id": "client-16", "name": "Cliente 16", "logo": "clientes-016.png", "order": 16 },
+  { "id": "client-17", "name": "Cliente 17", "logo": "clientes-017.png", "order": 17 },
+  { "id": "client-18", "name": "Cliente 18", "logo": "clientes-018.png", "order": 18 },
+  { "id": "client-19", "name": "Cliente 19", "logo": "clientes-019.png", "order": 19 }
+]

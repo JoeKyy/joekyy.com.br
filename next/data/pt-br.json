@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "JoeKyy - Soluções em TI e WEB | Jhomar Nando Portifolio | Front-end Developer & Designer",
+    "description": "Meu nome é Jhomar Nando, mas pode me chamar de Joe. Sou Front-end developer, tenho mais de 15 anos de experiencia na criação de aplicações, sou conhecido por cumprir prazos, gerenciamento de tempo, pesquisa precisa e eficácia em soluções de problemas."
+  },
+  "nav": {
+    "about": "sobre",
+    "portfolio": "portifólio",
+    "clients": "clientes",
+    "contact": "contato"
+  },
+  "hero": {
+    "html": "<strong>Olá!</strong><br />Eu sou o<br /><strong>Jhomar</strong>,<br />mas pode<br />me chamar<br />de <strong>Joe</strong>.<br /><br />E eu crio <strong>sites</strong>.",
+    "avatarAlt": "Oi, eu sou o Goku, quer dizer, Joe!"
+  },
+  "about": {
+    "title": "sobre.",
+    "bio1": "Meu nome é <span>Jhomar Nando</span>, mas pode me chamar de <span>Joe</span>. Sou <span>Front-end developer</span>, tenho mais de <span>15 anos de experiência</span> na criação de aplicações, sou conhecido por cumprir prazos, gerenciamento de tempo, pesquisa precisa e eficácia em soluções de problemas.",
+    "bio2": "Sou formado em <span>Análise e Desenvolvimento de Sistemas</span> pela Uninove, sou pós-graduado em <span>MBA de Gestão de TI</span> pela XP Educação, e já trabalhei em diversas empresas no ramo financeiro, saúde, mercado publicitário, grandes portais e jornais.",
+    "skillsTitle": "Habilidades",
+    "resumePtLabel": "Currículo em Português",
+    "resumeEnLabel": "Currículo em Inglês"
+  },
+  "portfolio": {
+    "title": "portifolio.",
+    "heading": "Portifólio",
+    "intro": "Aqui estão alguns dos projetos nos quais estive envolvido como desenvolvedor Front-end, trabalhando tanto de forma independente, como freelancer, quanto integrado a equipes em diversas agências.",
+    "cta": "Veja todos os trabalhos →"
+  },
+  "clients": {
+    "title": "clientes.",
+    "heading": "Clientes",
+    "description": "Veja aqui alguns dos clientes com os quais trabalhei, seja como freelancer, prestador de serviços ou funcionário."
+  },
+  "contact": {
+    "title": "contato.",
+    "heading": "Interessado?",
+    "message": "Vamos conversar! Basta entrar em contato pelo e-mail:",
+    "email": "contato@joekyy.com.br"
+  },
+  "languageSelector": {
+    "title": "Selecione o idioma",
+    "pt": "Português",
+    "en": "English"
+  }
+}

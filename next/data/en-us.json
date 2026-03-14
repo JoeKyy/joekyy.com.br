@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "JoeKyy - IT and WEB Solutions | Jhomar Nando Portfolio | Front-end Developer & Designer",
+    "description": "My name is Jhomar Nando, but you can call me Joe. I am a Front-end developer with over 15 years of experience in application development, known for meeting deadlines, time management, accurate research, and effectiveness in problem-solving solutions."
+  },
+  "nav": {
+    "about": "about",
+    "portfolio": "portfolio",
+    "clients": "clients",
+    "contact": "contact"
+  },
+  "hero": {
+    "html": "<strong>Hello!</strong><br />I am<br /><strong>Jhomar</strong>,<br />but you can<br />call me<br /><strong>Joe</strong>.<br /><br />And I create <strong>websites</strong>.",
+    "avatarAlt": "Hi, I am Goku, I mean, Joe!"
+  },
+  "about": {
+    "title": "about.",
+    "bio1": "My name is <span>Jhomar Nando</span>, but you can call me <span>Joe</span>. I am a <span>Front-end developer</span> with more than <span>15 years of experience</span> in application development, known for meeting deadlines, time management, accurate research, and effective problem-solving solutions.",
+    "bio2": "I have a degree in <span>Systems Analysis and Development</span> from Uninove, an <span>MBA in IT Management</span> from XP Educação, and have worked in various companies in the financial, healthcare, advertising markets, major portals, and newspapers.",
+    "skillsTitle": "Skills",
+    "resumePtLabel": "Resumé in Portuguese",
+    "resumeEnLabel": "Resumé in English"
+  },
+  "portfolio": {
+    "title": "portfolio.",
+    "heading": "Portfolio",
+    "intro": "Here are some projects I have been involved in as a Front-end developer, working both independently (as a freelancer), and as part of teams in various agencies.",
+    "cta": "See all work →"
+  },
+  "clients": {
+    "title": "clients.",
+    "heading": "Clients",
+    "description": "Here are some of the clients I have worked with, whether as a freelancer, service provider, or employee."
+  },
+  "contact": {
+    "title": "contact.",
+    "heading": "Interested?",
+    "message": "Let's talk! Contact me by email:",
+    "email": "contact@joekyy.com.br"
+  },
+  "languageSelector": {
+    "title": "Select language",
+    "pt": "Português",
+    "en": "English"
+  }
+}

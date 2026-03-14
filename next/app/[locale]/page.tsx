@@ -1,0 +1,34 @@
+import { HorizontalScroll } from '@/components/HorizontalScroll';
+import { Navigation } from '@/components/Navigation';
+import { Hero } from '@/components/Hero';
+import { About } from '@/components/About';
+import { Portfolio } from '@/components/Portfolio';
+import { Clients } from '@/components/Clients';
+import { Contact } from '@/components/Contact';
+import type { Locale } from '@/types';
+
+type PageParams = { locale: string };
+
+export default async function LocalePage({
+  params,
+}: {
+  params: Promise<PageParams>;
+}) {
+  const { locale } = await params;
+  const typedLocale = locale as Locale;
+
+  return (
+    <>
+      <Navigation locale={typedLocale} />
+      <main className="w-full lg:flex lg:min-w-dvw lg:h-dvh lg:ml-[105px]">
+        <HorizontalScroll>
+          <Hero locale={typedLocale} />
+          <About locale={typedLocale} />
+          <Portfolio locale={typedLocale} />
+          <Clients locale={typedLocale} />
+          <Contact locale={typedLocale} />
+        </HorizontalScroll>
+      </main>
+    </>
+  );
+}

@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #FFC700;
+  --color-dark: #000000;
+  --color-light: #ffffff;
+
+  --font-sans: var(--font-montserrat);
+
+  --breakpoint-xsm: 375px;
+  --breakpoint-sm: 641px;
+  --breakpoint-md: 769px;
+  --breakpoint-lg: 1260px;
+  --breakpoint-xl: 1367px;
+  --breakpoint-2xl: 1441px;
+
+  --text-4xl: 64px;
+  --text-3xl: 48px;
+  --text-2xl: 36px;
+  --text-xl: 32px;
+  --text-lg: 24px;
+  --text-base: 18px;
+  --text-md: 16px;
+  --text-sm: 14px;
+  --text-xs: 12px;
+
+  --spacing-s: 4px;
+  --spacing-p: 8px;
+  --spacing-base: 16px;
+  --spacing-m: 24px;
+  --spacing-g: 32px;
+  --spacing-gg: 48px;
+  --spacing-xg: 56px;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: var(--color-primary);
+  color: var(--color-dark);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+}
+
+@media (min-width: 1260px) {
+  html {
+    overflow-y: hidden;
+  }
+  body {
+    display: flex;
+    overflow-y: inherit;
+  }
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

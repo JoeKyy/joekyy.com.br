@@ -1,0 +1,12 @@
+[
+  { "name": "Angular", "namePt": "Angular", "nameEn": "Angular", "category": "technical" },
+  { "name": "React", "namePt": "React", "nameEn": "React", "category": "technical" },
+  { "name": "Node.js", "namePt": "Node.js", "nameEn": "Node.js", "category": "technical" },
+  { "name": "WordPress", "namePt": "WordPress", "nameEn": "WordPress", "category": "technical" },
+  { "name": "HTML, CSS, JavaScript", "namePt": "HTML, CSS, JavaScript", "nameEn": "HTML, CSS, JavaScript", "category": "technical" },
+  { "name": "Solution Architecture", "namePt": "Arquitetura de Soluções", "nameEn": "Solution Architecture", "category": "professional" },
+  { "name": "UX & UI Design", "namePt": "UX & UI Design", "nameEn": "UX & UI Design", "category": "professional" },
+  { "name": "IT Management", "namePt": "Gestão de TI e Agil", "nameEn": "IT Management and Agile", "category": "professional" },
+  { "name": "SEO", "namePt": "SEO", "nameEn": "SEO", "category": "professional" },
+  { "name": "Accessibility", "namePt": "Acessibilidade", "nameEn": "Accessibility", "category": "professional" }
+]
