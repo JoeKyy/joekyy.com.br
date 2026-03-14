@@ -23,7 +23,7 @@ export default async function LocalePage({
   return (
     <HorizontalScrollProvider>
       <Navigation locale={typedLocale} />
-      <main className="w-full lg:flex lg:h-dvh lg:ml-26.25">
+      <main className="w-full lg:flex lg:flex-1 lg:min-w-0 lg:h-dvh lg:ml-26.25">
         <HorizontalScrollContainer>
           <Hero locale={typedLocale} />
           <About locale={typedLocale} />

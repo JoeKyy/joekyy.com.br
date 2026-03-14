@@ -19,11 +19,12 @@ export function useHorizontalScroll() {
         // Vertical scroll on mobile
         element.scrollIntoView({ behavior: "smooth", block: "start" });
       } else {
-        // Horizontal scroll on desktop — scroll the container directly
+        // Horizontal scroll on desktop
+        // element.offsetLeft is relative to body; container.scrollTo at that
+        // value correctly lands the section at viewport x=0 (behind the fixed nav)
         const container = containerRef.current;
         if (container) {
-          const elementLeft = element.offsetLeft;
-          container.scrollTo({ left: elementLeft, behavior: "smooth" });
+          container.scrollTo({ left: element.offsetLeft, behavior: "smooth" });
         }
       }
 
