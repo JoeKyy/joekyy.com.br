@@ -8,6 +8,7 @@ import { About } from "@/components/About";
 import { Portfolio } from "@/components/Portfolio";
 import { Clients } from "@/components/Clients";
 import { Contact } from "@/components/Contact";
+import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/types";
 
 type PageParams = { locale: string };
@@ -18,6 +19,7 @@ export default async function LocalePage({
   params: Promise<PageParams>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const typedLocale = locale as Locale;
 
   return (
