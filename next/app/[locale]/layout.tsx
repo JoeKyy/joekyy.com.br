@@ -1,16 +1,16 @@
-import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { locales } from '@/i18n/request';
-import type { Locale } from '@/types';
-import '@/app/globals.css';
+import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { locales } from "@/i18n/request";
+import type { Locale } from "@/types";
+import "@/app/globals.css";
 
 const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['100', '300', '400', '500', '700', '900'],
-  variable: '--font-montserrat',
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "700", "900"],
+  variable: "--font-montserrat",
 });
 
 type LayoutParams = { locale: string };
@@ -33,15 +33,15 @@ export async function generateMetadata({
     openGraph: {
       title: messages.meta.title,
       description: messages.meta.description,
-      locale: locale === 'pt-br' ? 'pt_BR' : 'en_US',
-      type: 'website',
+      locale: locale === "pt-br" ? "pt_BR" : "en_US",
+      type: "website",
     },
     twitter: {
-      card: 'summary_large_image',
-      creator: '@JoeKyy',
+      card: "summary_large_image",
+      creator: "@JoeKyy",
     },
     other: {
-      'theme-color': '#FFC700',
+      "theme-color": "#FFC700",
     },
   };
 }

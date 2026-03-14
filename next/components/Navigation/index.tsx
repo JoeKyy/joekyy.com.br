@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
-import { useScrollContext } from '@/components/HorizontalScroll';
-import Image from 'next/image';
-import type { Locale } from '@/types';
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { useRouter, usePathname } from "next/navigation";
+import { useScrollContext } from "@/components/HorizontalScroll";
+import Image from "next/image";
+import type { Locale } from "@/types";
 
 interface NavigationProps {
   locale: Locale;
 }
 
 export function Navigation({ locale }: NavigationProps) {
-  const t = useTranslations('nav');
+  const t = useTranslations("nav");
   const { activeSection, scrollToSection, isMobile } = useScrollContext();
   const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
   const navItems = [
-    { id: 'sobre', label: t('about') },
-    { id: 'portifolio', label: t('portfolio') },
-    { id: 'clientes', label: t('clients') },
-    { id: 'contato', label: t('contact') },
+    { id: "sobre", label: t("about") },
+    { id: "portifolio", label: t("portfolio") },
+    { id: "clientes", label: t("clients") },
+    { id: "contato", label: t("contact") },
   ];
 
   const handleNavClick = (sectionId: string) => {
@@ -31,18 +31,19 @@ export function Navigation({ locale }: NavigationProps) {
   };
 
   const switchLocale = () => {
-    const newLocale = locale === 'pt-br' ? 'en-us' : 'pt-br';
+    const newLocale = locale === "pt-br" ? "en-us" : "pt-br";
     const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
     router.push(newPath);
   };
 
-  const logoSrc = locale === 'en-us' ? '/images/logo-en-us.png' : '/images/logo.png';
+  const logoSrc =
+    locale === "en-us" ? "/images/logo-en-us.png" : "/images/logo.png";
 
   if (isMobile) {
     return (
       <header className="fixed top-0 left-0 w-full h-[110px] bg-primary z-10 border-b-[3px] border-dark flex items-center justify-between px-4">
         <button
-          onClick={() => handleNavClick('hello')}
+          onClick={() => handleNavClick("hello")}
           className="relative z-[11]"
         >
           <Image src={logoSrc} alt="JoeKyy" width={70} height={70} />
@@ -55,17 +56,17 @@ export function Navigation({ locale }: NavigationProps) {
         >
           <span
             className={`block w-full h-[2px] bg-dark transition-transform duration-300 ${
-              menuOpen ? 'translate-y-[7px] rotate-45' : ''
+              menuOpen ? "translate-y-[7px] rotate-45" : ""
             }`}
           />
           <span
             className={`block w-full h-[2px] bg-dark transition-opacity duration-300 ${
-              menuOpen ? 'opacity-0' : ''
+              menuOpen ? "opacity-0" : ""
             }`}
           />
           <span
             className={`block w-full h-[2px] bg-dark transition-transform duration-300 ${
-              menuOpen ? '-translate-y-[7px] -rotate-45' : ''
+              menuOpen ? "-translate-y-[7px] -rotate-45" : ""
             }`}
           />
         </button>
@@ -79,8 +80,8 @@ export function Navigation({ locale }: NavigationProps) {
                     onClick={() => handleNavClick(item.id)}
                     className={`text-base transition-colors ${
                       activeSection === item.id
-                        ? 'font-bold text-dark'
-                        : 'text-dark hover:font-bold'
+                        ? "font-bold text-dark"
+                        : "text-dark hover:font-bold"
                     }`}
                   >
                     {item.label}
@@ -92,7 +93,7 @@ export function Navigation({ locale }: NavigationProps) {
                   onClick={switchLocale}
                   className="text-sm text-dark/60 hover:text-dark transition-colors"
                 >
-                  {locale === 'pt-br' ? 'English' : 'Português'}
+                  {locale === "pt-br" ? "English" : "Português"}
                 </button>
               </li>
             </ul>
@@ -105,7 +106,7 @@ export function Navigation({ locale }: NavigationProps) {
   return (
     <header className="fixed top-0 left-0 w-[105px] h-dvh bg-primary z-10 border-r-[3px] border-dark flex flex-col items-center py-4">
       <button
-        onClick={() => handleNavClick('hello')}
+        onClick={() => handleNavClick("hello")}
         className="relative z-[11] mb-4"
       >
         <Image src={logoSrc} alt="JoeKyy" width={70} height={70} />
@@ -119,8 +120,8 @@ export function Navigation({ locale }: NavigationProps) {
                 onClick={() => handleNavClick(item.id)}
                 className={`whitespace-nowrap text-sm tracking-wider transition-colors ${
                   activeSection === item.id
-                    ? 'font-bold text-dark'
-                    : 'text-dark hover:font-bold'
+                    ? "font-bold text-dark"
+                    : "text-dark hover:font-bold"
                 }`}
               >
                 {item.label}
@@ -134,7 +135,7 @@ export function Navigation({ locale }: NavigationProps) {
         onClick={switchLocale}
         className="text-xs text-dark/60 hover:text-dark transition-colors"
       >
-        {locale === 'pt-br' ? 'EN' : 'PT'}
+        {locale === "pt-br" ? "EN" : "PT"}
       </button>
     </header>
   );

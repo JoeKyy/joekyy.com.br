@@ -1,6 +1,6 @@
-import type { Locale } from '@/types';
-import { getMessages, getProjects } from '@/lib/data';
-import { ProjectCard } from './ProjectCard';
+import type { Locale } from "@/types";
+import { getMessages, getProjects } from "@/lib/data";
+import { ProjectCard } from "./ProjectCard";
 
 interface PortfolioProps {
   locale: Locale;
@@ -45,11 +45,7 @@ export function Portfolio({ locale }: PortfolioProps) {
         <div>
           <ul className="flex flex-col lg:flex-row lg:items-center">
             {projects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                locale={locale}
-              />
+              <ProjectCard key={project.id} project={project} locale={locale} />
             ))}
           </ul>
         </div>

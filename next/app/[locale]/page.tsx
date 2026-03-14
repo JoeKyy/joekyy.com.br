@@ -1,11 +1,11 @@
-import { HorizontalScroll } from '@/components/HorizontalScroll';
-import { Navigation } from '@/components/Navigation';
-import { Hero } from '@/components/Hero';
-import { About } from '@/components/About';
-import { Portfolio } from '@/components/Portfolio';
-import { Clients } from '@/components/Clients';
-import { Contact } from '@/components/Contact';
-import type { Locale } from '@/types';
+import { HorizontalScroll } from "@/components/HorizontalScroll";
+import { Navigation } from "@/components/Navigation";
+import { Hero } from "@/components/Hero";
+import { About } from "@/components/About";
+import { Portfolio } from "@/components/Portfolio";
+import { Clients } from "@/components/Clients";
+import { Contact } from "@/components/Contact";
+import type { Locale } from "@/types";
 
 type PageParams = { locale: string };
 

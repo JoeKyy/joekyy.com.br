@@ -6,7 +6,7 @@ export interface Project {
   descriptionPt: string;
   descriptionEn: string;
   image: string;
-  type: 'freelance' | 'service';
+  type: "freelance" | "service";
   order: number;
 }
 
@@ -21,7 +21,7 @@ export interface Skill {
   name: string;
   namePt: string;
   nameEn: string;
-  category: 'technical' | 'professional';
+  category: "technical" | "professional";
 }
 
 export interface SocialLink {
@@ -39,4 +39,4 @@ export interface SiteConfig {
   resumeEnUrl: string;
 }
 
-export type Locale = 'pt-br' | 'en-us';
+export type Locale = "pt-br" | "en-us";

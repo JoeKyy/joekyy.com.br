@@ -1,12 +1,12 @@
-import createMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from '@/i18n/request';
+import createMiddleware from "next-intl/middleware";
+import { locales, defaultLocale } from "@/i18n/request";
 
 export default createMiddleware({
   locales,
   defaultLocale,
-  localePrefix: 'always',
+  localePrefix: "always",
 });
 
 export const config = {
-  matcher: ['/', '/(pt-br|en-us)/:path*'],
+  matcher: ["/", "/(pt-br|en-us)/:path*"],
 };

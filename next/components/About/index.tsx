@@ -1,5 +1,5 @@
-import type { Locale } from '@/types';
-import { getMessages, getSkills, siteConfig } from '@/lib/data';
+import type { Locale } from "@/types";
+import { getMessages, getSkills, siteConfig } from "@/lib/data";
 
 interface AboutProps {
   locale: Locale;
@@ -10,8 +10,10 @@ export function About({ locale }: AboutProps) {
   const skills = getSkills();
   const { about } = messages;
 
-  const technicalSkills = skills.filter((s) => s.category === 'technical');
-  const professionalSkills = skills.filter((s) => s.category === 'professional');
+  const technicalSkills = skills.filter((s) => s.category === "technical");
+  const professionalSkills = skills.filter(
+    (s) => s.category === "professional",
+  );
 
   return (
     <section
@@ -25,7 +27,10 @@ export function About({ locale }: AboutProps) {
         </h2>
       </header>
       {/* Mobile header */}
-      <header className="lg:hidden w-full p-4 bg-dark text-light absolute left-0" style={{ top: '110px' }}>
+      <header
+        className="lg:hidden w-full p-4 bg-dark text-light absolute left-0"
+        style={{ top: "110px" }}
+      >
         <h2 className="font-bold text-sm">{about.title}</h2>
       </header>
 
@@ -54,7 +59,7 @@ export function About({ locale }: AboutProps) {
                 {technicalSkills.map((skill) => (
                   <li key={skill.name} className="my-4 text-md">
                     <span className="font-bold bg-dark text-light px-[5px] inline-block leading-[1.5]">
-                      {locale === 'pt-br' ? skill.namePt : skill.nameEn}
+                      {locale === "pt-br" ? skill.namePt : skill.nameEn}
                     </span>
                   </li>
                 ))}
@@ -65,7 +70,7 @@ export function About({ locale }: AboutProps) {
                 {professionalSkills.map((skill) => (
                   <li key={skill.name} className="my-4 text-md">
                     <span className="font-bold bg-dark text-light px-[5px] inline-block leading-[1.5]">
-                      {locale === 'pt-br' ? skill.namePt : skill.nameEn}
+                      {locale === "pt-br" ? skill.namePt : skill.nameEn}
                     </span>
                   </li>
                 ))}

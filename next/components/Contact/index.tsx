@@ -1,6 +1,6 @@
-import { FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa';
-import type { Locale } from '@/types';
-import { getMessages, siteConfig } from '@/lib/data';
+import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
+import type { Locale } from "@/types";
+import { getMessages, siteConfig } from "@/lib/data";
 
 interface ContactProps {
   locale: Locale;
@@ -10,7 +10,7 @@ export function Contact({ locale }: ContactProps) {
   const messages = getMessages(locale);
   const { contact } = messages;
 
-  const email = locale === 'pt-br' ? siteConfig.emailPt : siteConfig.emailEn;
+  const email = locale === "pt-br" ? siteConfig.emailPt : siteConfig.emailEn;
 
   return (
     <section
@@ -36,7 +36,7 @@ export function Contact({ locale }: ContactProps) {
             </span>
           </h3>
           <p className="text-md">
-            {contact.message}{' '}
+            {contact.message}{" "}
             <strong>
               <a href={`mailto:${email}`}>{email}</a>
             </strong>
@@ -51,9 +51,9 @@ export function Contact({ locale }: ContactProps) {
                   href={link.url}
                   className="text-dark hover:text-dark/70 transition-colors text-2xl"
                 >
-                  {link.platform === 'linkedin' && <FaLinkedin />}
-                  {link.platform === 'github' && <FaGithub />}
-                  {link.platform === 'whatsapp' && <FaWhatsapp />}
+                  {link.platform === "linkedin" && <FaLinkedin />}
+                  {link.platform === "github" && <FaGithub />}
+                  {link.platform === "whatsapp" && <FaWhatsapp />}
                 </a>
               </li>
             ))}

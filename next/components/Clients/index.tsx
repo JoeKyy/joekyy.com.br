@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import type { Locale } from '@/types';
-import { getMessages, getClients } from '@/lib/data';
+import Image from "next/image";
+import type { Locale } from "@/types";
+import { getMessages, getClients } from "@/lib/data";
 
 interface ClientsProps {
   locale: Locale;
