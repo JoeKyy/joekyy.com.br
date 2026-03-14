@@ -1,4 +1,7 @@
-import { HorizontalScroll } from "@/components/HorizontalScroll";
+import {
+  HorizontalScrollProvider,
+  HorizontalScrollContainer,
+} from "@/components/HorizontalScroll";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -18,17 +21,17 @@ export default async function LocalePage({
   const typedLocale = locale as Locale;
 
   return (
-    <>
+    <HorizontalScrollProvider>
       <Navigation locale={typedLocale} />
-      <main className="w-full lg:flex lg:min-w-dvw lg:h-dvh lg:ml-[105px]">
-        <HorizontalScroll>
+      <main className="w-full lg:flex lg:h-dvh lg:ml-26.25">
+        <HorizontalScrollContainer>
           <Hero locale={typedLocale} />
           <About locale={typedLocale} />
           <Portfolio locale={typedLocale} />
           <Clients locale={typedLocale} />
           <Contact locale={typedLocale} />
-        </HorizontalScroll>
+        </HorizontalScrollContainer>
       </main>
-    </>
+    </HorizontalScrollProvider>
   );
 }

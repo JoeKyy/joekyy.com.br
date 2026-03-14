@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
 const MOBILE_BREAKPOINT = 1260;
-const SCROLL_AMOUNT = 15;
 const OBSERVER_THRESHOLD = 0.2;
 
 export function useHorizontalScroll() {
@@ -11,24 +10,34 @@ export function useHorizontalScroll() {
   const [activeSection, setActiveSection] = useState<string>("hello");
   const [isMobile, setIsMobile] = useState(false);
 
-  const scrollToSection = useCallback((sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "start",
-      });
+  const scrollToSection = useCallback(
+    (sectionId: string) => {
+      const element = document.getElementById(sectionId);
+      if (!element) return;
+
+      if (isMobile) {
+        // Vertical scroll on mobile
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        // Horizontal scroll on desktop — scroll the container directly
+        const container = containerRef.current;
+        if (container) {
+          const elementLeft = element.offsetLeft;
+          container.scrollTo({ left: elementLeft, behavior: "smooth" });
+        }
+      }
+
       setActiveSection(sectionId);
       if (typeof window !== "undefined") {
         history.pushState(null, "", `#${sectionId}`);
       }
-    }
-  }, []);
+    },
+    [isMobile],
+  );
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     };
 
     checkMobile();
@@ -36,6 +45,7 @@ export function useHorizontalScroll() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Wheel → horizontal scroll on desktop
   useEffect(() => {
     if (isMobile) return;
 
@@ -44,9 +54,9 @@ export function useHorizontalScroll() {
 
     const handleWheel = (event: WheelEvent) => {
       event.preventDefault();
-      container.scrollBy({
-        left: event.deltaY < 0 ? -SCROLL_AMOUNT : SCROLL_AMOUNT,
-      });
+      const delta =
+        Math.sign(event.deltaY) * Math.min(Math.abs(event.deltaY), 200);
+      container.scrollBy({ left: delta });
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -54,12 +64,12 @@ export function useHorizontalScroll() {
         case "ArrowLeft":
         case "ArrowUp":
         case "PageUp":
-          container.scrollBy({ left: -10 });
+          container.scrollBy({ left: -window.innerWidth });
           break;
         case "ArrowRight":
         case "ArrowDown":
         case "PageDown":
-          container.scrollBy({ left: 10 });
+          container.scrollBy({ left: window.innerWidth });
           break;
       }
     };
@@ -109,7 +119,7 @@ export function useHorizontalScroll() {
   useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash) {
       const hash = window.location.hash.substring(1);
-      setTimeout(() => scrollToSection(hash), 100);
+      setTimeout(() => scrollToSection(hash), 150);
     }
   }, [scrollToSection]);
 

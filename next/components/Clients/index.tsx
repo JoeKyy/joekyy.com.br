@@ -14,7 +14,7 @@ export function Clients({ locale }: ClientsProps) {
   return (
     <section
       id="clientes"
-      className="min-w-dvw min-h-dvh snap-start flex pt-[110px] lg:pt-0 lg:pl-[100px]"
+      className="w-full lg:min-w-dvw min-h-dvh flex flex-col lg:flex-row pt-[110px] lg:pt-0 lg:pl-[100px]"
     >
       {/* Section header sidebar */}
       <header className="hidden lg:block relative w-[50px] h-dvh shrink-0 bg-dark text-light">

@@ -18,7 +18,7 @@ export function About({ locale }: AboutProps) {
   return (
     <section
       id="sobre"
-      className="min-w-dvw min-h-dvh snap-start flex pt-[110px] lg:pt-0 lg:pl-[100px]"
+      className="w-full lg:min-w-dvw min-h-dvh flex flex-col lg:flex-row pt-[110px] lg:pt-0 lg:pl-[100px]"
     >
       {/* Section header sidebar - black bg, rotated title */}
       <header className="hidden lg:block relative w-[50px] h-dvh shrink-0 bg-dark text-light">
@@ -27,10 +27,7 @@ export function About({ locale }: AboutProps) {
         </h2>
       </header>
       {/* Mobile header */}
-      <header
-        className="lg:hidden w-full p-4 bg-dark text-light absolute left-0"
-        style={{ top: "110px" }}
-      >
+      <header className="lg:hidden w-full p-4 bg-dark text-light">
         <h2 className="font-bold text-sm">{about.title}</h2>
       </header>
 

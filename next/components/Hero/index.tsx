@@ -13,7 +13,7 @@ export function Hero({ locale }: HeroProps) {
   return (
     <section
       id="hello"
-      className="min-w-dvw h-dvh snap-start flex items-center lg:-ml-[105px] mx-4 lg:mx-0"
+      className="min-w-screen min-h-dvh lg:h-dvh flex items-center pt-27.5 lg:pt-0 px-4 lg:px-0"
     >
       <div className="w-full lg:w-screen">
         <div className="flex flex-col lg:flex-row items-center">
