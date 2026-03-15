@@ -28,6 +28,9 @@ next/.next/
 next/site.zip
 next/public/docs/
 
+# Docs pessoais (currículos) — não versionar
+docs/
+
 # Misc
 *.tsbuildinfo
 .npm
