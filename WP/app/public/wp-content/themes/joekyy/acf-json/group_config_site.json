@@ -3,77 +3,10 @@
     "title": "Configurações do Site",
     "fields": [
         {
-            "key": "field_config_bio_pt",
-            "label": "Bio (PT-BR)",
-            "name": "bio_pt",
-            "type": "textarea",
-            "rows": 5,
-            "show_in_graphql": 1
-        },
-        {
-            "key": "field_config_bio_en",
-            "label": "Bio (EN-US)",
-            "name": "bio_en",
-            "type": "textarea",
-            "rows": 5,
-            "show_in_graphql": 1
-        },
-        {
-            "key": "field_config_avatar",
-            "label": "Avatar",
-            "name": "avatar",
-            "type": "image",
-            "return_format": "url",
-            "show_in_graphql": 1
-        },
-        {
-            "key": "field_config_email_pt",
-            "label": "Email (PT-BR)",
-            "name": "email_pt",
-            "type": "email",
-            "show_in_graphql": 1
-        },
-        {
-            "key": "field_config_email_en",
-            "label": "Email (EN-US)",
-            "name": "email_en",
-            "type": "email",
-            "show_in_graphql": 1
-        },
-        {
-            "key": "field_config_whatsapp_url",
-            "label": "WhatsApp URL",
-            "name": "whatsapp_url",
-            "type": "url",
-            "show_in_graphql": 1
-        },
-        {
-            "key": "field_config_linkedin_url",
-            "label": "LinkedIn URL",
-            "name": "linkedin_url",
-            "type": "url",
-            "show_in_graphql": 1
-        },
-        {
-            "key": "field_config_github_url",
-            "label": "GitHub URL",
-            "name": "github_url",
-            "type": "url",
-            "show_in_graphql": 1
-        },
-        {
-            "key": "field_config_curriculo_pt_url",
-            "label": "Currículo PT-BR (URL)",
-            "name": "curriculo_pt_url",
-            "type": "url",
-            "show_in_graphql": 1
-        },
-        {
-            "key": "field_config_curriculo_en_url",
-            "label": "Currículo EN-US (URL)",
-            "name": "curriculo_en_url",
-            "type": "url",
-            "show_in_graphql": 1
+            "key": "tab_hero",
+            "label": "🏠 Hero",
+            "name": "tab_hero",
+            "type": "tab"
         },
         {
             "key": "field_config_hero_html_pt",
@@ -107,33 +40,33 @@
             "show_in_graphql": 1
         },
         {
-            "key": "field_config_contact_heading_pt",
-            "label": "Contato — Título (PT-BR)",
-            "name": "contact_heading_pt",
-            "type": "text",
+            "key": "field_config_avatar",
+            "label": "Avatar",
+            "name": "avatar",
+            "type": "image",
+            "return_format": "url",
             "show_in_graphql": 1
         },
         {
-            "key": "field_config_contact_heading_en",
-            "label": "Contato — Título (EN-US)",
-            "name": "contact_heading_en",
-            "type": "text",
-            "show_in_graphql": 1
+            "key": "tab_about",
+            "label": "👤 Sobre",
+            "name": "tab_about",
+            "type": "tab"
         },
         {
-            "key": "field_config_contact_msg_pt",
-            "label": "Contato — Mensagem (PT-BR)",
-            "name": "contact_message_pt",
+            "key": "field_config_bio_pt",
+            "label": "Bio (PT-BR)",
+            "name": "bio_pt",
             "type": "textarea",
-            "rows": 3,
+            "rows": 5,
             "show_in_graphql": 1
         },
         {
-            "key": "field_config_contact_msg_en",
-            "label": "Contato — Mensagem (EN-US)",
-            "name": "contact_message_en",
+            "key": "field_config_bio_en",
+            "label": "Bio (EN-US)",
+            "name": "bio_en",
             "type": "textarea",
-            "rows": 3,
+            "rows": 5,
             "show_in_graphql": 1
         },
         {
@@ -168,6 +101,26 @@
             "type": "textarea",
             "rows": 4,
             "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_curriculo_pt_url",
+            "label": "Currículo PT-BR (URL)",
+            "name": "curriculo_pt_url",
+            "type": "url",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_curriculo_en_url",
+            "label": "Currículo EN-US (URL)",
+            "name": "curriculo_en_url",
+            "type": "url",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "tab_portfolio",
+            "label": "💼 Portfólio",
+            "name": "tab_portfolio",
+            "type": "tab"
         },
         {
             "key": "field_config_portfolio_heading_pt",
@@ -214,6 +167,12 @@
             "show_in_graphql": 1
         },
         {
+            "key": "tab_clients",
+            "label": "🤝 Clientes",
+            "name": "tab_clients",
+            "type": "tab"
+        },
+        {
             "key": "field_config_clients_heading_pt",
             "label": "Clientes — Título (PT-BR)",
             "name": "clients_heading_pt",
@@ -241,6 +200,77 @@
             "name": "clients_description_en",
             "type": "textarea",
             "rows": 3,
+            "show_in_graphql": 1
+        },
+        {
+            "key": "tab_contact",
+            "label": "📬 Contato",
+            "name": "tab_contact",
+            "type": "tab"
+        },
+        {
+            "key": "field_config_contact_heading_pt",
+            "label": "Contato — Título (PT-BR)",
+            "name": "contact_heading_pt",
+            "type": "text",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_contact_heading_en",
+            "label": "Contato — Título (EN-US)",
+            "name": "contact_heading_en",
+            "type": "text",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_contact_msg_pt",
+            "label": "Contato — Mensagem (PT-BR)",
+            "name": "contact_message_pt",
+            "type": "textarea",
+            "rows": 3,
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_contact_msg_en",
+            "label": "Contato — Mensagem (EN-US)",
+            "name": "contact_message_en",
+            "type": "textarea",
+            "rows": 3,
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_email_pt",
+            "label": "Email (PT-BR)",
+            "name": "email_pt",
+            "type": "email",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_email_en",
+            "label": "Email (EN-US)",
+            "name": "email_en",
+            "type": "email",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_whatsapp_url",
+            "label": "WhatsApp URL",
+            "name": "whatsapp_url",
+            "type": "url",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_linkedin_url",
+            "label": "LinkedIn URL",
+            "name": "linkedin_url",
+            "type": "url",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_github_url",
+            "label": "GitHub URL",
+            "name": "github_url",
+            "type": "url",
             "show_in_graphql": 1
         }
     ],
