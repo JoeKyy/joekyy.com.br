@@ -107,6 +107,77 @@ function joekyy_graphql_cors_headers($headers) {
 }
 
 // ============================================================
+// ACF — Configurações do Site registradas via PHP (imutável pelo admin)
+// Registrar via código evita que o ACF sobrescreva as configs ao salvar
+// ============================================================
+
+add_action('acf/init', 'joekyy_register_config_site_fields');
+function joekyy_register_config_site_fields() {
+    if ( ! function_exists('acf_add_local_field_group') ) return;
+
+    $tab = [ 'type' => 'tab', 'placement' => 'top', 'endpoint' => 0, 'show_in_graphql' => 0 ];
+
+    acf_add_local_field_group([
+        'key'              => 'group_config_site',
+        'title'            => 'Configurações do Site',
+        'graphql_field_name' => 'configDoSite',
+        'position'         => 'normal',
+        'style'            => 'default',
+        'label_placement'  => 'top',
+        'active'           => true,
+        'location'         => [[ ['param' => 'post_type', 'operator' => '==', 'value' => 'config_site'] ]],
+        'fields' => [
+            // ── Aba Hero ───────────────────────────────────────────
+            array_merge($tab, ['key' => 'tab_hero', 'name' => 'tab_hero', 'label' => '🏠 Hero']),
+            ['key'=>'field_config_hero_html_pt',      'name'=>'hero_html_pt',      'label'=>'Texto HTML (PT-BR)', 'type'=>'textarea','rows'=>4,'show_in_graphql'=>1,
+             'instructions'=>'HTML: <strong>, <br />. Ex: <strong>Olá!</strong><br />Eu sou o<br /><strong>Joe</strong>'],
+            ['key'=>'field_config_hero_html_en',      'name'=>'hero_html_en',      'label'=>'Texto HTML (EN-US)', 'type'=>'textarea','rows'=>4,'show_in_graphql'=>1],
+            ['key'=>'field_config_hero_alt_pt',       'name'=>'hero_avatar_alt_pt','label'=>'Alt do Avatar (PT-BR)','type'=>'text','show_in_graphql'=>1],
+            ['key'=>'field_config_hero_alt_en',       'name'=>'hero_avatar_alt_en','label'=>'Alt do Avatar (EN-US)','type'=>'text','show_in_graphql'=>1],
+            ['key'=>'field_config_avatar',            'name'=>'avatar',            'label'=>'Avatar','type'=>'image','return_format'=>'url','show_in_graphql'=>1],
+
+            // ── Aba Sobre ──────────────────────────────────────────
+            array_merge($tab, ['key' => 'tab_about', 'name' => 'tab_about', 'label' => '👤 Sobre']),
+            ['key'=>'field_config_about_bio1_pt','name'=>'about_bio1_pt','label'=>'Bio 1 (PT-BR)','type'=>'textarea','rows'=>4,'show_in_graphql'=>1,
+             'instructions'=>'HTML: <span> para destacar. Ex: Meu nome é <span>Joe</span>.'],
+            ['key'=>'field_config_about_bio1_en','name'=>'about_bio1_en','label'=>'Bio 1 (EN-US)','type'=>'textarea','rows'=>4,'show_in_graphql'=>1],
+            ['key'=>'field_config_about_bio2_pt','name'=>'about_bio2_pt','label'=>'Bio 2 (PT-BR)','type'=>'textarea','rows'=>4,'show_in_graphql'=>1],
+            ['key'=>'field_config_about_bio2_en','name'=>'about_bio2_en','label'=>'Bio 2 (EN-US)','type'=>'textarea','rows'=>4,'show_in_graphql'=>1],
+            ['key'=>'field_config_cv_pt','name'=>'curriculo_pt_url','label'=>'URL Currículo (PT-BR)','type'=>'url','show_in_graphql'=>1],
+            ['key'=>'field_config_cv_en','name'=>'curriculo_en_url','label'=>'URL Currículo (EN-US)','type'=>'url','show_in_graphql'=>1],
+
+            // ── Aba Portfólio ─────────────────────────────────────
+            array_merge($tab, ['key' => 'tab_portfolio', 'name' => 'tab_portfolio', 'label' => '💼 Portfólio']),
+            ['key'=>'field_config_portfolio_heading_pt','name'=>'portfolio_heading_pt','label'=>'Título (PT-BR)','type'=>'text','show_in_graphql'=>1],
+            ['key'=>'field_config_portfolio_heading_en','name'=>'portfolio_heading_en','label'=>'Título (EN-US)','type'=>'text','show_in_graphql'=>1],
+            ['key'=>'field_config_portfolio_intro_pt',  'name'=>'portfolio_intro_pt',  'label'=>'Introdução (PT-BR)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
+            ['key'=>'field_config_portfolio_intro_en',  'name'=>'portfolio_intro_en',  'label'=>'Introdução (EN-US)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
+            ['key'=>'field_config_portfolio_cta_pt',    'name'=>'portfolio_cta_pt',    'label'=>'CTA (PT-BR)','type'=>'text','show_in_graphql'=>1],
+            ['key'=>'field_config_portfolio_cta_en',    'name'=>'portfolio_cta_en',    'label'=>'CTA (EN-US)','type'=>'text','show_in_graphql'=>1],
+
+            // ── Aba Clientes ──────────────────────────────────────
+            array_merge($tab, ['key' => 'tab_clients', 'name' => 'tab_clients', 'label' => '🤝 Clientes']),
+            ['key'=>'field_config_clients_heading_pt','name'=>'clients_heading_pt','label'=>'Título (PT-BR)','type'=>'text','show_in_graphql'=>1],
+            ['key'=>'field_config_clients_heading_en','name'=>'clients_heading_en','label'=>'Título (EN-US)','type'=>'text','show_in_graphql'=>1],
+            ['key'=>'field_config_clients_desc_pt',   'name'=>'clients_description_pt','label'=>'Descrição (PT-BR)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
+            ['key'=>'field_config_clients_desc_en',   'name'=>'clients_description_en','label'=>'Descrição (EN-US)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
+
+            // ── Aba Contato ───────────────────────────────────────
+            array_merge($tab, ['key' => 'tab_contact', 'name' => 'tab_contact', 'label' => '📬 Contato']),
+            ['key'=>'field_config_contact_heading_pt','name'=>'contact_heading_pt','label'=>'Título (PT-BR)','type'=>'text','show_in_graphql'=>1],
+            ['key'=>'field_config_contact_heading_en','name'=>'contact_heading_en','label'=>'Título (EN-US)','type'=>'text','show_in_graphql'=>1],
+            ['key'=>'field_config_contact_msg_pt',    'name'=>'contact_message_pt','label'=>'Mensagem (PT-BR)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
+            ['key'=>'field_config_contact_msg_en',    'name'=>'contact_message_en','label'=>'Mensagem (EN-US)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
+            ['key'=>'field_config_email_pt',  'name'=>'email_pt',  'label'=>'E-mail (PT-BR)','type'=>'email','show_in_graphql'=>1],
+            ['key'=>'field_config_email_en',  'name'=>'email_en',  'label'=>'E-mail (EN-US)','type'=>'email','show_in_graphql'=>1],
+            ['key'=>'field_config_whatsapp',  'name'=>'whatsapp_url',  'label'=>'WhatsApp URL','type'=>'url','show_in_graphql'=>1],
+            ['key'=>'field_config_linkedin',  'name'=>'linkedin_url',  'label'=>'LinkedIn URL','type'=>'url','show_in_graphql'=>1],
+            ['key'=>'field_config_github',    'name'=>'github_url',    'label'=>'GitHub URL','type'=>'url','show_in_graphql'=>1],
+        ],
+    ]);
+}
+
+// ============================================================
 // Basic Auth para REST API — APENAS em ambiente local/dev
 // Permite que scripts de migração usem usuário e senha diretamente
 // ============================================================
