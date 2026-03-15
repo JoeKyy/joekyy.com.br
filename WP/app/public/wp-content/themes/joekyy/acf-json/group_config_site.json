@@ -135,6 +135,113 @@
             "type": "textarea",
             "rows": 3,
             "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_about_bio1_pt",
+            "label": "Sobre — Bio 1 (PT-BR)",
+            "name": "about_bio1_pt",
+            "type": "textarea",
+            "rows": 4,
+            "show_in_graphql": 1,
+            "instructions": "HTML permitido: <span> para destacar palavras. Ex: Meu nome é <span>Joe</span>."
+        },
+        {
+            "key": "field_config_about_bio1_en",
+            "label": "Sobre — Bio 1 (EN-US)",
+            "name": "about_bio1_en",
+            "type": "textarea",
+            "rows": 4,
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_about_bio2_pt",
+            "label": "Sobre — Bio 2 (PT-BR)",
+            "name": "about_bio2_pt",
+            "type": "textarea",
+            "rows": 4,
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_about_bio2_en",
+            "label": "Sobre — Bio 2 (EN-US)",
+            "name": "about_bio2_en",
+            "type": "textarea",
+            "rows": 4,
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_portfolio_heading_pt",
+            "label": "Portfólio — Título (PT-BR)",
+            "name": "portfolio_heading_pt",
+            "type": "text",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_portfolio_heading_en",
+            "label": "Portfólio — Título (EN-US)",
+            "name": "portfolio_heading_en",
+            "type": "text",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_portfolio_intro_pt",
+            "label": "Portfólio — Introdução (PT-BR)",
+            "name": "portfolio_intro_pt",
+            "type": "textarea",
+            "rows": 3,
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_portfolio_intro_en",
+            "label": "Portfólio — Introdução (EN-US)",
+            "name": "portfolio_intro_en",
+            "type": "textarea",
+            "rows": 3,
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_portfolio_cta_pt",
+            "label": "Portfólio — CTA (PT-BR)",
+            "name": "portfolio_cta_pt",
+            "type": "text",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_portfolio_cta_en",
+            "label": "Portfólio — CTA (EN-US)",
+            "name": "portfolio_cta_en",
+            "type": "text",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_clients_heading_pt",
+            "label": "Clientes — Título (PT-BR)",
+            "name": "clients_heading_pt",
+            "type": "text",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_clients_heading_en",
+            "label": "Clientes — Título (EN-US)",
+            "name": "clients_heading_en",
+            "type": "text",
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_clients_desc_pt",
+            "label": "Clientes — Descrição (PT-BR)",
+            "name": "clients_description_pt",
+            "type": "textarea",
+            "rows": 3,
+            "show_in_graphql": 1
+        },
+        {
+            "key": "field_config_clients_desc_en",
+            "label": "Clientes — Descrição (EN-US)",
+            "name": "clients_description_en",
+            "type": "textarea",
+            "rows": 3,
+            "show_in_graphql": 1
         }
     ],
     "location": [

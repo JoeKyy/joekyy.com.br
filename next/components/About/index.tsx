@@ -1,5 +1,5 @@
 import type { Locale } from "@/types";
-import { getMessages, getSkills, siteConfig } from "@/lib/data";
+import { getMessages, getSkills, getSiteConfig } from "@/lib/data";
 
 interface AboutProps {
   locale: Locale;
@@ -7,8 +7,17 @@ interface AboutProps {
 
 export async function About({ locale }: AboutProps) {
   const messages = getMessages(locale);
-  const skills = await getSkills();
+  const [skills, config] = await Promise.all([getSkills(), getSiteConfig(locale)]);
   const { about } = messages;
+
+  const bio1 = locale === "pt-br"
+    ? config.aboutBio1Pt || about.bio1
+    : config.aboutBio1En || about.bio1;
+  const bio2 = locale === "pt-br"
+    ? config.aboutBio2Pt || about.bio2
+    : config.aboutBio2En || about.bio2;
+  const resumePtUrl = config.resumePtUrl;
+  const resumeEnUrl = config.resumeEnUrl;
 
   const technicalSkills = skills.filter((s) => s.category === "technical");
   const professionalSkills = skills.filter(
@@ -37,11 +46,11 @@ export async function About({ locale }: AboutProps) {
           {/* Bio */}
           <p
             className="mb-8 text-md leading-[2] [&>span]:font-bold [&>span]:bg-dark [&>span]:text-light [&>span]:px-[5px] [&>span]:inline [&>span]:leading-[1.5]"
-            dangerouslySetInnerHTML={{ __html: about.bio1 }}
+            dangerouslySetInnerHTML={{ __html: bio1 }}
           />
           <p
             className="mb-8 text-md leading-[2] [&>span]:font-bold [&>span]:bg-dark [&>span]:text-light [&>span]:px-[5px] [&>span]:inline [&>span]:leading-[1.5]"
-            dangerouslySetInnerHTML={{ __html: about.bio2 }}
+            dangerouslySetInnerHTML={{ __html: bio2 }}
           />
 
           {/* Skills */}
@@ -79,7 +88,7 @@ export async function About({ locale }: AboutProps) {
           <div className="flex flex-row my-4">
             <div className="w-1/2">
               <a
-                href={siteConfig.resumePtUrl}
+                href={resumePtUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 font-bold border-b border-dotted border-dark"
@@ -89,7 +98,7 @@ export async function About({ locale }: AboutProps) {
             </div>
             <div className="w-1/2">
               <a
-                href={siteConfig.resumeEnUrl}
+                href={resumeEnUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 font-bold border-b border-dotted border-dark"

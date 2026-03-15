@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Locale } from "@/types";
-import { getMessages, getClients } from "@/lib/data";
+import { getMessages, getClients, getSiteConfig } from "@/lib/data";
 
 interface ClientsProps {
   locale: Locale;
@@ -8,8 +8,15 @@ interface ClientsProps {
 
 export async function Clients({ locale }: ClientsProps) {
   const messages = getMessages(locale);
-  const clients = await getClients();
+  const [clients, config] = await Promise.all([getClients(), getSiteConfig(locale)]);
   const { clients: clientsMessages } = messages;
+
+  const heading = locale === "pt-br"
+    ? config.clientsHeadingPt || clientsMessages.heading
+    : config.clientsHeadingEn || clientsMessages.heading;
+  const description = locale === "pt-br"
+    ? config.clientsDescriptionPt || clientsMessages.description
+    : config.clientsDescriptionEn || clientsMessages.description;
 
   return (
     <section
@@ -33,10 +40,10 @@ export async function Clients({ locale }: ClientsProps) {
             <div className="lg:w-1/4">
               <h3 className="font-bold text-lg my-4">
                 <span className="border-b-[3px] border-dark">
-                  {clientsMessages.heading}
+                  {heading}
                 </span>
               </h3>
-              <p className="text-md">{clientsMessages.description}</p>
+              <p className="text-md">{description}</p>
             </div>
             <div className="lg:w-3/4">
               <ul className="flex justify-center items-center content-center gap-[81px] shrink-0 flex-wrap p-8 px-4">

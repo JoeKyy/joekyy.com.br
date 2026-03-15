@@ -61,6 +61,20 @@ export async function getSiteConfig(locale: Locale): Promise<SiteConfig> {
     contactHeadingEn: (messages as typeof enUs).contact.heading,
     contactMessagePt: (messages as typeof ptBr).contact.message,
     contactMessageEn: (messages as typeof enUs).contact.message,
+    aboutBio1Pt: ptBr.about.bio1,
+    aboutBio1En: enUs.about.bio1,
+    aboutBio2Pt: ptBr.about.bio2,
+    aboutBio2En: enUs.about.bio2,
+    portfolioHeadingPt: ptBr.portfolio.heading,
+    portfolioHeadingEn: enUs.portfolio.heading,
+    portfolioIntroPt: ptBr.portfolio.intro,
+    portfolioIntroEn: enUs.portfolio.intro,
+    portfolioCtaPt: ptBr.portfolio.cta,
+    portfolioCtaEn: enUs.portfolio.cta,
+    clientsHeadingPt: ptBr.clients.heading,
+    clientsHeadingEn: enUs.clients.heading,
+    clientsDescriptionPt: ptBr.clients.description,
+    clientsDescriptionEn: enUs.clients.description,
   };
 }
 

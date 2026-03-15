@@ -86,6 +86,20 @@ const SITE_CONFIG_QUERY = `
           contactHeadingEn
           contactMessagePt
           contactMessageEn
+          aboutBio1Pt
+          aboutBio1En
+          aboutBio2Pt
+          aboutBio2En
+          portfolioHeadingPt
+          portfolioHeadingEn
+          portfolioIntroPt
+          portfolioIntroEn
+          portfolioCtaPt
+          portfolioCtaEn
+          clientsHeadingPt
+          clientsHeadingEn
+          clientsDescriptionPt
+          clientsDescriptionEn
         }
       }
     }
@@ -151,6 +165,20 @@ interface WPSiteConfigNode {
     contactHeadingEn: string;
     contactMessagePt: string;
     contactMessageEn: string;
+    aboutBio1Pt: string;
+    aboutBio1En: string;
+    aboutBio2Pt: string;
+    aboutBio2En: string;
+    portfolioHeadingPt: string;
+    portfolioHeadingEn: string;
+    portfolioIntroPt: string;
+    portfolioIntroEn: string;
+    portfolioCtaPt: string;
+    portfolioCtaEn: string;
+    clientsHeadingPt: string;
+    clientsHeadingEn: string;
+    clientsDescriptionPt: string;
+    clientsDescriptionEn: string;
   };
 }
 
@@ -235,5 +263,19 @@ export async function getSiteConfigWP(
     contactHeadingEn: c.contactHeadingEn,
     contactMessagePt: c.contactMessagePt,
     contactMessageEn: c.contactMessageEn,
+    aboutBio1Pt: c.aboutBio1Pt,
+    aboutBio1En: c.aboutBio1En,
+    aboutBio2Pt: c.aboutBio2Pt,
+    aboutBio2En: c.aboutBio2En,
+    portfolioHeadingPt: c.portfolioHeadingPt,
+    portfolioHeadingEn: c.portfolioHeadingEn,
+    portfolioIntroPt: c.portfolioIntroPt,
+    portfolioIntroEn: c.portfolioIntroEn,
+    portfolioCtaPt: c.portfolioCtaPt,
+    portfolioCtaEn: c.portfolioCtaEn,
+    clientsHeadingPt: c.clientsHeadingPt,
+    clientsHeadingEn: c.clientsHeadingEn,
+    clientsDescriptionPt: c.clientsDescriptionPt,
+    clientsDescriptionEn: c.clientsDescriptionEn,
   };
 }

@@ -47,6 +47,23 @@ export interface SiteConfig {
   contactHeadingEn?: string;
   contactMessagePt?: string;
   contactMessageEn?: string;
+  // About
+  aboutBio1Pt?: string;
+  aboutBio1En?: string;
+  aboutBio2Pt?: string;
+  aboutBio2En?: string;
+  // Portfolio
+  portfolioHeadingPt?: string;
+  portfolioHeadingEn?: string;
+  portfolioIntroPt?: string;
+  portfolioIntroEn?: string;
+  portfolioCtaPt?: string;
+  portfolioCtaEn?: string;
+  // Clients
+  clientsHeadingPt?: string;
+  clientsHeadingEn?: string;
+  clientsDescriptionPt?: string;
+  clientsDescriptionEn?: string;
 }
 
 export type Locale = "pt-br" | "en-us";

@@ -1,5 +1,5 @@
 import type { Locale } from "@/types";
-import { getMessages, getProjects } from "@/lib/data";
+import { getMessages, getProjects, getSiteConfig } from "@/lib/data";
 import { ProjectCard } from "./ProjectCard";
 
 interface PortfolioProps {
@@ -8,8 +8,18 @@ interface PortfolioProps {
 
 export async function Portfolio({ locale }: PortfolioProps) {
   const messages = getMessages(locale);
-  const projects = await getProjects();
+  const [projects, config] = await Promise.all([getProjects(), getSiteConfig(locale)]);
   const { portfolio } = messages;
+
+  const heading = locale === "pt-br"
+    ? config.portfolioHeadingPt || portfolio.heading
+    : config.portfolioHeadingEn || portfolio.heading;
+  const intro = locale === "pt-br"
+    ? config.portfolioIntroPt || portfolio.intro
+    : config.portfolioIntroEn || portfolio.intro;
+  const cta = locale === "pt-br"
+    ? config.portfolioCtaPt || portfolio.cta
+    : config.portfolioCtaEn || portfolio.cta;
 
   return (
     <section
@@ -32,12 +42,12 @@ export async function Portfolio({ locale }: PortfolioProps) {
         <div className="lg:w-[360px] lg:mr-[56px] shrink-0">
           <h3 className="font-bold text-lg my-4">
             <span className="border-b-[3px] border-dark">
-              {portfolio.heading}
+              {heading}
             </span>
           </h3>
-          <p className="text-md">{portfolio.intro}</p>
+          <p className="text-md">{intro}</p>
           <p className="my-4">
-            <strong>{portfolio.cta}</strong>
+            <strong>{cta}</strong>
           </p>
         </div>
 
