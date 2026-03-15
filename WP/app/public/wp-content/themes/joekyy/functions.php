@@ -562,4 +562,47 @@ function joekyy_clean_toolbar($wp_admin_bar) {
     $wp_admin_bar->remove_node('new-content');
 }
 
+// ============================================================
+// CSS personalizado no admin — melhorar layout da edição
+// ============================================================
+
+add_action('admin_head', 'joekyy_admin_css');
+function joekyy_admin_css() {
+    ?>
+    <style>
+        /* Margem e espaçamento no formulário de edição dos CPTs */
+        .post-type-config_site #poststuff,
+        .post-type-projeto #poststuff,
+        .post-type-cliente #poststuff,
+        .post-type-habilidade #poststuff {
+            padding-top: 20px;
+        }
+        .post-type-config_site #post-body,
+        .post-type-projeto #post-body,
+        .post-type-cliente #post-body,
+        .post-type-habilidade #post-body {
+            margin-top: 10px;
+        }
+        /* Abas ACF — garantir que fiquem todas juntas */
+        .acf-tab-group {
+            margin: 0 0 20px !important;
+            padding: 0 !important;
+            border-bottom: 2px solid #1d2327 !important;
+        }
+        .acf-tab-group li a {
+            padding: 8px 16px !important;
+            font-size: 13px !important;
+        }
+        .acf-tab-group li.active a {
+            background: #1d2327 !important;
+            color: #fff !important;
+        }
+        /* Espaçamento entre campos do formulário */
+        .acf-field {
+            padding: 12px 12px !important;
+        }
+    </style>
+    <?php
+}
+
 ?>
