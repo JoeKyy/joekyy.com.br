@@ -443,5 +443,123 @@ function remove_comments_from_dashboard() {
 }
 add_action('admin_init', 'remove_comments_from_dashboard');
 
+// ============================================================
+// Admin UI — mostrar apenas o necessário para administrar o site
+// ============================================================
+
+// Remove itens do menu lateral desnecessários
+add_action('admin_menu', 'joekyy_clean_admin_menu', 999);
+function joekyy_clean_admin_menu() {
+    remove_menu_page('index.php');              // Dashboard
+    remove_menu_page('edit.php');              // Posts
+    remove_menu_page('edit-comments.php');     // Comentários
+    remove_menu_page('tools.php');             // Ferramentas
+    remove_menu_page('edit.php?post_type=page'); // Páginas
+}
+
+// Remove widgets desnecessários do dashboard
+add_action('wp_dashboard_setup', 'joekyy_clean_dashboard', 999);
+function joekyy_clean_dashboard() {
+    global $wp_meta_boxes;
+    $wp_meta_boxes['dashboard'] = [];
+}
+
+// Redireciona o login direto para os Projetos (primeira coisa útil)
+add_filter('login_redirect', 'joekyy_login_redirect', 10, 3);
+function joekyy_login_redirect($redirect_to, $request, $user) {
+    if ( isset($user->roles) && in_array('administrator', $user->roles) ) {
+        return admin_url('edit.php?post_type=projeto');
+    }
+    return $redirect_to;
+}
+
+// Remove metaboxes desnecessárias das telas de edição dos CPTs
+add_action('add_meta_boxes', 'joekyy_remove_metaboxes', 999);
+function joekyy_remove_metaboxes() {
+    $cpts = ['projeto', 'cliente', 'habilidade', 'config_site'];
+    foreach ($cpts as $cpt) {
+        remove_meta_box('slugdiv',         $cpt, 'normal'); // Slug
+        remove_meta_box('authordiv',       $cpt, 'normal'); // Autor
+        remove_meta_box('commentstatusdiv',$cpt, 'normal'); // Comentários
+        remove_meta_box('commentsdiv',     $cpt, 'normal');
+        remove_meta_box('trackbacksdiv',   $cpt, 'normal');
+        remove_meta_box('revisionsdiv',    $cpt, 'normal'); // Revisões
+        remove_meta_box('postcustom',      $cpt, 'normal'); // Campos customizados (raw)
+        remove_meta_box('postexcerpt',     $cpt, 'normal'); // Resumo
+        remove_meta_box('tagsdiv-post_tag',$cpt, 'side' );  // Tags padrão
+        remove_meta_box('wpseo_meta',      $cpt, 'normal'); // Yoast SEO
+    }
+}
+
+// Remove colunas desnecessárias nas listas dos CPTs
+add_filter('manage_projeto_posts_columns',    'joekyy_projeto_columns');
+add_filter('manage_cliente_posts_columns',    'joekyy_cliente_columns');
+add_filter('manage_habilidade_posts_columns', 'joekyy_habilidade_columns');
+
+function joekyy_projeto_columns($cols) {
+    return [
+        'cb'    => $cols['cb'],
+        'title' => 'Projeto',
+        'ordem' => 'Ordem',
+        'tipo'  => 'Tipo',
+        'date'  => 'Atualizado',
+    ];
+}
+function joekyy_cliente_columns($cols) {
+    return [
+        'cb'    => $cols['cb'],
+        'title' => 'Cliente',
+        'ordem' => 'Ordem',
+        'date'  => 'Atualizado',
+    ];
+}
+function joekyy_habilidade_columns($cols) {
+    return [
+        'cb'        => $cols['cb'],
+        'title'     => 'Habilidade',
+        'categoria' => 'Categoria',
+        'date'      => 'Atualizado',
+    ];
+}
+
+// Preenche os valores das colunas customizadas
+add_action('manage_projeto_posts_custom_column',    'joekyy_projeto_column_value', 10, 2);
+add_action('manage_cliente_posts_custom_column',    'joekyy_cliente_column_value', 10, 2);
+add_action('manage_habilidade_posts_custom_column', 'joekyy_habilidade_column_value', 10, 2);
+
+function joekyy_projeto_column_value($col, $post_id) {
+    if ($col === 'ordem') echo get_field('ordem', $post_id) ?: '—';
+    if ($col === 'tipo') {
+        $tipo = get_field('tipo', $post_id);
+        echo $tipo ? ucfirst(implode(', ', (array)$tipo)) : '—';
+    }
+}
+function joekyy_cliente_column_value($col, $post_id) {
+    if ($col === 'ordem') echo get_field('ordem', $post_id) ?: '—';
+}
+function joekyy_habilidade_column_value($col, $post_id) {
+    if ($col === 'categoria') {
+        $cat = get_field('categoria', $post_id);
+        $map = ['technical' => 'Técnica', 'professional' => 'Profissional'];
+        $val = is_array($cat) ? $cat[0] : $cat;
+        echo $map[$val] ?? '—';
+    }
+}
+
+// Torna a coluna "Ordem" ordenável nos projetos e clientes
+add_filter('manage_edit-projeto_sortable_columns',    'joekyy_sortable_ordem');
+add_filter('manage_edit-cliente_sortable_columns',    'joekyy_sortable_ordem');
+function joekyy_sortable_ordem($cols) {
+    $cols['ordem'] = 'ordem';
+    return $cols;
+}
+
+// Remove itens da barra superior (toolbar)
+add_action('admin_bar_menu', 'joekyy_clean_toolbar', 999);
+function joekyy_clean_toolbar($wp_admin_bar) {
+    $wp_admin_bar->remove_node('wp-logo');
+    $wp_admin_bar->remove_node('comments');
+    $wp_admin_bar->remove_node('new-content');
+}
 
 ?>

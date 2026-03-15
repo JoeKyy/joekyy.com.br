@@ -6,10 +6,16 @@ export const metadata: Metadata = {
   description: "JoeKyy - IT and WEB Solutions",
 };
 
+// Root layout — html/body são fornecidos pelo [locale]/layout.tsx
+// suppressHydrationWarning evita mismatch de atributos (lang, className)
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return (
+    <html suppressHydrationWarning>
+      <body suppressHydrationWarning>{children}</body>
+    </html>
+  );
 }
