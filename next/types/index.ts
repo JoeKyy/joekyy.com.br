@@ -42,6 +42,7 @@ export interface SiteConfig {
   heroHtmlEn?: string;
   heroAvatarAltPt?: string;
   heroAvatarAltEn?: string;
+  avatarUrl?: string;
   // Contact
   contactHeadingPt?: string;
   contactHeadingEn?: string;

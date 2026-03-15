@@ -15,7 +15,11 @@ export function ProjectCard({ project, locale }: ProjectCardProps) {
     <li className="lg:w-[360px] lg:mr-[56px] my-8 lg:my-0 shrink-0">
       <h4 className="font-bold text-base">{title}</h4>
       <Image
-        src={`/images/portfolio/${project.image}`}
+        src={
+          project.image.startsWith("http")
+            ? project.image
+            : `/images/portfolio/${project.image}`
+        }
         alt={title}
         width={360}
         height={225}

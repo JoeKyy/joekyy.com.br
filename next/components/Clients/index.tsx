@@ -50,11 +50,11 @@ export async function Clients({ locale }: ClientsProps) {
                 {clients.map((client) => (
                   <li key={client.id}>
                     <Image
-                      src={`/images/clients/${client.logo}`}
+                      src={client.logo.startsWith("http") ? client.logo : `/images/clients/${client.logo}`}
                       alt={client.name}
                       width={150}
                       height={80}
-                      className="object-contain"
+                      className="object-contain max-w-[150px] max-h-[80px] w-auto h-auto"
                     />
                   </li>
                 ))}

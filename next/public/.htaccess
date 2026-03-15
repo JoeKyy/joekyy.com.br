@@ -1,0 +1,24 @@
+# Next.js Static Export — Apache/cPanel
+# O index.html da raiz faz detecção de idioma via navigator.language
+
+Options -Indexes
+RewriteEngine On
+
+# Servir arquivos estáticos existentes diretamente
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Para paths sem extensão, tentar servir .html (trailing slash)
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Headers de cache para assets estáticos do Next.js
+<FilesMatch "\.(js|css|woff2|woff|ttf|png|jpg|jpeg|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+
+# HTML sem cache (revalidar sempre)
+<FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+</FilesMatch>

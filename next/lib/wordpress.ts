@@ -80,6 +80,7 @@ const SITE_CONFIG_QUERY = `
           heroHtmlEn
           heroAvatarAltPt
           heroAvatarAltEn
+          avatar { node { sourceUrl } }
           contactHeadingPt
           contactHeadingEn
           contactMessagePt
@@ -157,6 +158,7 @@ interface WPSiteConfigNode {
     heroHtmlEn: string;
     heroAvatarAltPt: string;
     heroAvatarAltEn: string;
+    avatar: { node: { sourceUrl: string } } | null;
     contactHeadingPt: string;
     contactHeadingEn: string;
     contactMessagePt: string;
@@ -255,6 +257,7 @@ export async function getSiteConfigWP(
     heroHtmlEn: c.heroHtmlEn,
     heroAvatarAltPt: c.heroAvatarAltPt,
     heroAvatarAltEn: c.heroAvatarAltEn,
+    avatarUrl: c.avatar?.node?.sourceUrl ?? "",
     contactHeadingPt: c.contactHeadingPt,
     contactHeadingEn: c.contactHeadingEn,
     contactMessagePt: c.contactMessagePt,

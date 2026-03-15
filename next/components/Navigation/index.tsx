@@ -103,9 +103,22 @@ export function Navigation({ locale }: NavigationProps) {
             <li className="inline-block w-full mb-[32px]">
               <button
                 onClick={switchLocale}
-                className="text-sm text-dark/60 hover:text-dark transition-colors"
+                className="flex items-center gap-2 text-sm text-dark/60 hover:text-dark transition-colors"
+                aria-label={
+                  locale === "pt-br"
+                    ? "Switch to English"
+                    : "Mudar para Português"
+                }
               >
-                {locale === "pt-br" ? "English" : "Português"}
+                {locale === "pt-br" ? (
+                  <>
+                    <span className="text-xl">🇺🇸</span> <span>English</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-xl">🇧🇷</span> <span>Português</span>
+                  </>
+                )}
               </button>
             </li>
           </ul>
@@ -146,9 +159,11 @@ export function Navigation({ locale }: NavigationProps) {
 
         <button
           onClick={switchLocale}
-          className="text-xs text-dark/60 hover:text-dark transition-colors"
+          className="text-2xl hover:scale-110 transition-transform"
+          aria-label={locale === "pt-br" ? "Switch to English" : "Mudar para Português"}
+          title={locale === "pt-br" ? "English" : "Português"}
         >
-          {locale === "pt-br" ? "EN" : "PT"}
+          {locale === "pt-br" ? "🇺🇸" : "🇧🇷"}
         </button>
       </header>
     </>

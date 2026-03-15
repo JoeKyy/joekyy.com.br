@@ -11,6 +11,7 @@ export async function Hero({ locale }: HeroProps) {
   const heroHtml = locale === "pt-br" ? config.heroHtmlPt : config.heroHtmlEn;
   const avatarAlt =
     locale === "pt-br" ? config.heroAvatarAltPt : config.heroAvatarAltEn;
+  const avatarSrc = config.avatarUrl || "/images/avatar.png";
 
   return (
     <section
@@ -28,7 +29,7 @@ export async function Hero({ locale }: HeroProps) {
           </div>
           <div className="lg:w-7/12 lg:px-[15px] text-center">
             <Image
-              src="/images/avatar.png"
+              src={avatarSrc}
               alt={avatarAlt ?? "Joe"}
               width={501}
               height={501}
