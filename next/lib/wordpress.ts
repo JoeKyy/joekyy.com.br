@@ -68,10 +68,9 @@ const SITE_CONFIG_QUERY = `
   query GetSiteConfig {
     configSites(first: 1) {
       nodes {
-        acfConfigSite {
+        configDoSite {
           bioPt
           bioEn
-          avatar
           emailPt
           emailEn
           whatsappUrl
@@ -79,6 +78,14 @@ const SITE_CONFIG_QUERY = `
           githubUrl
           curriculoPtUrl
           curriculoEnUrl
+          heroHtmlPt
+          heroHtmlEn
+          heroAvatarAltPt
+          heroAvatarAltEn
+          contactHeadingPt
+          contactHeadingEn
+          contactMessagePt
+          contactMessageEn
         }
       }
     }
@@ -126,10 +133,9 @@ interface WPSkillNode {
 }
 
 interface WPSiteConfigNode {
-  acfConfigSite: {
+  configDoSite: {
     bioPt: string;
     bioEn: string;
-    avatar: string;
     emailPt: string;
     emailEn: string;
     whatsappUrl: string;
@@ -137,6 +143,14 @@ interface WPSiteConfigNode {
     githubUrl: string;
     curriculoPtUrl: string;
     curriculoEnUrl: string;
+    heroHtmlPt: string;
+    heroHtmlEn: string;
+    heroAvatarAltPt: string;
+    heroAvatarAltEn: string;
+    contactHeadingPt: string;
+    contactHeadingEn: string;
+    contactMessagePt: string;
+    contactMessageEn: string;
   };
 }
 
@@ -201,7 +215,7 @@ export async function getSiteConfigWP(
   }>(SITE_CONFIG_QUERY);
   const node = data.configSites.nodes[0];
   if (!node) return null;
-  const c = node.acfConfigSite;
+  const c = node.configDoSite;
   return {
     emailPt: c.emailPt,
     emailEn: c.emailEn,
@@ -213,5 +227,13 @@ export async function getSiteConfigWP(
     ],
     resumePtUrl: c.curriculoPtUrl,
     resumeEnUrl: c.curriculoEnUrl,
+    heroHtmlPt: c.heroHtmlPt,
+    heroHtmlEn: c.heroHtmlEn,
+    heroAvatarAltPt: c.heroAvatarAltPt,
+    heroAvatarAltEn: c.heroAvatarAltEn,
+    contactHeadingPt: c.contactHeadingPt,
+    contactHeadingEn: c.contactHeadingEn,
+    contactMessagePt: c.contactMessagePt,
+    contactMessageEn: c.contactMessageEn,
   };
 }

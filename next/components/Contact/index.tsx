@@ -1,16 +1,23 @@
 import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
 import type { Locale } from "@/types";
-import { getMessages, siteConfig } from "@/lib/data";
+import { getMessages, getSiteConfig } from "@/lib/data";
 
 interface ContactProps {
   locale: Locale;
 }
 
-export function Contact({ locale }: ContactProps) {
+export async function Contact({ locale }: ContactProps) {
   const messages = getMessages(locale);
+  const config = await getSiteConfig(locale);
   const { contact } = messages;
 
-  const email = locale === "pt-br" ? siteConfig.emailPt : siteConfig.emailEn;
+  const heading =
+    (locale === "pt-br" ? config.contactHeadingPt : config.contactHeadingEn) ??
+    contact.heading;
+  const message =
+    (locale === "pt-br" ? config.contactMessagePt : config.contactMessageEn) ??
+    contact.message;
+  const email = locale === "pt-br" ? config.emailPt : config.emailEn;
 
   return (
     <section
@@ -31,18 +38,16 @@ export function Contact({ locale }: ContactProps) {
       <article className="flex items-center w-full p-4">
         <div className="lg:w-5/12">
           <h3 className="font-bold text-lg my-4">
-            <span className="border-b-[3px] border-dark">
-              {contact.heading}
-            </span>
+            <span className="border-b-[3px] border-dark">{heading}</span>
           </h3>
           <p className="text-md">
-            {contact.message}{" "}
+            {message}{" "}
             <strong>
               <a href={`mailto:${email}`}>{email}</a>
             </strong>
           </p>
           <ul className="flex mt-5 justify-around">
-            {siteConfig.socialLinks.map((link) => (
+            {config.socialLinks.map((link) => (
               <li key={link.platform}>
                 <a
                   title={link.platform}

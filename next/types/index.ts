@@ -37,6 +37,16 @@ export interface SiteConfig {
   socialLinks: SocialLink[];
   resumePtUrl: string;
   resumeEnUrl: string;
+  // Hero
+  heroHtmlPt?: string;
+  heroHtmlEn?: string;
+  heroAvatarAltPt?: string;
+  heroAvatarAltEn?: string;
+  // Contact
+  contactHeadingPt?: string;
+  contactHeadingEn?: string;
+  contactMessagePt?: string;
+  contactMessageEn?: string;
 }
 
 export type Locale = "pt-br" | "en-us";

@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales } from "@/i18n/request";
 import type { Locale } from "@/types";
 import "@/app/globals.css";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["100", "300", "400", "500", "700", "900"],
-  variable: "--font-montserrat",
-});
 
 type LayoutParams = { locale: string };
 
@@ -39,10 +32,26 @@ export async function generateMetadata({
     icons: {
       shortcut: `${faviconBase}/favicon.ico`,
       icon: [
-        { url: `${faviconBase}/favicon-16x16.png`, sizes: "16x16", type: "image/png" },
-        { url: `${faviconBase}/favicon-32x32.png`, sizes: "32x32", type: "image/png" },
-        { url: `${faviconBase}/favicon-96x96.png`, sizes: "96x96", type: "image/png" },
-        { url: `${faviconBase}/android-icon-192x192.png`, sizes: "192x192", type: "image/png" },
+        {
+          url: `${faviconBase}/favicon-16x16.png`,
+          sizes: "16x16",
+          type: "image/png",
+        },
+        {
+          url: `${faviconBase}/favicon-32x32.png`,
+          sizes: "32x32",
+          type: "image/png",
+        },
+        {
+          url: `${faviconBase}/favicon-96x96.png`,
+          sizes: "96x96",
+          type: "image/png",
+        },
+        {
+          url: `${faviconBase}/android-icon-192x192.png`,
+          sizes: "192x192",
+          type: "image/png",
+        },
       ],
       apple: [
         { url: `${faviconBase}/apple-icon-57x57.png`, sizes: "57x57" },
@@ -58,7 +67,10 @@ export async function generateMetadata({
     },
     openGraph: {
       title: messages.meta.title,
-      siteName: locale === "pt-br" ? "JoeKyy - Soluções em TI e WEB" : "JoeKyy - IT and WEB Solutions",
+      siteName:
+        locale === "pt-br"
+          ? "JoeKyy - Soluções em TI e WEB"
+          : "JoeKyy - IT and WEB Solutions",
       description: messages.meta.description,
       url: "https://joekyy.com.br/",
       locale: locale === "pt-br" ? "pt_BR" : "en_US",
@@ -95,12 +107,8 @@ export default async function LocaleLayout({
   const messages = (await import(`@/data/${locale}.json`)).default;
 
   return (
-    <html lang={locale}>
-      <body className={`${montserrat.variable} font-sans antialiased`}>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      {children}
+    </NextIntlClientProvider>
   );
 }
