@@ -115,7 +115,9 @@ add_action('acf/init', 'joekyy_register_config_site_fields');
 function joekyy_register_config_site_fields() {
     if ( ! function_exists('acf_add_local_field_group') ) return;
 
-    $tab = [ 'type' => 'tab', 'placement' => 'top', 'endpoint' => 0, 'show_in_graphql' => 0 ];
+    // Accordion: abre/fecha cada seção — tudo no mesmo metabox, sem problema de separação
+    $acc_open  = ['type' => 'accordion', 'open' => 1, 'multi_expand' => 1, 'endpoint' => 0, 'show_in_graphql' => 0];
+    $acc_close = ['type' => 'accordion', 'open' => 0, 'multi_expand' => 1, 'endpoint' => 1, 'show_in_graphql' => 0];
 
     acf_add_local_field_group([
         'key'              => 'group_config_site',
@@ -127,17 +129,18 @@ function joekyy_register_config_site_fields() {
         'active'           => true,
         'location'         => [[ ['param' => 'post_type', 'operator' => '==', 'value' => 'config_site'] ]],
         'fields' => [
-            // ── Aba Hero ───────────────────────────────────────────
-            array_merge($tab, ['key' => 'tab_hero', 'name' => 'tab_hero', 'label' => '🏠 Hero']),
+            // ── Hero ──────────────────────────────────────────────
+            array_merge($acc_open,  ['key' => 'acc_hero',  'name' => 'acc_hero',  'label' => '🏠 Hero']),
             ['key'=>'field_config_hero_html_pt',      'name'=>'hero_html_pt',      'label'=>'Texto HTML (PT-BR)', 'type'=>'textarea','rows'=>4,'show_in_graphql'=>1,
              'instructions'=>'HTML: <strong>, <br />. Ex: <strong>Olá!</strong><br />Eu sou o<br /><strong>Joe</strong>'],
             ['key'=>'field_config_hero_html_en',      'name'=>'hero_html_en',      'label'=>'Texto HTML (EN-US)', 'type'=>'textarea','rows'=>4,'show_in_graphql'=>1],
             ['key'=>'field_config_hero_alt_pt',       'name'=>'hero_avatar_alt_pt','label'=>'Alt do Avatar (PT-BR)','type'=>'text','show_in_graphql'=>1],
             ['key'=>'field_config_hero_alt_en',       'name'=>'hero_avatar_alt_en','label'=>'Alt do Avatar (EN-US)','type'=>'text','show_in_graphql'=>1],
             ['key'=>'field_config_avatar',            'name'=>'avatar',            'label'=>'Avatar','type'=>'image','return_format'=>'url','show_in_graphql'=>1],
+            array_merge($acc_close, ['key' => 'acc_hero_end', 'name' => 'acc_hero_end', 'label' => 'Hero End']),
 
-            // ── Aba Sobre ──────────────────────────────────────────
-            array_merge($tab, ['key' => 'tab_about', 'name' => 'tab_about', 'label' => '👤 Sobre']),
+            // ── Sobre ─────────────────────────────────────────────
+            array_merge($acc_open,  ['key' => 'acc_about', 'name' => 'acc_about', 'label' => '👤 Sobre']),
             ['key'=>'field_config_about_bio1_pt','name'=>'about_bio1_pt','label'=>'Bio 1 (PT-BR)','type'=>'textarea','rows'=>4,'show_in_graphql'=>1,
              'instructions'=>'HTML: <span> para destacar. Ex: Meu nome é <span>Joe</span>.'],
             ['key'=>'field_config_about_bio1_en','name'=>'about_bio1_en','label'=>'Bio 1 (EN-US)','type'=>'textarea','rows'=>4,'show_in_graphql'=>1],
@@ -145,25 +148,28 @@ function joekyy_register_config_site_fields() {
             ['key'=>'field_config_about_bio2_en','name'=>'about_bio2_en','label'=>'Bio 2 (EN-US)','type'=>'textarea','rows'=>4,'show_in_graphql'=>1],
             ['key'=>'field_config_cv_pt','name'=>'curriculo_pt_url','label'=>'URL Currículo (PT-BR)','type'=>'url','show_in_graphql'=>1],
             ['key'=>'field_config_cv_en','name'=>'curriculo_en_url','label'=>'URL Currículo (EN-US)','type'=>'url','show_in_graphql'=>1],
+            array_merge($acc_close, ['key' => 'acc_about_end', 'name' => 'acc_about_end', 'label' => 'Sobre End']),
 
-            // ── Aba Portfólio ─────────────────────────────────────
-            array_merge($tab, ['key' => 'tab_portfolio', 'name' => 'tab_portfolio', 'label' => '💼 Portfólio']),
+            // ── Portfólio ─────────────────────────────────────────
+            array_merge($acc_open,  ['key' => 'acc_portfolio', 'name' => 'acc_portfolio', 'label' => '💼 Portfólio']),
             ['key'=>'field_config_portfolio_heading_pt','name'=>'portfolio_heading_pt','label'=>'Título (PT-BR)','type'=>'text','show_in_graphql'=>1],
             ['key'=>'field_config_portfolio_heading_en','name'=>'portfolio_heading_en','label'=>'Título (EN-US)','type'=>'text','show_in_graphql'=>1],
             ['key'=>'field_config_portfolio_intro_pt',  'name'=>'portfolio_intro_pt',  'label'=>'Introdução (PT-BR)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
             ['key'=>'field_config_portfolio_intro_en',  'name'=>'portfolio_intro_en',  'label'=>'Introdução (EN-US)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
             ['key'=>'field_config_portfolio_cta_pt',    'name'=>'portfolio_cta_pt',    'label'=>'CTA (PT-BR)','type'=>'text','show_in_graphql'=>1],
             ['key'=>'field_config_portfolio_cta_en',    'name'=>'portfolio_cta_en',    'label'=>'CTA (EN-US)','type'=>'text','show_in_graphql'=>1],
+            array_merge($acc_close, ['key' => 'acc_portfolio_end', 'name' => 'acc_portfolio_end', 'label' => 'Portfolio End']),
 
-            // ── Aba Clientes ──────────────────────────────────────
-            array_merge($tab, ['key' => 'tab_clients', 'name' => 'tab_clients', 'label' => '🤝 Clientes']),
+            // ── Clientes ──────────────────────────────────────────
+            array_merge($acc_open,  ['key' => 'acc_clients', 'name' => 'acc_clients', 'label' => '🤝 Clientes']),
             ['key'=>'field_config_clients_heading_pt','name'=>'clients_heading_pt','label'=>'Título (PT-BR)','type'=>'text','show_in_graphql'=>1],
             ['key'=>'field_config_clients_heading_en','name'=>'clients_heading_en','label'=>'Título (EN-US)','type'=>'text','show_in_graphql'=>1],
             ['key'=>'field_config_clients_desc_pt',   'name'=>'clients_description_pt','label'=>'Descrição (PT-BR)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
             ['key'=>'field_config_clients_desc_en',   'name'=>'clients_description_en','label'=>'Descrição (EN-US)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
+            array_merge($acc_close, ['key' => 'acc_clients_end', 'name' => 'acc_clients_end', 'label' => 'Clients End']),
 
-            // ── Aba Contato ───────────────────────────────────────
-            array_merge($tab, ['key' => 'tab_contact', 'name' => 'tab_contact', 'label' => '📬 Contato']),
+            // ── Contato ───────────────────────────────────────────
+            array_merge($acc_open,  ['key' => 'acc_contact', 'name' => 'acc_contact', 'label' => '📬 Contato']),
             ['key'=>'field_config_contact_heading_pt','name'=>'contact_heading_pt','label'=>'Título (PT-BR)','type'=>'text','show_in_graphql'=>1],
             ['key'=>'field_config_contact_heading_en','name'=>'contact_heading_en','label'=>'Título (EN-US)','type'=>'text','show_in_graphql'=>1],
             ['key'=>'field_config_contact_msg_pt',    'name'=>'contact_message_pt','label'=>'Mensagem (PT-BR)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
@@ -173,6 +179,7 @@ function joekyy_register_config_site_fields() {
             ['key'=>'field_config_whatsapp',  'name'=>'whatsapp_url',  'label'=>'WhatsApp URL','type'=>'url','show_in_graphql'=>1],
             ['key'=>'field_config_linkedin',  'name'=>'linkedin_url',  'label'=>'LinkedIn URL','type'=>'url','show_in_graphql'=>1],
             ['key'=>'field_config_github',    'name'=>'github_url',    'label'=>'GitHub URL','type'=>'url','show_in_graphql'=>1],
+            array_merge($acc_close, ['key' => 'acc_contact_end', 'name' => 'acc_contact_end', 'label' => 'Contato End']),
         ],
     ]);
 }
