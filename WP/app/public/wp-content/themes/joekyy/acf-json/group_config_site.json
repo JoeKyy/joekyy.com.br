@@ -6,7 +6,9 @@
             "key": "tab_hero",
             "label": "🏠 Hero",
             "name": "tab_hero",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_config_hero_html_pt",
@@ -51,7 +53,9 @@
             "key": "tab_about",
             "label": "👤 Sobre",
             "name": "tab_about",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_config_bio_pt",
@@ -120,7 +124,9 @@
             "key": "tab_portfolio",
             "label": "💼 Portfólio",
             "name": "tab_portfolio",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_config_portfolio_heading_pt",
@@ -170,7 +176,9 @@
             "key": "tab_clients",
             "label": "🤝 Clientes",
             "name": "tab_clients",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_config_clients_heading_pt",
@@ -206,7 +214,9 @@
             "key": "tab_contact",
             "label": "📬 Contato",
             "name": "tab_contact",
-            "type": "tab"
+            "type": "tab",
+            "placement": "top",
+            "endpoint": 0
         },
         {
             "key": "field_config_contact_heading_pt",
