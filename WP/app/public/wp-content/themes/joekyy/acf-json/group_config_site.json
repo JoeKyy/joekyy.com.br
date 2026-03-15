@@ -3,285 +3,704 @@
     "title": "Configurações do Site",
     "fields": [
         {
-            "key": "tab_hero",
-            "label": "🏠 Hero",
-            "name": "tab_hero",
             "type": "tab",
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "key": "tab_hero",
+            "name": "tab_hero",
+            "label": "🏠 Hero"
         },
         {
             "key": "field_config_hero_html_pt",
             "label": "Hero — Texto HTML (PT-BR)",
             "name": "hero_html_pt",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "HTML permitido: <strong>, <br />. Ex: <strong>Olá!</strong><br />Eu sou o<br /><strong>Joe</strong>",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 4,
             "show_in_graphql": 1,
-            "instructions": "HTML permitido: <strong>, <br />. Ex: <strong>Olá!</strong><br />Eu sou o<br /><strong>Joe</strong>"
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_hero_html_en",
             "label": "Hero — Texto HTML (EN-US)",
             "name": "hero_html_en",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 4,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_hero_alt_pt",
             "label": "Hero — Alt do Avatar (PT-BR)",
             "name": "hero_avatar_alt_pt",
+            "aria-label": "",
             "type": "text",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_config_hero_alt_en",
             "label": "Hero — Alt do Avatar (EN-US)",
             "name": "hero_avatar_alt_en",
+            "aria-label": "",
             "type": "text",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_config_avatar",
             "label": "Avatar",
             "name": "avatar",
+            "aria-label": "",
             "type": "image",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "return_format": "url",
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
         },
         {
-            "key": "tab_about",
-            "label": "👤 Sobre",
-            "name": "tab_about",
             "type": "tab",
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "key": "tab_about",
+            "name": "tab_about",
+            "label": "👤 Sobre"
         },
         {
             "key": "field_config_bio_pt",
             "label": "Bio (PT-BR)",
             "name": "bio_pt",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 5,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_bio_en",
             "label": "Bio (EN-US)",
             "name": "bio_en",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 5,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_about_bio1_pt",
             "label": "Sobre — Bio 1 (PT-BR)",
             "name": "about_bio1_pt",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "HTML permitido: <span> para destacar palavras. Ex: Meu nome é <span>Joe</span>.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 4,
             "show_in_graphql": 1,
-            "instructions": "HTML permitido: <span> para destacar palavras. Ex: Meu nome é <span>Joe</span>."
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_about_bio1_en",
             "label": "Sobre — Bio 1 (EN-US)",
             "name": "about_bio1_en",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 4,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_about_bio2_pt",
             "label": "Sobre — Bio 2 (PT-BR)",
             "name": "about_bio2_pt",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 4,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_about_bio2_en",
             "label": "Sobre — Bio 2 (EN-US)",
             "name": "about_bio2_en",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 4,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_curriculo_pt_url",
             "label": "Currículo PT-BR (URL)",
             "name": "curriculo_pt_url",
+            "aria-label": "",
             "type": "url",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_curriculo_en_url",
             "label": "Currículo EN-US (URL)",
             "name": "curriculo_en_url",
+            "aria-label": "",
             "type": "url",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "placeholder": ""
         },
         {
-            "key": "tab_portfolio",
-            "label": "💼 Portfólio",
-            "name": "tab_portfolio",
             "type": "tab",
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "key": "tab_portfolio",
+            "name": "tab_portfolio",
+            "label": "💼 Portfólio"
         },
         {
             "key": "field_config_portfolio_heading_pt",
             "label": "Portfólio — Título (PT-BR)",
             "name": "portfolio_heading_pt",
+            "aria-label": "",
             "type": "text",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_config_portfolio_heading_en",
             "label": "Portfólio — Título (EN-US)",
             "name": "portfolio_heading_en",
+            "aria-label": "",
             "type": "text",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_config_portfolio_intro_pt",
             "label": "Portfólio — Introdução (PT-BR)",
             "name": "portfolio_intro_pt",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 3,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_portfolio_intro_en",
             "label": "Portfólio — Introdução (EN-US)",
             "name": "portfolio_intro_en",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 3,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_portfolio_cta_pt",
             "label": "Portfólio — CTA (PT-BR)",
             "name": "portfolio_cta_pt",
+            "aria-label": "",
             "type": "text",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_config_portfolio_cta_en",
             "label": "Portfólio — CTA (EN-US)",
             "name": "portfolio_cta_en",
+            "aria-label": "",
             "type": "text",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "tab_clients",
-            "label": "🤝 Clientes",
-            "name": "tab_clients",
             "type": "tab",
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "key": "tab_clients",
+            "name": "tab_clients",
+            "label": "🤝 Clientes"
         },
         {
             "key": "field_config_clients_heading_pt",
             "label": "Clientes — Título (PT-BR)",
             "name": "clients_heading_pt",
+            "aria-label": "",
             "type": "text",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_config_clients_heading_en",
             "label": "Clientes — Título (EN-US)",
             "name": "clients_heading_en",
+            "aria-label": "",
             "type": "text",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_config_clients_desc_pt",
             "label": "Clientes — Descrição (PT-BR)",
             "name": "clients_description_pt",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 3,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_clients_desc_en",
             "label": "Clientes — Descrição (EN-US)",
             "name": "clients_description_en",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 3,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
-            "key": "tab_contact",
-            "label": "📬 Contato",
-            "name": "tab_contact",
             "type": "tab",
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "key": "tab_contact",
+            "name": "tab_contact",
+            "label": "📬 Contato"
         },
         {
             "key": "field_config_contact_heading_pt",
             "label": "Contato — Título (PT-BR)",
             "name": "contact_heading_pt",
+            "aria-label": "",
             "type": "text",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_config_contact_heading_en",
             "label": "Contato — Título (EN-US)",
             "name": "contact_heading_en",
+            "aria-label": "",
             "type": "text",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_config_contact_msg_pt",
             "label": "Contato — Mensagem (PT-BR)",
             "name": "contact_message_pt",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 3,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_contact_msg_en",
             "label": "Contato — Mensagem (EN-US)",
             "name": "contact_message_en",
+            "aria-label": "",
             "type": "textarea",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
             "rows": 3,
-            "show_in_graphql": 1
+            "show_in_graphql": 1,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_email_pt",
             "label": "Email (PT-BR)",
             "name": "email_pt",
+            "aria-label": "",
             "type": "email",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_config_email_en",
             "label": "Email (EN-US)",
             "name": "email_en",
+            "aria-label": "",
             "type": "email",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_config_whatsapp_url",
             "label": "WhatsApp URL",
             "name": "whatsapp_url",
+            "aria-label": "",
             "type": "url",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_linkedin_url",
             "label": "LinkedIn URL",
             "name": "linkedin_url",
+            "aria-label": "",
             "type": "url",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_config_github_url",
             "label": "GitHub URL",
             "name": "github_url",
+            "aria-label": "",
             "type": "url",
-            "show_in_graphql": 1
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "show_in_graphql": 1,
+            "default_value": "",
+            "placeholder": ""
         }
     ],
     "location": [
@@ -293,6 +712,16 @@
             }
         ]
     ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
     "active": true,
-    "graphql_field_name": "configDoSite"
+    "description": "",
+    "show_in_rest": false,
+    "display_title": "",
+    "graphql_field_name": "configDoSite",
+    "modified": 1773599553
 }
