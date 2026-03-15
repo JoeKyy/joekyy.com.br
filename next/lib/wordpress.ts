@@ -69,8 +69,6 @@ const SITE_CONFIG_QUERY = `
     configSites(first: 1) {
       nodes {
         configDoSite {
-          bioPt
-          bioEn
           emailPt
           emailEn
           whatsappUrl
@@ -148,8 +146,6 @@ interface WPSkillNode {
 
 interface WPSiteConfigNode {
   configDoSite: {
-    bioPt: string;
-    bioEn: string;
     emailPt: string;
     emailEn: string;
     whatsappUrl: string;
