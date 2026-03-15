@@ -1,0 +1,85 @@
+{
+  "key": "group_projeto",
+  "title": "Campos do Projeto",
+  "fields": [
+    {
+      "key": "field_projeto_titulo_pt",
+      "label": "Título (PT-BR)",
+      "name": "titulo_pt",
+      "type": "text",
+      "required": 1,
+      "show_in_graphql": 1
+    },
+    {
+      "key": "field_projeto_titulo_en",
+      "label": "Título (EN-US)",
+      "name": "titulo_en",
+      "type": "text",
+      "required": 1,
+      "show_in_graphql": 1
+    },
+    {
+      "key": "field_projeto_descricao_pt",
+      "label": "Descrição (PT-BR)",
+      "name": "descricao_pt",
+      "type": "textarea",
+      "rows": 4,
+      "show_in_graphql": 1
+    },
+    {
+      "key": "field_projeto_descricao_en",
+      "label": "Descrição (EN-US)",
+      "name": "descricao_en",
+      "type": "textarea",
+      "rows": 4,
+      "show_in_graphql": 1
+    },
+    {
+      "key": "field_projeto_imagem",
+      "label": "Imagem",
+      "name": "imagem",
+      "type": "image",
+      "return_format": "url",
+      "show_in_graphql": 1
+    },
+    {
+      "key": "field_projeto_tipo",
+      "label": "Tipo",
+      "name": "tipo",
+      "type": "select",
+      "choices": {
+        "freelance": "Freelance",
+        "servico": "Serviço"
+      },
+      "default_value": "freelance",
+      "show_in_graphql": 1
+    },
+    {
+      "key": "field_projeto_ordem",
+      "label": "Ordem",
+      "name": "ordem",
+      "type": "number",
+      "default_value": 0,
+      "show_in_graphql": 1
+    },
+    {
+      "key": "field_projeto_link",
+      "label": "Link do Projeto",
+      "name": "link",
+      "type": "url",
+      "show_in_graphql": 1
+    },
+    {
+      "key": "field_projeto_featured",
+      "label": "Destaque",
+      "name": "featured",
+      "type": "true_false",
+      "default_value": 0,
+      "show_in_graphql": 1
+    }
+  ],
+  "location": [
+    [{ "param": "post_type", "operator": "==", "value": "projeto" }]
+  ],
+  "active": true
+}

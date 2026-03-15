@@ -6,9 +6,9 @@ interface PortfolioProps {
   locale: Locale;
 }
 
-export function Portfolio({ locale }: PortfolioProps) {
+export async function Portfolio({ locale }: PortfolioProps) {
   const messages = getMessages(locale);
-  const projects = getProjects();
+  const projects = await getProjects();
   const { portfolio } = messages;
 
   return (

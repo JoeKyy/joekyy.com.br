@@ -5,9 +5,9 @@ interface AboutProps {
   locale: Locale;
 }
 
-export function About({ locale }: AboutProps) {
+export async function About({ locale }: AboutProps) {
   const messages = getMessages(locale);
-  const skills = getSkills();
+  const skills = await getSkills();
   const { about } = messages;
 
   const technicalSkills = skills.filter((s) => s.category === "technical");

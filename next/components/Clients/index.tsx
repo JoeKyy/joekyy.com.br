@@ -6,9 +6,9 @@ interface ClientsProps {
   locale: Locale;
 }
 
-export function Clients({ locale }: ClientsProps) {
+export async function Clients({ locale }: ClientsProps) {
   const messages = getMessages(locale);
-  const clients = getClients();
+  const clients = await getClients();
   const { clients: clientsMessages } = messages;
 
   return (

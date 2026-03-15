@@ -1,4 +1,111 @@
 <?php
+
+// ============================================================
+// CPTs — Custom Post Types para headless (WPGraphQL)
+// ============================================================
+
+add_action('init', 'joekyy_register_post_types');
+function joekyy_register_post_types() {
+
+    // Projeto (portfólio)
+    register_post_type('projeto', [
+        'labels'                => [
+            'name'          => 'Projetos',
+            'singular_name' => 'Projeto',
+            'add_new_item'  => 'Adicionar Projeto',
+            'edit_item'     => 'Editar Projeto',
+        ],
+        'public'                => false,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_rest'          => true,
+        'supports'              => ['title', 'thumbnail'],
+        'menu_icon'             => 'dashicons-portfolio',
+        'show_in_graphql'       => true,
+        'graphql_single_name'   => 'projeto',
+        'graphql_plural_name'   => 'projetos',
+    ]);
+
+    // Cliente
+    register_post_type('cliente', [
+        'labels'                => [
+            'name'          => 'Clientes',
+            'singular_name' => 'Cliente',
+            'add_new_item'  => 'Adicionar Cliente',
+            'edit_item'     => 'Editar Cliente',
+        ],
+        'public'                => false,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_rest'          => true,
+        'supports'              => ['title'],
+        'menu_icon'             => 'dashicons-groups',
+        'show_in_graphql'       => true,
+        'graphql_single_name'   => 'cliente',
+        'graphql_plural_name'   => 'clientes',
+    ]);
+
+    // Habilidade
+    register_post_type('habilidade', [
+        'labels'                => [
+            'name'          => 'Habilidades',
+            'singular_name' => 'Habilidade',
+            'add_new_item'  => 'Adicionar Habilidade',
+            'edit_item'     => 'Editar Habilidade',
+        ],
+        'public'                => false,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_rest'          => true,
+        'supports'              => ['title'],
+        'menu_icon'             => 'dashicons-admin-tools',
+        'show_in_graphql'       => true,
+        'graphql_single_name'   => 'habilidade',
+        'graphql_plural_name'   => 'habilidades',
+    ]);
+
+    // Config Site (singleton — um único post)
+    register_post_type('config_site', [
+        'labels'                => [
+            'name'          => 'Configurações do Site',
+            'singular_name' => 'Configuração do Site',
+        ],
+        'public'                => false,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_rest'          => true,
+        'supports'              => ['title'],
+        'menu_icon'             => 'dashicons-admin-settings',
+        'show_in_graphql'       => true,
+        'graphql_single_name'   => 'configSite',
+        'graphql_plural_name'   => 'configSites',
+    ]);
+}
+
+// ============================================================
+// CORS — permite requests do Next.js local e produção
+// ============================================================
+
+add_action('graphql_response_headers_to_send', 'joekyy_graphql_cors_headers');
+function joekyy_graphql_cors_headers($headers) {
+    $allowed_origins = [
+        'http://localhost:3000',
+        'https://joekyy.com.br',
+        'https://dev.joekyy.com.br',
+    ];
+    $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+    if (in_array($origin, $allowed_origins)) {
+        $headers['Access-Control-Allow-Origin']  = $origin;
+        $headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS';
+        $headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization';
+    }
+    return $headers;
+}
+
+// ============================================================
+// Theme setup
+// ============================================================
+
 add_action("after_setup_theme", "joekyy_setup");
 function joekyy_setup()
 {

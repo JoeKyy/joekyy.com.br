@@ -1,0 +1,38 @@
+{
+  "key": "group_habilidade",
+  "title": "Campos da Habilidade",
+  "fields": [
+    {
+      "key": "field_habilidade_nome_pt",
+      "label": "Nome (PT-BR)",
+      "name": "nome_pt",
+      "type": "text",
+      "required": 1,
+      "show_in_graphql": 1
+    },
+    {
+      "key": "field_habilidade_nome_en",
+      "label": "Nome (EN-US)",
+      "name": "nome_en",
+      "type": "text",
+      "required": 1,
+      "show_in_graphql": 1
+    },
+    {
+      "key": "field_habilidade_categoria",
+      "label": "Categoria",
+      "name": "categoria",
+      "type": "select",
+      "choices": {
+        "technical": "Técnica",
+        "professional": "Profissional"
+      },
+      "default_value": "technical",
+      "show_in_graphql": 1
+    }
+  ],
+  "location": [
+    [{ "param": "post_type", "operator": "==", "value": "habilidade" }]
+  ],
+  "active": true
+}
