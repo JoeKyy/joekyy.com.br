@@ -16,6 +16,7 @@ function joekyy_register_post_types() {
             'edit_item'     => 'Editar Projeto',
         ],
         'public'                => false,
+        'publicly_queryable'    => true,
         'show_ui'               => true,
         'show_in_menu'          => true,
         'show_in_rest'          => true,
@@ -35,6 +36,7 @@ function joekyy_register_post_types() {
             'edit_item'     => 'Editar Cliente',
         ],
         'public'                => false,
+        'publicly_queryable'    => true,
         'show_ui'               => true,
         'show_in_menu'          => true,
         'show_in_rest'          => true,
@@ -54,6 +56,7 @@ function joekyy_register_post_types() {
             'edit_item'     => 'Editar Habilidade',
         ],
         'public'                => false,
+        'publicly_queryable'    => true,
         'show_ui'               => true,
         'show_in_menu'          => true,
         'show_in_rest'          => true,
@@ -71,6 +74,7 @@ function joekyy_register_post_types() {
             'singular_name' => 'Configuração do Site',
         ],
         'public'                => false,
+        'publicly_queryable'    => true,
         'show_ui'               => true,
         'show_in_menu'          => true,
         'show_in_rest'          => true,
@@ -100,6 +104,40 @@ function joekyy_graphql_cors_headers($headers) {
         $headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization';
     }
     return $headers;
+}
+
+// ============================================================
+// Basic Auth para REST API — APENAS em ambiente local/dev
+// Permite que scripts de migração usem usuário e senha diretamente
+// ============================================================
+
+if ( in_array( wp_get_environment_type(), [ 'local', 'development' ] ) ) {
+    add_filter( 'rest_authentication_errors', 'joekyy_rest_basic_auth' );
+    function joekyy_rest_basic_auth( $result ) {
+        if ( ! empty( $result ) ) return $result;
+        if ( is_user_logged_in() ) return $result;
+
+        // PHP_AUTH_USER (mod_php) ou HTTP_AUTHORIZATION (CGI/FastCGI)
+        $user_login = $_SERVER['PHP_AUTH_USER'] ?? null;
+        $user_pass  = $_SERVER['PHP_AUTH_PW'] ?? null;
+
+        if ( ! $user_login ) {
+            $auth_header = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? '';
+            if ( str_starts_with( $auth_header, 'Basic ' ) ) {
+                $decoded = base64_decode( substr( $auth_header, 6 ) );
+                [ $user_login, $user_pass ] = array_pad( explode( ':', $decoded, 2 ), 2, '' );
+            }
+        }
+
+        if ( $user_login ) {
+            $user = wp_authenticate( $user_login, $user_pass );
+            if ( ! is_wp_error( $user ) ) {
+                wp_set_current_user( $user->ID );
+                return true;
+            }
+        }
+        return $result;
+    }
 }
 
 // ============================================================

@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * Script de migração: JSON → WordPress via REST API
- * Uso: WP_USER=admin WP_APP_PASSWORD="xxxx xxxx" node scripts/migrate.mjs
+ * Uso: WP_USER=admin WP_PASSWORD="suasenha" node scripts/migrate.mjs
  *
- * Pré-requisito: gerar Application Password em
- * WP Admin → Usuários → Seu perfil → Senhas de aplicação
+ * Ambiente local: usa usuário e senha do WP Admin diretamente (só funciona local)
+ * Produção: configure pretty permalinks e use Application Password
  */
 
 import { readFileSync } from "fs";
@@ -15,19 +15,15 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const WP_URL = process.env.WP_URL ?? "http://localhost:8888/wordpress";
 const WP_USER = process.env.WP_USER ?? "admin";
-const WP_APP_PASSWORD = process.env.WP_APP_PASSWORD ?? "";
+const WP_PASSWORD = process.env.WP_PASSWORD ?? "";
 
-if (!WP_APP_PASSWORD) {
-  console.error(
-    "❌ WP_APP_PASSWORD não definido. Defina a variável de ambiente.",
-  );
-  console.error(
-    "   Gere em: WP Admin → Usuários → Seu perfil → Senhas de aplicação",
-  );
+if (!WP_PASSWORD) {
+  console.error("❌ WP_PASSWORD não definido.");
+  console.error("   Uso: WP_USER=admin WP_PASSWORD=suasenha node scripts/migrate.mjs");
   process.exit(1);
 }
 
-const auth = Buffer.from(`${WP_USER}:${WP_APP_PASSWORD}`).toString("base64");
+const auth = Buffer.from(`${WP_USER}:${WP_PASSWORD}`).toString("base64");
 const headers = {
   "Content-Type": "application/json",
   Authorization: `Basic ${auth}`,

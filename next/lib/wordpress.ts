@@ -12,16 +12,16 @@ const client = new GraphQLClient(endpoint);
 
 const PROJECTS_QUERY = `
   query GetProjects {
-    projetos(first: 100, where: { orderby: { field: META_VALUE_NUM, order: ASC } }) {
+    projetos(first: 100) {
       nodes {
         id
         slug
-        acfProjeto {
+        camposDoProjeto {
           tituloPt
           tituloEn
           descricaoPt
           descricaoEn
-          imagem
+          imagem { node { sourceUrl } }
           tipo
           ordem
           link
@@ -38,8 +38,8 @@ const CLIENTS_QUERY = `
       nodes {
         id
         title
-        acfCliente {
-          logo
+        camposDoCliente {
+          logo { node { sourceUrl } }
           url
           ordem
         }
@@ -54,7 +54,7 @@ const SKILLS_QUERY = `
       nodes {
         id
         title
-        acfHabilidade {
+        camposDaHabilidade {
           nomePt
           nomeEn
           categoria
@@ -92,13 +92,13 @@ const SITE_CONFIG_QUERY = `
 interface WPProjectNode {
   id: string;
   slug: string;
-  acfProjeto: {
+  camposDoProjeto: {
     tituloPt: string;
     tituloEn: string;
     descricaoPt: string;
     descricaoEn: string;
-    imagem: string;
-    tipo: "freelance" | "servico";
+    imagem: { node: { sourceUrl: string } } | null;
+    tipo: string[] | string;
     ordem: number;
     link?: string;
     featured: boolean;
@@ -108,8 +108,8 @@ interface WPProjectNode {
 interface WPClientNode {
   id: string;
   title: string;
-  acfCliente: {
-    logo: string;
+  camposDoCliente: {
+    logo: { node: { sourceUrl: string } } | null;
     url: string;
     ordem: number;
   };
@@ -118,10 +118,10 @@ interface WPClientNode {
 interface WPSkillNode {
   id: string;
   title: string;
-  acfHabilidade: {
+  camposDaHabilidade: {
     nomePt: string;
     nomeEn: string;
-    categoria: "technical" | "professional";
+    categoria: ("technical" | "professional")[] | "technical" | "professional";
   };
 }
 
@@ -152,13 +152,15 @@ export async function getProjectsWP(): Promise<Project[]> {
     .map((node) => ({
       id: node.id,
       slug: node.slug,
-      titlePt: node.acfProjeto.tituloPt,
-      titleEn: node.acfProjeto.tituloEn,
-      descriptionPt: node.acfProjeto.descricaoPt,
-      descriptionEn: node.acfProjeto.descricaoEn,
-      image: node.acfProjeto.imagem,
-      type: (node.acfProjeto.tipo === "servico" ? "service" : "freelance") as "freelance" | "service",
-      order: node.acfProjeto.ordem ?? 0,
+      titlePt: node.camposDoProjeto.tituloPt,
+      titleEn: node.camposDoProjeto.tituloEn,
+      descriptionPt: node.camposDoProjeto.descricaoPt,
+      descriptionEn: node.camposDoProjeto.descricaoEn,
+      image: node.camposDoProjeto.imagem?.node?.sourceUrl ?? "",
+      type: (Array.isArray(node.camposDoProjeto.tipo)
+        ? node.camposDoProjeto.tipo[0]
+        : node.camposDoProjeto.tipo) === "servico" ? "service" as const : "freelance" as const,
+      order: node.camposDoProjeto.ordem ?? 0,
     }))
     .sort((a, b) => a.order - b.order);
 }
@@ -171,8 +173,8 @@ export async function getClientsWP(): Promise<Client[]> {
     .map((node) => ({
       id: node.id,
       name: node.title,
-      logo: node.acfCliente.logo,
-      order: node.acfCliente.ordem ?? 0,
+      logo: node.camposDoCliente.logo?.node?.sourceUrl ?? "",
+      order: node.camposDoCliente.ordem ?? 0,
     }))
     .sort((a, b) => a.order - b.order);
 }
@@ -183,9 +185,11 @@ export async function getSkillsWP(): Promise<Skill[]> {
   );
   return data.habilidades.nodes.map((node) => ({
     name: node.title,
-    namePt: node.acfHabilidade.nomePt,
-    nameEn: node.acfHabilidade.nomeEn,
-    category: node.acfHabilidade.categoria,
+    namePt: node.camposDaHabilidade.nomePt,
+    nameEn: node.camposDaHabilidade.nomeEn,
+    category: (Array.isArray(node.camposDaHabilidade.categoria)
+      ? node.camposDaHabilidade.categoria[0]
+      : node.camposDaHabilidade.categoria) as "technical" | "professional",
   }));
 }
 
