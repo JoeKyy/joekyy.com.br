@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useRef } from "react";
+import { createContext, useContext } from "react";
 import { useHorizontalScroll } from "@/hooks/useHorizontalScroll";
 
 interface ScrollContextType {

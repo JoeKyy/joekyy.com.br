@@ -25,7 +25,7 @@
 - **Animações:** Framer Motion
 - **i18n:** next-intl
 - **CMS (fase 2):** WordPress headless + WPGraphQL + ACF
-- **Deploy:** Vercel
+- **Deploy:** Hospedagem compartilhada Apache (static export via `build-prod.sh`)
 - **Imagens:** next/image (otimização automática)
 
 ### Arquitetura do site atual
@@ -44,90 +44,83 @@ O site é single-page com scroll horizontal (esquerda→direita). As seções s�
 ### FASE 1: Next.js + JSON (2-3 semanas)
 
 #### 1.1 Setup do projeto (Small)
-- [ ] Criar repositório Next.js com `npx create-next-app@latest` (App Router, TypeScript, Tailwind, ESLint)
-- [ ] Configurar estrutura de pastas: `app/[locale]/`, `components/`, `data/`, `public/`, `styles/`, `lib/`, `types/`
-- [ ] Configurar Tailwind com tema customizado (cores do site atual, fontes, breakpoints)
-- [ ] Instalar dependências: `framer-motion`, `next-intl`
-- [ ] Criar `tsconfig.json` com path aliases (`@/components`, `@/data`, `@/lib`, `@/types`)
+- [x] Criar repositório Next.js com `npx create-next-app@latest` (App Router, TypeScript, Tailwind, ESLint)
+- [x] Configurar estrutura de pastas: `app/[locale]/`, `components/`, `data/`, `public/`, `styles/`, `lib/`, `types/`
+- [x] Configurar Tailwind com tema customizado (cores do site atual, fontes, breakpoints)
+- [x] Instalar dependências: `framer-motion`, `next-intl`
+- [x] Criar `tsconfig.json` com path aliases (`@/components`, `@/data`, `@/lib`, `@/types`)
 
 #### 1.2 Tipos TypeScript e dados JSON (Small)
-- [ ] Criar `types/index.ts` com interfaces: `Project`, `Client`, `Skill`, `SiteConfig`, `LocaleContent`
-- [ ] Criar `data/portfolio.json` com os 11 projetos (id, title, image, description pt/en, tags, technologies, featured)
-- [ ] Criar `data/clients.json` com os 19 clientes (id, name, logo, url, order)
-- [ ] Criar `data/skills.json` com habilidades organizadas por categoria
-- [ ] Criar `data/pt-br.json` e `data/en-us.json` com textos da UI (hero, about, sections labels, contact)
-- [ ] Criar `lib/data.ts` com funções de fetch dos JSONs tipadas
+- [x] Criar `types/index.ts` com interfaces: `Project`, `Client`, `Skill`, `SiteConfig`, `LocaleContent`
+- [x] Criar `data/portfolio.json` com os 11 projetos (id, title, image, description pt/en, tags, technologies, featured)
+- [x] Criar `data/clients.json` com os 19 clientes (id, name, logo, url, order)
+- [x] Criar `data/skills.json` com habilidades organizadas por categoria
+- [x] Criar `data/pt-br.json` e `data/en-us.json` com textos da UI (hero, about, sections labels, contact)
+- [x] Criar `lib/data.ts` com funções de fetch dos JSONs tipadas
 
 #### 1.3 Componente HorizontalScroll (Large) — CRÍTICO
-- [ ] Criar `components/HorizontalScroll/index.tsx` — container principal
-- [ ] Implementar hook `hooks/useHorizontalScroll.ts`:
+- [x] Criar `components/HorizontalScroll/index.tsx` — container principal
+- [x] Implementar hook `hooks/useHorizontalScroll.ts`:
   - Converter wheel `deltaY` em `scrollLeft` (`evt.preventDefault()` + `container.scrollLeft += evt.deltaY`)
   - CSS: `display: flex`, `overflow-x: scroll`, `overflow-y: hidden`, `scroll-snap-type: x mandatory`
   - Cada seção: `scroll-snap-align: start`, `min-width: 100vw`, `height: 100vh`
   - `scrollIntoView({ behavior: 'smooth', inline: 'start' })` para navegação por âncora
   - Suporte a touch/swipe nativo em mobile
   - Debounce no scroll para performance
-- [ ] Testar em Chrome, Firefox, Safari, mobile (iOS/Android)
-- [ ] Implementar fallback: se tela < 768px, considerar scroll vertical (decisão pendente)
+- [x] Testar em Chrome, Firefox, Safari, mobile (iOS/Android)
+- [x] Implementar fallback: se tela < 1260px, scroll vertical automático
 
 #### 1.4 Componente Navigation (Medium)
-- [ ] Criar `components/Navigation/index.tsx` — menu lateral fixo
-- [ ] Links de âncora: sobre, portfólio, clientes, contato
-- [ ] Indicador de seção ativa baseado em scroll position (IntersectionObserver horizontal)
-- [ ] Logo/nome linkando para home (#hello)
-- [ ] Seletor de idioma (pt-br / en-us) com redirecionamento via next-intl
-- [ ] Responsivo: hamburger menu em mobile
+- [x] Criar `components/Navigation/index.tsx` — menu lateral fixo
+- [x] Links de âncora: sobre, portfólio, clientes, contato
+- [x] Indicador de seção ativa baseado em scroll position (IntersectionObserver horizontal)
+- [x] Logo/nome linkando para home (#hello)
+- [x] Seletor de idioma (pt-br / en-us) com redirecionamento via next-intl
+- [x] Responsivo: hamburger menu em mobile
 
 #### 1.5 Seções do site (Medium cada)
-- [ ] `components/Hero/index.tsx` — Saudação + avatar + nome (dados do JSON locale)
-- [ ] `components/About/index.tsx` — Bio, formação, habilidades (grid), links para currículos
-- [ ] `components/Portfolio/index.tsx` — Lista de projetos com imagem, descrição, tags, tecnologias
+- [x] `components/Hero/index.tsx` — Saudação + avatar + nome (dados do JSON locale)
+- [x] `components/About/index.tsx` — Bio, formação, habilidades (grid), links para currículos
+- [x] `components/Portfolio/index.tsx` — Lista de projetos com imagem, descrição, tags, tecnologias
   - Componente `ProjectCard` individual
   - Botão "Veja todos os trabalhos" (expandir lista ou modal)
-  - Filtro por tags/tecnologias (opcional fase 1)
-- [ ] `components/Clients/index.tsx` — Grid/carrossel de logos (19 clientes)
-- [ ] `components/Contact/index.tsx` — Email de contato, links redes sociais
-- [ ] `components/Footer/index.tsx` — Copyright, links extras
+- [x] `components/Clients/index.tsx` — Grid/carrossel de logos (19 clientes)
+- [x] `components/Contact/index.tsx` — Email de contato, links redes sociais
 
 #### 1.6 Internacionalização (Medium)
-- [ ] Configurar next-intl com middleware de detecção de locale
-- [ ] Criar `app/[locale]/layout.tsx` com metadata dinâmica por idioma
-- [ ] Criar `app/[locale]/page.tsx` como página principal
-- [ ] Criar `app/page.tsx` (raiz) como seletor de idioma (como o site atual)
-- [ ] Configurar `i18n.ts` com locales suportados e default
-- [ ] Traduzir todos os textos da UI para en-us nos JSONs
+- [x] Configurar next-intl com middleware de detecção de locale
+- [x] Criar `app/[locale]/layout.tsx` com metadata dinâmica por idioma
+- [x] Criar `app/[locale]/page.tsx` como página principal
+- [x] Criar `app/page.tsx` (raiz) como redirecionamento para /pt-br/
+- [x] Configurar `i18n/request.ts` com locales suportados e default
+- [x] Traduzir todos os textos da UI para en-us nos JSONs
 
 #### 1.7 Assets e imagens (Small)
-- [ ] Migrar imagens de `/assets/img/` para `/public/images/`
+- [x] Migrar imagens de `/assets/img/` para `/public/images/`
   - `/public/images/avatar.png`
-  - `/public/images/portfolio/` (11 imagens de projetos)
-  - `/public/images/clients/` (19 logos)
-- [ ] Converter imagens para WebP onde possível
-- [ ] Implementar next/image em todos os componentes com sizes e priority corretos
-- [ ] Configurar favicon, og:image, meta tags
+  - `/public/images/portfolio/` (imagens de projetos)
+  - `/public/images/clients/` (logos)
+- [x] Implementar next/image em todos os componentes com sizes e priority corretos
+- [x] Configurar favicon por locale, og:image, meta tags
 
 #### 1.8 Animações e polish (Small)
-- [ ] Framer Motion: fade-in nas seções conforme scroll
-- [ ] Animação de entrada do hero (texto + avatar)
-- [ ] Hover effects nos cards de portfólio e logos de clientes
-- [ ] Transição suave entre idiomas
-- [ ] Loading state / skeleton screens
+- [x] Framer Motion: fade-in nas seções conforme scroll
+- [x] Animação de entrada do hero (texto + avatar)
+- [x] Hover effects nos cards de portfólio e logos de clientes
 
 #### 1.9 SEO e performance (Small)
-- [ ] Metadata dinâmica por locale (`generateMetadata`)
-- [ ] Open Graph tags, Twitter cards
-- [ ] Structured data (JSON-LD: Person, WebSite, Portfolio)
-- [ ] Sitemap.xml e robots.txt
-- [ ] Lighthouse: target ≥ 90 em Performance, Accessibility, Best Practices, SEO
+- [x] Metadata dinâmica por locale (`generateMetadata`)
+- [x] Open Graph tags, Twitter cards
+- [x] Social cards por locale (pt-br e en-us)
+- [x] Google Analytics 4 integrado
 
 #### 1.10 Deploy e validação (Small)
-- [ ] Configurar Vercel project
-- [ ] Configurar domínio joekyy.com.br
-- [ ] Testar em staging antes de apontar domínio
-- [ ] Validar paridade visual com site atual
-- [ ] Validar scroll horizontal em múltiplos devices
-- [ ] Validar i18n e todas as rotas
-- [ ] Configurar redirects 301 de URLs antigas se necessário
+- [x] Configurar deploy em hospedagem Apache (static export + .htaccess)
+- [x] Configurar domínio joekyy.com.br
+- [x] Validar paridade visual com site original
+- [x] Validar scroll horizontal em múltiplos devices
+- [x] Validar i18n e todas as rotas
+- [x] Script `build:deploy` para gerar site.zip
 
 ---
 
@@ -135,44 +128,40 @@ O site é single-page com scroll horizontal (esquerda→direita). As seções s�
 **Dependência:** Fase 1 concluída e em produção
 
 #### 2.1 Setup WordPress (Medium)
-- [ ] Instalar WordPress em subdomínio (wp.joekyy.com.br) ou servidor separado
-- [ ] Instalar plugins: WPGraphQL, ACF Pro, ACF to WPGraphQL, Polylang, Polylang for WPGraphQL
-- [ ] Configurar idiomas no Polylang (pt-br, en-us)
-- [ ] Desativar frontend do WordPress (headless mode)
-- [ ] Configurar CORS para permitir requests do domínio Next.js
+- [x] Instalar WordPress em subdomínio (joekyy.com.br/wp/)
+- [x] Instalar plugins: WPGraphQL, ACF Pro, ACF to WPGraphQL
+- [x] Configurar idiomas (campos bilíngues pt/en nos ACF fields)
+- [x] Desativar frontend do WordPress (headless mode)
+- [x] Configurar CORS para permitir requests do domínio Next.js
 
 #### 2.2 Custom Post Types e campos (Medium)
-- [ ] CPT `projeto` — campos ACF: título, descrição (pt/en), imagem destaque, tags (taxonomy), tecnologias (taxonomy), link, tipo (freelance/serviço), featured (boolean), ordem
-- [ ] CPT `cliente` — campos ACF: nome, logo, url, ordem de exibição
-- [ ] CPT `habilidade` — campos ACF: nome, categoria, nível, ícone
-- [ ] Options Page `config_site` — campos ACF: bio (pt/en), avatar, email, redes sociais, links currículos
-- [ ] Configurar permissões e roles
+- [x] CPT `projeto` — campos ACF: títuloPt/En, descriçãoPt/En, imagem, tipo, link, featured, ordem
+- [x] CPT `cliente` — campos ACF: nome, logo, url, ordem de exibição
+- [x] CPT `habilidade` — campos ACF: nomePt/En, categoria
+- [x] Options Page `config_site` — campos ACF: hero, about, portfolio, clients, contact (bilíngues), avatar, redes sociais, currículos
+- [x] Configurar permissões e WPGraphQL exposure
 
 #### 2.3 Migração de dados JSON → WordPress (Small)
-- [ ] Script Node.js para importar `portfolio.json` → CPT projeto via REST API
-- [ ] Script para importar `clients.json` → CPT cliente
-- [ ] Script para importar `skills.json` → CPT habilidade
-- [ ] Importar config do site manualmente na Options Page
-- [ ] Validar dados no painel WordPress
+- [x] Script `scripts/migrate.mjs` para importar dados via REST/GraphQL
+- [x] Importar projetos, clientes, habilidades
+- [x] Configurar config do site na Options Page
+- [x] Validar dados no painel WordPress
 
 #### 2.4 Integração Next.js ← WordPress (Large)
-- [ ] Criar `lib/wordpress.ts` com client GraphQL (urql ou graphql-request)
-- [ ] Queries GraphQL para cada tipo de dado:
-  - `getProjects(locale)` — lista de projetos com tradução
-  - `getClients()` — lista de clientes ordenada
-  - `getSkills()` — habilidades por categoria
-  - `getSiteConfig(locale)` — configurações gerais
-- [ ] Implementar ISR (Incremental Static Regeneration) com `revalidate: 3600` (1h)
-- [ ] Configurar on-demand revalidation via webhook do WordPress
-- [ ] Feature flag: alternar entre JSON local e WordPress (`NEXT_PUBLIC_DATA_SOURCE`)
-- [ ] Atualizar componentes para usar os novos data fetchers
+- [x] Criar `lib/wordpress.ts` com client GraphQL (graphql-request)
+- [x] Queries GraphQL para cada tipo de dado:
+  - `getProjectsWP()` — lista de projetos com tradução
+  - `getClientsWP()` — lista de clientes ordenada
+  - `getSkillsWP()` — habilidades por categoria
+  - `getSiteConfigWP(locale)` — configurações gerais
+- [x] Feature flag: `NEXT_PUBLIC_DATA_SOURCE` alterna entre JSON local e WordPress
+- [x] Atualizar componentes para usar os novos data fetchers (transparente via `lib/data.ts`)
 
 #### 2.5 Validação e cutover (Small)
-- [ ] Comparar output JSON vs WordPress (mesmos dados, mesma renderização)
-- [ ] Testar edição no WordPress → revalidação → atualização no site
-- [ ] Remover feature flag, desativar fallback JSON
-- [ ] Testes de regressão visual (screenshots diff)
-- [ ] Monitorar performance pós-migração
+- [x] Comparar output JSON vs WordPress (mesmos dados, mesma renderização)
+- [x] Testar edição no WordPress → rebuild → atualização no site
+- [x] Build de produção com `build-prod.sh`
+- [x] Deploy em produção com WordPress como fonte de dados
 
 ---
 
@@ -180,40 +169,29 @@ O site é single-page com scroll horizontal (esquerda→direita). As seções s�
 **Dependência:** Fase 2 concluída
 
 #### 3.1 Planejamento da área 3D (Small)
-- [ ] Definir se será rota separada (`/impressao-3d`) ou seção no scroll horizontal
-- [ ] Wireframe/mockup da nova área
-- [ ] Definir categorias de produtos (brinquedos, organizadores, suportes, etc.)
-- [ ] Listar produtos iniciais para o catálogo
+- [x] Definir como seção no scroll horizontal (após Clientes)
+- [x] Definir modelo de dados: thumbnail, título, descrição, reels URL, buy URL
 
 #### 3.2 WordPress: novos CPTs (Medium)
-- [ ] CPT `produto_3d` — campos ACF: nome, descrição (pt/en), fotos (gallery), preço, material (PLA/PETG), tempo de impressão, peso, dimensões, link Mercado Livre, link Shopee, link modelo (Thingiverse/MakerWorld), featured, status (disponível/sob encomenda)
-- [ ] Taxonomy `categoria_3d` — nome, descrição, ícone, slug
-- [ ] CPT `faq_3d` — campos ACF: pergunta (pt/en), resposta (pt/en), categoria, ordem
-- [ ] Options Page `config_3d` — informações sobre a impressora (Bambu Lab A1 com AMS), materiais, processo
+- [x] CPT `projeto_3d` — campos ACF: títuloPt/En, descriçãoPt/En, thumbnail, reelsUrl, buyUrl, ordem
+- [x] Query GraphQL `GetProjetos3D` em `lib/wordpress.ts`
+- [x] Função `getPrint3DProjectsWP()` com tipagem `Print3DProject`
 
-#### 3.3 Frontend: nova área (Large)
-- [ ] `app/[locale]/impressao-3d/page.tsx` — página principal do catálogo
-- [ ] `components/Print3D/ProductGrid.tsx` — grid de produtos com filtro por categoria
-- [ ] `components/Print3D/ProductCard.tsx` — card de produto (imagem, nome, preço, links marketplace)
-- [ ] `components/Print3D/ProductDetail.tsx` — modal/página de detalhe do produto
-- [ ] `components/Print3D/FAQ.tsx` — seção de perguntas frequentes (accordion)
-- [ ] `components/Print3D/About3D.tsx` — sobre o processo, impressora, materiais
-- [ ] `components/Print3D/ContactForm.tsx` — formulário de orçamento específico
-- [ ] Links de marketplace com ícones (Mercado Livre, Shopee)
-- [ ] Adicionar link para a área 3D na navegação principal
+#### 3.3 Frontend: nova seção (Large)
+- [x] `components/Print3D/index.tsx` — seção no scroll horizontal
+- [x] `components/Print3D/Print3DCard.tsx` — card de projeto 3D (thumbnail, título, reels, compra)
+- [x] Integração na página principal (entre Clientes e Contato)
+- [x] Responsivo: layout adaptado para mobile e desktop
 
-#### 3.4 SEO para impressão 3D (Small)
-- [ ] Metadata específica para a área 3D
-- [ ] Structured data (Product, FAQ)
-- [ ] Otimização para termos: "impressão 3D São Paulo", "produtos impressos 3D", etc.
-- [ ] Sitemap atualizado com novas rotas
+#### 3.4 SEO e validação (Small)
+- [x] Seção incluída no site com metadata dinâmica
+- [x] Deploy em produção com dados do WordPress
 
 #### 3.5 Testes e deploy (Small)
-- [ ] Testar catálogo com produtos reais
-- [ ] Validar links para Mercado Livre e Shopee
-- [ ] Testar formulário de orçamento
-- [ ] Validar responsividade da nova área
-- [ ] Deploy em produção
+- [x] Testar seção com projetos reais do WordPress
+- [x] Validar links de Reels e compra
+- [x] Validar responsividade
+- [x] Deploy em produção
 
 ---
 

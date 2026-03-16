@@ -1,51 +1,60 @@
-# Portifolio — joekyy.com.br
+# joekyy.com.br — Portfólio & Impressão 3D
 
 ![JoeKyy - Soluções em TI e WEB](https://github.com/JoeKyy/joekyy.com.br/assets/2018763/068cfafa-0702-4288-9b92-b49296f49beb)
 
-Layout desenvolvido utilizando [Figma](https://www.figma.com/file/faQt6qJ1h7TzEREfXP0DeC/JoeKyy---Solu%C3%A7%C3%B5es-em-TI-e-WEB?type=design&node-id=1%3A43&mode=design&t=mibgW7dqFnBKiTLx-1)
+Site portfólio de **Jhomar Nando (JoeKyy)** — desenvolvedor web full stack. O projeto foi migrado de HTML/CSS/JS estático para uma stack moderna com **Next.js**, **TypeScript** e **Tailwind CSS**, alimentado por **WordPress Headless** via **WPGraphQL + ACF**, e inclui uma área de **impressão 3D** com catálogo de projetos.
 
-Tema da estrutura do site desenvolvida utilizando o [Skeleton](https://github.com/JoeKyy/skeleton) como base, um modelo criado via Gulp.
-
----
-
-## Planejamento
-
-O projeto está sendo migrado de HTML/CSS/JS estático para uma stack moderna em três fases:
-
-| Fase | Descrição | Status |
-| --- | --- | --- |
-| **Fase 1** | Next.js + TypeScript + Tailwind + JSON | ✅ Concluída |
-| **Fase 2** | WordPress Headless (WPGraphQL + ACF) | 🔜 Planejada |
-| **Fase 3** | Área de Impressão 3D com catálogo de produtos | 🔜 Planejada |
-
-O plano completo e detalhado está documentado em [PLAN.md](./PLAN.md).
+**🌐 Site:** [joekyy.com.br](https://joekyy.com.br)
+**🎨 Design:** [Figma](https://www.figma.com/file/faQt6qJ1h7TzEREfXP0DeC/JoeKyy---Solu%C3%A7%C3%B5es-em-TI-e-WEB?type=design&node-id=1%3A43&mode=design&t=mibgW7dqFnBKiTLx-1)
 
 ---
 
-## Estrutura do Repositório
+## Visão geral
+
+O site é single-page com **scroll horizontal** (esquerda → direita) em desktop e scroll vertical em mobile. As seções são: **Hello → Sobre → Portfólio → Clientes → Impressão 3D → Contato**. Suporta dois idiomas: **pt-br** (padrão) e **en-us**.
+
+A migração foi realizada em três fases:
+
+| Fase       | Descrição                                     | Status       |
+| ---------- | --------------------------------------------- | ------------ |
+| **Fase 1** | Next.js + TypeScript + Tailwind + JSON        | ✅ Concluída |
+| **Fase 2** | WordPress Headless (WPGraphQL + ACF)          | ✅ Concluída |
+| **Fase 3** | Área de Impressão 3D com catálogo de projetos | ✅ Concluída |
+
+O plano original de migração está documentado em [PLAN.md](./PLAN.md).
+
+---
+
+## Stack tecnológica
+
+| Camada        | Tecnologia                                      |
+| ------------- | ----------------------------------------------- |
+| **Framework** | Next.js 16 (App Router, static export)          |
+| **Linguagem** | TypeScript (strict mode)                        |
+| **Estilos**   | Tailwind CSS v4                                 |
+| **Animações** | Framer Motion                                   |
+| **i18n**      | next-intl (`/pt-br/` e `/en-us/`)               |
+| **Fontes**    | Montserrat (Google Fonts via next/font)         |
+| **Imagens**   | next/image (unoptimized para static export)     |
+| **CMS**       | WordPress Headless + WPGraphQL + ACF            |
+| **Analytics** | Google Analytics 4                              |
+| **Deploy**    | Hospedagem compartilhada Apache (static export) |
+
+---
+
+## Estrutura do repositório
 
 ```text
 joekyy.com.br/
-├── HTML/          # Versão original estática (Skeleton + Gulp) — referência
-├── WP/            # Tema WordPress (base para Fase 2)
-├── next/          # Aplicação Next.js (versão atual em produção)
-├── docs/          # Currículos (Jhomar Nando - Resume PT e EN)
-└── PLAN.md        # Plano de migração detalhado por fase
+├── next/              # Aplicação Next.js (versão em produção)
+├── HTML/              # Versão original estática (Skeleton + Gulp) — referência
+├── WP/                # Tema WordPress headless (funções, CPTs, ACF)
+├── docs/              # Currículos (Jhomar Nando - Resume PT e EN)
+├── scripts/           # Scripts de migração e manutenção (migrate.mjs)
+├── build-prod.sh      # Script de build para produção com WordPress
+├── .github/           # Copilot instructions, agents e prompts
+└── PLAN.md            # Plano de migração detalhado por fase
 ```
-
----
-
-## Fase 1 — Next.js (atual)
-
-### Stack
-
-- **Framework:** Next.js 16 (App Router, static export)
-- **Linguagem:** TypeScript
-- **Estilos:** Tailwind CSS v4
-- **i18n:** next-intl (`/pt-br/` e `/en-us/`)
-- **Fontes:** Montserrat (Google Fonts via next/font)
-- **Imagens:** next/image
-- **Deploy:** Hospedagem compartilhada Apache (static export)
 
 ### Estrutura do projeto Next.js
 
@@ -56,89 +65,145 @@ next/
 │   │   ├── layout.tsx     # Metadata dinâmica por locale (SEO, OG, favicons)
 │   │   └── page.tsx       # Página principal com todas as seções
 │   ├── globals.css        # Tema Tailwind (cores, fontes, breakpoints)
+│   ├── layout.tsx         # Root layout (fonte, GA4)
 │   └── page.tsx           # Raiz — redireciona para /pt-br/
 ├── components/
-│   ├── About/             # Seção sobre + skills + links de currículo
+│   ├── About/             # Bio, skills, links de currículo
 │   ├── Clients/           # Grid de logos de clientes
 │   ├── Contact/           # Contato + redes sociais
 │   ├── Hero/              # Saudação + avatar
 │   ├── HorizontalScroll/  # Provider + Container do scroll horizontal
 │   ├── Navigation/        # Menu lateral (desktop) e hamburger (mobile)
-│   └── Portfolio/         # Cards de projetos
-├── data/
+│   ├── Portfolio/         # Cards de projetos
+│   └── Print3D/           # Seção de impressão 3D (cards + reels)
+├── data/                  # JSONs de fallback (quando não usa WordPress)
 │   ├── en-us.json         # Textos da UI em inglês
 │   ├── pt-br.json         # Textos da UI em português
 │   ├── portfolio.json     # Projetos do portfólio
 │   ├── clients.json       # Clientes
 │   └── skills.json        # Habilidades técnicas e profissionais
-├── docs/                  # Currículos servidos pelo site
-│   ├── resume-pt.docx
-│   └── resume-en.docx
 ├── hooks/
 │   └── useHorizontalScroll.ts  # Lógica do scroll horizontal
 ├── i18n/
 │   └── request.ts         # Configuração next-intl
 ├── lib/
-│   └── data.ts            # Funções de acesso aos dados + siteConfig
+│   ├── data.ts            # Camada de dados (JSON ↔ WordPress, transparente)
+│   └── wordpress.ts       # Client GraphQL + queries WPGraphQL
 ├── public/
 │   ├── favicon/           # Favicons por locale (pt-br e en-us)
-│   ├── images/            # Avatar, logos, portfólio, clientes, social cards
-│   └── docs/              # Gerado no build (currículos copiados de /docs)
-├── types/                 # Interfaces TypeScript
-├── middleware.ts           # Roteamento de locale
-└── next.config.ts         # output: export, trailingSlash, images unoptimized
+│   └── images/            # Avatar, logos, portfólio, clientes, social cards
+├── types/
+│   └── index.ts           # Interfaces TypeScript (Project, Client, Skill, etc.)
+├── middleware.ts          # Roteamento de locale (next-intl)
+├── next.config.ts         # output: export, trailingSlash, images unoptimized
+└── .env.example           # Variáveis de ambiente (DATA_SOURCE, WORDPRESS_API_URL)
 ```
 
-### Decisões técnicas relevantes
+---
 
-**Scroll horizontal**
-O scroll é implementado via `useHorizontalScroll` hook. O `deltaY` do mouse wheel é convertido em `scrollLeft` no container. A navegação usa `element.offsetLeft` (que já inclui a margem do nav lateral de 105px) para posicionar corretamente cada seção. Em mobile (< 1260px) o scroll passa a ser vertical.
+## Decisões técnicas
 
-**i18n com static export**
-O `next-intl` em modo static export requer `setRequestLocale(locale)` no layout e na page para evitar o uso de `headers()` em build time. As mensagens são importadas diretamente via `import()` em vez de `getMessages()`.
+### Scroll horizontal (core UX)
 
-**Favicons por locale**
-Cada idioma tem seu próprio conjunto de favicons em `/public/favicon/pt-br/` e `/public/favicon/en-us/`, referenciados via `generateMetadata`.
+O scroll horizontal é a identidade visual do site. Implementado via `useHorizontalScroll` hook:
 
-**Social cards**
-`og:image` e `twitter:image` apontam para imagens específicas por locale hospedadas em `/images/img-social.png` e `/images/img-social-en-us.png`.
+- O `deltaY` do mouse wheel é convertido em `scrollLeft` no container flex
+- Suporte a teclado (setas, PageUp/PageDown)
+- `IntersectionObserver` detecta a seção ativa e atualiza a URL hash
+- A navegação usa `element.offsetLeft` para posicionar cada seção
+- Em mobile (< 1260px) o layout muda automaticamente para scroll vertical
+- `scroll-snap-type: x mandatory` garante snap preciso entre seções
 
-### Comandos
+### Fonte de dados: JSON ↔ WordPress
+
+A camada `lib/data.ts` abstrai a fonte de dados. Uma flag de ambiente `NEXT_PUBLIC_DATA_SOURCE` controla o comportamento:
+
+- `json` (padrão): lê dos arquivos JSON locais em `data/`
+- `wordpress`: consulta o endpoint GraphQL via `lib/wordpress.ts`
+
+Em produção, o `build-prod.sh` exporta `NEXT_PUBLIC_DATA_SOURCE=wordpress` e aponta para `https://joekyy.com.br/wp/graphql`.
+
+### i18n com static export
+
+O `next-intl` em modo static export requer `setRequestLocale(locale)` no layout e na page. As mensagens são importadas via `import()` dinâmico. A rota raiz (`/`) redireciona para `/pt-br/`.
+
+### Favicons e Social Cards por locale
+
+Cada idioma tem favicons próprios em `/public/favicon/{locale}/`. As imagens Open Graph e Twitter Cards também são específicas por locale.
+
+### WordPress Headless
+
+WordPress instalado em `joekyy.com.br/wp/` com:
+
+- **WPGraphQL** — endpoint GraphQL
+- **ACF Pro** — campos customizados para projetos, clientes, habilidades, config do site e projetos 3D
+- **Custom Post Types:** `projeto`, `cliente`, `habilidade`, `config_site`, `projeto_3d`
+
+### Impressão 3D
+
+Seção dedicada a projetos de impressão 3D (Bambu Lab A1 com AMS). Os dados vêm exclusivamente do WordPress (CPT `projeto_3d`). Cada card exibe thumbnail, título, descrição, link para Reels e link de compra.
+
+---
+
+## Comandos
 
 ```bash
 cd next
 
-# Desenvolvimento
+# Desenvolvimento (fonte JSON por padrão)
 npm run dev
 
-# Build padrão
+# Build padrão (usa .env.local)
 npm run build
 
-# Build + gera site.zip pronto para upload no cPanel
-npm run build:deploy
+# Build de produção com WordPress (gera site.zip)
+# Executar da raiz do repositório:
+cd ..
+./build-prod.sh
 ```
 
-O `build:deploy` copia os currículos de `docs/` para `public/docs/`, roda o build e gera `next/site.zip` com o conteúdo da pasta `out/` na raiz do zip — pronto para extrair diretamente em `public_html/` no cPanel.
+O `build-prod.sh`:
 
-### Deploy (hospedagem Apache)
+1. Copia currículos de `docs/` para `next/public/docs/`
+2. Limpa o cache de fetch para dados frescos do WP
+3. Exporta `NEXT_PUBLIC_DATA_SOURCE=wordpress` e `WORDPRESS_API_URL`
+4. Roda `next build` (static export)
+5. Gera `next/site.zip` pronto para upload
 
-1. Rodar `npm run build:deploy` dentro de `next/`
-2. Fazer upload do `next/site.zip` no cPanel
-3. Extrair em `public_html/` (os arquivos ficam na raiz, não em subpasta)
+---
+
+## Deploy (hospedagem Apache)
+
+1. Rodar `./build-prod.sh` na raiz do repositório
+2. Fazer upload do `next/site.zip` no cPanel (File Manager → `public_html/`)
+3. Extrair na raiz (os arquivos ficam direto em `public_html/`, sem subpasta)
 4. O `.htaccess` incluso no zip cuida dos redirects e das URLs limpas
 
+### Variáveis de ambiente
+
+```bash
+# next/.env.local (desenvolvimento)
+NEXT_PUBLIC_DATA_SOURCE=json
+WORDPRESS_API_URL=http://localhost:8888/wordpress/graphql
+
+# Produção (via build-prod.sh)
+NEXT_PUBLIC_DATA_SOURCE=wordpress
+WORDPRESS_API_URL=https://joekyy.com.br/wp/graphql
+```
+
 ---
 
-## Fase 2 — WordPress Headless (planejada)
+## Idiomas
 
-A fonte de dados será migrada de JSON para WordPress com WPGraphQL + ACF. A aplicação Next.js continuará a mesma, substituindo apenas as chamadas de `lib/data.ts` por queries GraphQL com ISR.
+| Locale  | URL       | Descrição                    |
+| ------- | --------- | ---------------------------- |
+| `pt-br` | `/pt-br/` | Português do Brasil (padrão) |
+| `en-us` | `/en-us/` | English (US)                 |
 
-Detalhes completos: ver seção Fase 2 no [PLAN.md](./PLAN.md).
+Todos os textos da UI vêm dos JSONs de locale (`data/pt-br.json` e `data/en-us.json`). Os conteúdos dinâmicos (projetos, clientes, config) possuem campos bilíngues no WordPress (ex: `tituloPt`, `tituloEn`).
 
 ---
 
-## Fase 3 — Impressão 3D (planejada)
+## Licença
 
-Nova área do site com catálogo de produtos impressos em 3D (Bambu Lab A1 com AMS), integrada ao WordPress Headless da Fase 2, com links para Mercado Livre e Shopee.
-
-Detalhes completos: ver seção Fase 3 no [PLAN.md](./PLAN.md).
+Projeto privado de portfólio pessoal. Código disponível como referência.

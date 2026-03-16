@@ -1,5 +1,12 @@
 import { GraphQLClient } from "graphql-request";
-import type { Project, Client, Skill, SiteConfig, Print3DProject, Locale } from "@/types";
+import type {
+  Project,
+  Client,
+  Skill,
+  SiteConfig,
+  Print3DProject,
+  Locale,
+} from "@/types";
 
 const endpoint =
   process.env.WORDPRESS_API_URL ?? "http://localhost:8888/wordpress/graphql";
@@ -216,9 +223,12 @@ export async function getProjectsWP(): Promise<Project[]> {
       descriptionPt: node.camposDoProjeto.descricaoPt,
       descriptionEn: node.camposDoProjeto.descricaoEn,
       image: node.camposDoProjeto.imagem?.node?.sourceUrl ?? "",
-      type: (Array.isArray(node.camposDoProjeto.tipo)
-        ? node.camposDoProjeto.tipo[0]
-        : node.camposDoProjeto.tipo) === "servico" ? "service" as const : "freelance" as const,
+      type:
+        (Array.isArray(node.camposDoProjeto.tipo)
+          ? node.camposDoProjeto.tipo[0]
+          : node.camposDoProjeto.tipo) === "servico"
+          ? ("service" as const)
+          : ("freelance" as const),
       order: node.camposDoProjeto.ordem ?? 0,
     }))
     .sort((a, b) => a.order - b.order);
@@ -314,9 +324,9 @@ interface WPPrint3DNode {
 
 export async function getPrint3DProjectsWP(): Promise<Print3DProject[]> {
   try {
-    const data = await client.request<{ projetos3d: { nodes: WPPrint3DNode[] } }>(
-      PRINT3D_QUERY,
-    );
+    const data = await client.request<{
+      projetos3d: { nodes: WPPrint3DNode[] };
+    }>(PRINT3D_QUERY);
     return data.projetos3d.nodes
       .map((node) => ({
         id: node.id,
