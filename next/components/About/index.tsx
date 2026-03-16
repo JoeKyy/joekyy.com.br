@@ -60,22 +60,22 @@ export async function About({ locale }: AboutProps) {
             </span>
           </h3>
           <div className="flex flex-row">
-            <div className="w-1/2">
+            <div className="w-1/2 min-w-0 pr-2">
               <ul>
                 {technicalSkills.map((skill) => (
                   <li key={skill.name} className="my-4 text-md">
-                    <span className="font-bold bg-dark text-light px-[5px] inline-block leading-[1.5]">
+                    <span className="font-bold bg-dark text-light px-[5px] inline-block leading-[1.5] break-words max-w-full">
                       {locale === "pt-br" ? skill.namePt : skill.nameEn}
                     </span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="w-1/2">
+            <div className="w-1/2 min-w-0 pl-2">
               <ul>
                 {professionalSkills.map((skill) => (
                   <li key={skill.name} className="my-4 text-md">
-                    <span className="font-bold bg-dark text-light px-[5px] inline-block leading-[1.5]">
+                    <span className="font-bold bg-dark text-light px-[5px] inline-block leading-[1.5] break-words max-w-full">
                       {locale === "pt-br" ? skill.namePt : skill.nameEn}
                     </span>
                   </li>

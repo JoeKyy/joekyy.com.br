@@ -45,7 +45,7 @@ export function Navigation({ locale }: NavigationProps) {
       {/* ── Mobile header (< lg) ── */}
       <header className="lg:hidden fixed top-0 left-0 w-full h-[110px] bg-primary z-[10] border-b-[3px] border-dark flex items-center px-4">
         {/* Logo — col-10 equivalent */}
-        <div className="flex-[10]">
+        <div className="flex-[10] relative z-[99999] bg-primary pr-2 py-2">
           <button onClick={() => handleNavClick("hello")} aria-label="Início">
             <Image src={logoSrc} alt="JoeKyy" width={80} height={55} />
           </button>

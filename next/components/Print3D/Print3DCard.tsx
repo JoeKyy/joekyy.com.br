@@ -8,74 +8,57 @@ interface Print3DCardProps {
   buyLabel: string;
 }
 
-export function Print3DCard({
-  project,
-  locale,
-  reelsLabel,
-  buyLabel,
-}: Print3DCardProps) {
+export function Print3DCard({ project, locale, reelsLabel, buyLabel }: Print3DCardProps) {
   const title = locale === "pt-br" ? project.titlePt : project.titleEn;
-  const description =
-    locale === "pt-br" ? project.descriptionPt : project.descriptionEn;
+  const description = locale === "pt-br" ? project.descriptionPt : project.descriptionEn;
 
   return (
-    <li className="lg:w-[280px] lg:mr-[40px] my-8 lg:my-0 shrink-0">
-      {/* Thumbnail — clicável para o Reels */}
+    <li className="w-[160px] lg:w-[240px] lg:mr-[40px] my-8 lg:my-0 shrink-0">
+      <h4 className="font-bold text-base mb-3 min-h-[4.5em]">{title}</h4>
+
+      {/* Thumbnail clicável — formato vertical (9:16) */}
       <a
         href={project.reelsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="block relative group"
+        className="block relative group border-4 border-dark"
         aria-label={`${title} — ${reelsLabel}`}
       >
         {project.thumbnail ? (
           <Image
             src={project.thumbnail}
             alt={title}
-            width={280}
-            height={280}
-            className="w-full aspect-square object-cover border-4 border-dark"
+            width={240}
+            height={426}
+            className="w-full object-cover aspect-[9/16]"
           />
         ) : (
-          <div className="w-full aspect-square border-4 border-dark bg-dark/10 flex items-center justify-center">
-            <span className="text-4xl">🖨️</span>
+          <div className="w-full aspect-[9/16] bg-dark/10 flex items-center justify-center">
+            <span className="text-5xl">🖨️</span>
           </div>
         )}
-        {/* Overlay com ícone do Instagram ao hover */}
+        {/* Overlay cobre toda a imagem */}
         <div className="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
           <span className="text-light text-sm font-bold border-2 border-light px-3 py-1">
-            {reelsLabel}
+            ▶ {reelsLabel}
           </span>
         </div>
       </a>
 
-      <h4 className="font-bold text-base mt-3">{title}</h4>
-
       {description && (
-        <p className="text-sm mt-1 text-dark/80">{description}</p>
+        <p className="mt-2 text-sm text-dark/80">{description}</p>
       )}
 
-      {/* Botões de ação */}
-      <div className="flex gap-3 mt-3">
+      {project.buyUrl && (
         <a
-          href={project.reelsUrl}
+          href={project.buyUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs font-bold border-2 border-dark px-3 py-1 hover:bg-dark hover:text-light transition-colors"
+          className="inline-block mt-4 text-xs font-bold border-2 border-dark bg-dark text-light px-3 py-1 hover:bg-transparent hover:text-dark transition-colors"
         >
-          ▶ {reelsLabel}
+          🛒 {buyLabel}
         </a>
-        {project.buyUrl && (
-          <a
-            href={project.buyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-bold border-2 border-dark bg-dark text-light px-3 py-1 hover:bg-transparent hover:text-dark transition-colors"
-          >
-            🛒 {buyLabel}
-          </a>
-        )}
-      </div>
+      )}
     </li>
   );
 }

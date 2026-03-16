@@ -14,11 +14,11 @@ export async function Print3D({ locale }: Print3DProps) {
   return (
     <section
       id="impressao-3d"
-      className="w-full lg:min-w-dvw min-h-dvh flex flex-col lg:flex-row pt-[110px] lg:pt-0 lg:pl-[100px]"
+      className="w-full lg:w-max lg:min-w-max min-h-dvh flex flex-col lg:flex-row pt-[110px] lg:pt-0 lg:pl-[100px]"
     >
       {/* Section header sidebar — desktop */}
       <header className="hidden lg:block relative w-[50px] h-dvh shrink-0 bg-dark text-light">
-        <h2 className="absolute top-0 left-0 right-0 bottom-0 w-[35px] h-[75px] mt-[45px] ml-[20px] mr-auto font-bold text-sm -rotate-90">
+        <h2 className="absolute top-0 left-0 right-0 bottom-0 w-[35px] h-[45px] mt-[45px] ml-[20px] mr-auto font-bold text-sm -rotate-90">
           {print3d.title}
         </h2>
       </header>
@@ -28,26 +28,24 @@ export async function Print3D({ locale }: Print3DProps) {
       </header>
 
       {/* Article content */}
-      <article className="flex items-center w-full p-4 lg:p-8 overflow-hidden">
-        <div className="w-full">
-          {/* Heading + intro */}
-          <div className="mb-6 max-w-xl">
-            <h3 className="font-bold text-lg mb-2">
-              <span className="border-b-[3px] border-dark">
-                {print3d.heading}
-              </span>
-            </h3>
-            <p
-              className="text-sm [&>strong]:font-bold"
-              dangerouslySetInnerHTML={{ __html: print3d.intro }}
-            />
-          </div>
+      <article className="flex flex-col lg:flex-row items-center p-4 w-full">
+        {/* Intro column */}
+        <div className="lg:w-[360px] lg:mr-[56px] shrink-0">
+          <h3 className="font-bold text-lg my-4">
+            <span className="border-b-[3px] border-dark">{print3d.heading}</span>
+          </h3>
+          <p
+            className="text-md [&>strong]:font-bold"
+            dangerouslySetInnerHTML={{ __html: print3d.intro }}
+          />
+        </div>
 
-          {/* Cards */}
+        {/* Cards */}
+        <div>
           {projects.length === 0 ? (
             <p className="text-dark/50 italic">{print3d.emptyMessage}</p>
           ) : (
-            <ul className="flex flex-col lg:flex-row gap-0 lg:gap-0 overflow-x-auto lg:overflow-visible pb-4">
+            <ul className="grid grid-cols-2 gap-x-4 lg:flex lg:flex-row lg:items-start">
               {projects.map((project) => (
                 <Print3DCard
                   key={project.id}
