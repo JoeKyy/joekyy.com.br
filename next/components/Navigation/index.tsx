@@ -81,10 +81,10 @@ export function Navigation({ locale }: NavigationProps) {
 
         {/* Mobile nav overlay — always rendered, slides via top position */}
         <nav
-          className={`fixed left-0 w-full h-dvh bg-primary z-[10] px-[24px] border-b-2 border-light transition-[top] duration-300 ${
-            menuOpen ? "top-0" : "-top-[1000vh]"
+          className={`fixed left-0 w-full bg-primary z-[10] px-[24px] border-b-2 border-light transition-[top] duration-300 overflow-y-auto ${
+            menuOpen ? "top-[110px]" : "-top-[1000vh]"
           }`}
-          style={{ paddingTop: "168px" }}
+          style={{ height: "calc(100dvh - 110px)", paddingTop: "40px" }}
         >
           <ul className="block">
             {navItems.map((item) => (
