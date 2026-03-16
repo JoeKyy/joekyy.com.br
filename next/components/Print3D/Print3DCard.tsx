@@ -25,13 +25,15 @@ export function Print3DCard({ project, locale, reelsLabel, buyLabel }: Print3DCa
         aria-label={`${title} — ${reelsLabel}`}
       >
         {project.thumbnail ? (
-          <Image
-            src={project.thumbnail}
-            alt={title}
-            width={240}
-            height={426}
-            className="w-full object-cover aspect-[9/16]"
-          />
+          <div className="relative w-full aspect-[9/16]">
+            <Image
+              src={project.thumbnail}
+              alt={title}
+              fill
+              sizes="(max-width: 1024px) 160px, 240px"
+              className="object-cover"
+            />
+          </div>
         ) : (
           <div className="w-full aspect-[9/16] bg-dark/10 flex items-center justify-center">
             <span className="text-5xl">🖨️</span>

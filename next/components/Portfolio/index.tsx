@@ -53,7 +53,7 @@ export async function Portfolio({ locale }: PortfolioProps) {
 
         {/* Projects horizontal scroll */}
         <div>
-          <ul className="flex flex-col lg:flex-row lg:items-center">
+          <ul className="grid grid-cols-2 gap-x-4 lg:flex lg:flex-row lg:items-start">
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} locale={locale} />
             ))}

@@ -65,6 +65,13 @@ export async function generateMetadata({
         { url: `${faviconBase}/apple-icon-180x180.png`, sizes: "180x180" },
       ],
     },
+    alternates: {
+      canonical: `https://joekyy.com.br/${locale}/`,
+      languages: {
+        "pt-BR": "https://joekyy.com.br/pt-br/",
+        "en-US": "https://joekyy.com.br/en-us/",
+      },
+    },
     openGraph: {
       title: messages.meta.title,
       siteName:
