@@ -330,7 +330,8 @@ export async function getPrint3DProjectsWP(): Promise<Print3DProject[]> {
         order: node.camposDoProjeto3d.ordem ?? 0,
       }))
       .sort((a, b) => a.order - b.order);
-  } catch {
+  } catch (err) {
+    console.error("[getPrint3DProjectsWP] Erro:", err);
     return [];
   }
 }

@@ -19,6 +19,9 @@ cp "docs/Jhomar Nando - Resume English.docx" next/public/docs/resume-en.docx 2>/
 echo ""
 echo "📦 Buildando Next.js..."
 
+# Limpar fetch cache para garantir dados frescos do WP
+rm -rf next/.next/cache/fetch-cache
+
 # Exportar variáveis diretamente no processo — tem prioridade sobre qualquer .env.*
 export NEXT_PUBLIC_DATA_SOURCE=wordpress
 export WORDPRESS_API_URL="$WP_PROD_URL"
