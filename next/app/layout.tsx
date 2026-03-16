@@ -50,6 +50,8 @@ export const metadata: Metadata = {
   },
 };
 
+import Script from "next/script";
+
 // Root layout — lang é sobrescrito pelo [locale]/layout via suppressHydrationWarning
 export default function RootLayout({
   children,
@@ -60,6 +62,16 @@ export default function RootLayout({
     <html lang="pt-br" suppressHydrationWarning>
       <body className={`${montserrat.variable} font-sans antialiased`} suppressHydrationWarning>
         {children}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-9G1CL1H79X"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-9G1CL1H79X');
+        `}</Script>
       </body>
     </html>
   );
