@@ -36,7 +36,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: next
-        run: npm ci
+        run: npm install --prefer-offline
 
       - name: Copy resumes to public/docs
         run: |
