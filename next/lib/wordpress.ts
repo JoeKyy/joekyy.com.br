@@ -1,5 +1,5 @@
 import { GraphQLClient } from "graphql-request";
-import type { Project, Client, Skill, SiteConfig, Locale } from "@/types";
+import type { Project, Client, Skill, SiteConfig, Print3DProject, Locale } from "@/types";
 
 const endpoint =
   process.env.WORDPRESS_API_URL ?? "http://localhost:8888/wordpress/graphql";
@@ -64,8 +64,27 @@ const SKILLS_QUERY = `
   }
 `;
 
-const SITE_CONFIG_QUERY = `
-  query GetSiteConfig {
+const PRINT3D_QUERY = `
+  query GetProjetos3D {
+    projetos3d(first: 100) {
+      nodes {
+        id
+        camposDoProjeto3d {
+          tituloPt
+          tituloEn
+          descricaoPt
+          descricaoEn
+          thumbnail { node { sourceUrl } }
+          reelsUrl
+          buyUrl
+          ordem
+        }
+      }
+    }
+  }
+`;
+
+const SITE_CONFIG_QUERY = `  query GetSiteConfig {
     configSites(first: 1) {
       nodes {
         configDoSite {
@@ -277,4 +296,37 @@ export async function getSiteConfigWP(
     clientsDescriptionPt: c.clientsDescriptionPt,
     clientsDescriptionEn: c.clientsDescriptionEn,
   };
+}
+
+interface WPPrint3DNode {
+  id: string;
+  camposDoProjeto3d: {
+    tituloPt: string;
+    tituloEn: string;
+    descricaoPt: string;
+    descricaoEn: string;
+    thumbnail: { node: { sourceUrl: string } } | null;
+    reelsUrl: string;
+    buyUrl: string | null;
+    ordem: number | null;
+  };
+}
+
+export async function getPrint3DProjectsWP(): Promise<Print3DProject[]> {
+  const data = await client.request<{ projetos3d: { nodes: WPPrint3DNode[] } }>(
+    PRINT3D_QUERY,
+  );
+  return data.projetos3d.nodes
+    .map((node) => ({
+      id: node.id,
+      titlePt: node.camposDoProjeto3d.tituloPt,
+      titleEn: node.camposDoProjeto3d.tituloEn,
+      descriptionPt: node.camposDoProjeto3d.descricaoPt,
+      descriptionEn: node.camposDoProjeto3d.descricaoEn,
+      thumbnail: node.camposDoProjeto3d.thumbnail?.node?.sourceUrl ?? "",
+      reelsUrl: node.camposDoProjeto3d.reelsUrl ?? "",
+      buyUrl: node.camposDoProjeto3d.buyUrl ?? undefined,
+      order: node.camposDoProjeto3d.ordem ?? 0,
+    }))
+    .sort((a, b) => a.order - b.order);
 }

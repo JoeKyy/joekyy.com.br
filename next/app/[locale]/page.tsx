@@ -7,6 +7,7 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Portfolio } from "@/components/Portfolio";
 import { Clients } from "@/components/Clients";
+import { Print3D } from "@/components/Print3D";
 import { Contact } from "@/components/Contact";
 import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/types";
@@ -31,6 +32,7 @@ export default async function LocalePage({
           <About locale={typedLocale} />
           <Portfolio locale={typedLocale} />
           <Clients locale={typedLocale} />
+          <Print3D locale={typedLocale} />
           <Contact locale={typedLocale} />
         </HorizontalScrollContainer>
       </main>

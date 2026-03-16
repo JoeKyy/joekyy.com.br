@@ -84,6 +84,26 @@ function joekyy_register_post_types() {
         'graphql_single_name'   => 'configSite',
         'graphql_plural_name'   => 'configSites',
     ]);
+
+    // Impressão 3D
+    register_post_type('impressao_3d', [
+        'labels'                => [
+            'name'          => 'Impressão 3D',
+            'singular_name' => 'Projeto 3D',
+            'add_new_item'  => 'Adicionar Projeto 3D',
+            'edit_item'     => 'Editar Projeto 3D',
+        ],
+        'public'                => false,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_rest'          => true,
+        'supports'              => ['title'],
+        'menu_icon'             => 'dashicons-screenoptions',
+        'show_in_graphql'       => true,
+        'graphql_single_name'   => 'projeto3d',
+        'graphql_plural_name'   => 'projetos3d',
+    ]);
 }
 
 // ============================================================
@@ -643,20 +663,21 @@ function joekyy_clean_toolbar($wp_admin_bar) {
 // ============================================================
 
 add_action('admin_head', 'joekyy_admin_css');
-function joekyy_admin_css() {
-    ?>
+function joekyy_admin_css() {    ?>
     <style>
         /* Margem e espaçamento no formulário de edição dos CPTs */
         .post-type-config_site #poststuff,
         .post-type-projeto #poststuff,
         .post-type-cliente #poststuff,
-        .post-type-habilidade #poststuff {
+        .post-type-habilidade #poststuff,
+        .post-type-impressao_3d #poststuff {
             padding-top: 20px;
         }
         .post-type-config_site #post-body,
         .post-type-projeto #post-body,
         .post-type-cliente #post-body,
-        .post-type-habilidade #post-body {
+        .post-type-habilidade #post-body,
+        .post-type-impressao_3d #post-body {
             margin-top: 10px;
         }
         /* Abas ACF — garantir que fiquem todas juntas */
@@ -679,6 +700,45 @@ function joekyy_admin_css() {
         }
     </style>
     <?php
+}
+
+// ============================================================
+// ACF — Campos do CPT Impressão 3D (registrado via PHP)
+// ============================================================
+
+add_action('acf/init', 'joekyy_register_print3d_fields');
+function joekyy_register_print3d_fields() {
+    if ( ! function_exists('acf_add_local_field_group') ) return;
+
+    acf_add_local_field_group([
+        'key'    => 'group_impressao_3d',
+        'title'  => 'Campos do Projeto 3D',
+        'fields' => [
+            ['key'=>'field_3d_titulo_pt',    'name'=>'titulo_pt',    'label'=>'Título (PT-BR)',            'type'=>'text',    'show_in_graphql'=>1],
+            ['key'=>'field_3d_titulo_en',    'name'=>'titulo_en',    'label'=>'Título (EN-US)',            'type'=>'text',    'show_in_graphql'=>1],
+            ['key'=>'field_3d_descricao_pt', 'name'=>'descricao_pt', 'label'=>'Descrição (PT-BR)',        'type'=>'textarea','show_in_graphql'=>1],
+            ['key'=>'field_3d_descricao_en', 'name'=>'descricao_en', 'label'=>'Descrição (EN-US)',        'type'=>'textarea','show_in_graphql'=>1],
+            ['key'=>'field_3d_thumbnail',    'name'=>'thumbnail',    'label'=>'Thumbnail',                'type'=>'image',   'return_format'=>'array','show_in_graphql'=>1],
+            ['key'=>'field_3d_reels_url',    'name'=>'reels_url',    'label'=>'Link do Reels (Instagram)','type'=>'url',     'show_in_graphql'=>1],
+            ['key'=>'field_3d_buy_url',      'name'=>'buy_url',      'label'=>'Link de Compra (opcional)','type'=>'url',     'show_in_graphql'=>1],
+            ['key'=>'field_3d_ordem',        'name'=>'ordem',        'label'=>'Ordem',                   'type'=>'number',  'show_in_graphql'=>1],
+        ],
+        'location' => [[['param'=>'post_type','operator'=>'==','value'=>'impressao_3d']]],
+        'show_in_graphql'    => 1,
+        'graphql_field_name' => 'camposDoProjeto3d',
+    ]);
+}
+
+// Colunas customizadas para Impressão 3D
+add_filter('manage_impressao_3d_posts_columns', 'joekyy_3d_columns');
+function joekyy_3d_columns($cols) {
+    return ['cb'=>$cols['cb'], 'title'=>'Título', 'ordem'=>'Ordem', 'reels'=>'Reels', 'compra'=>'Compra'];
+}
+add_action('manage_impressao_3d_posts_custom_column', 'joekyy_3d_column_value', 10, 2);
+function joekyy_3d_column_value($col, $post_id) {
+    if ($col === 'ordem')  echo get_field('ordem',     $post_id) ?: '—';
+    if ($col === 'reels')  echo get_field('reels_url', $post_id) ? '✅' : '—';
+    if ($col === 'compra') echo get_field('buy_url',   $post_id) ? '🛒' : '—';
 }
 
 ?>

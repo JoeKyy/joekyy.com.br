@@ -1,10 +1,10 @@
-import type { Project, Client, Skill, SiteConfig, Locale } from "@/types";
+import type { Project, Client, Skill, SiteConfig, Print3DProject, Locale } from "@/types";
 import portfolioData from "@/data/portfolio.json";
 import clientsData from "@/data/clients.json";
 import skillsData from "@/data/skills.json";
 import ptBr from "@/data/pt-br.json";
 import enUs from "@/data/en-us.json";
-import { getProjectsWP, getClientsWP, getSkillsWP, getSiteConfigWP } from "@/lib/wordpress";
+import { getProjectsWP, getClientsWP, getSkillsWP, getSiteConfigWP, getPrint3DProjectsWP } from "@/lib/wordpress";
 
 const useWordPress = process.env.NEXT_PUBLIC_DATA_SOURCE === "wordpress";
 
@@ -33,6 +33,11 @@ export async function getClients(): Promise<Client[]> {
 export async function getSkills(): Promise<Skill[]> {
   if (useWordPress) return getSkillsWP();
   return getSkillsJSON();
+}
+
+export async function getPrint3DProjects(): Promise<Print3DProject[]> {
+  if (useWordPress) return getPrint3DProjectsWP();
+  return []; // Sem fallback JSON — dados vêm exclusivamente do WP
 }
 
 export async function getSiteConfig(locale: Locale): Promise<SiteConfig> {

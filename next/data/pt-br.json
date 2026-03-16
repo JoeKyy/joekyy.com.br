@@ -6,6 +6,7 @@
   "nav": {
     "about": "sobre",
     "portfolio": "portifólio",
+    "print3d": "impressão 3d",
     "clients": "clientes",
     "contact": "contato"
   },
@@ -31,6 +32,14 @@
     "title": "clientes.",
     "heading": "Clientes",
     "description": "Veja aqui alguns dos clientes com os quais trabalhei, seja como freelancer, prestador de serviços ou funcionário."
+  },
+  "print3d": {
+    "title": "impressão 3d.",
+    "heading": "Impressão 3D",
+    "intro": "Estou começando minha jornada no mundo da impressão 3D com uma <strong>Bambu Lab A1</strong>. Aqui você encontra os projetos que já criei — clique para ver o Reels no Instagram!",
+    "buyLabel": "Comprar",
+    "reelsLabel": "Ver no Instagram",
+    "emptyMessage": "Em breve os primeiros projetos!"
   },
   "contact": {
     "title": "contato.",

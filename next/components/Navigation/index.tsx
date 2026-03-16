@@ -22,6 +22,7 @@ export function Navigation({ locale }: NavigationProps) {
     { id: "sobre", label: t("about") },
     { id: "portifolio", label: t("portfolio") },
     { id: "clientes", label: t("clients") },
+    { id: "impressao-3d", label: t("print3d") },
     { id: "contato", label: t("contact") },
   ];
 

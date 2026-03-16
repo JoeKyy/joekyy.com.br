@@ -10,6 +10,18 @@ export interface Project {
   order: number;
 }
 
+export interface Print3DProject {
+  id: string;
+  titlePt: string;
+  titleEn: string;
+  descriptionPt: string;
+  descriptionEn: string;
+  thumbnail: string;       // URL da imagem de capa
+  reelsUrl: string;        // Link do Instagram Reels
+  buyUrl?: string;         // Link de compra (opcional)
+  order: number;
+}
+
 export interface Client {
   id: string;
   name: string;
