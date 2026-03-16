@@ -313,20 +313,24 @@ interface WPPrint3DNode {
 }
 
 export async function getPrint3DProjectsWP(): Promise<Print3DProject[]> {
-  const data = await client.request<{ projetos3d: { nodes: WPPrint3DNode[] } }>(
-    PRINT3D_QUERY,
-  );
-  return data.projetos3d.nodes
-    .map((node) => ({
-      id: node.id,
-      titlePt: node.camposDoProjeto3d.tituloPt,
-      titleEn: node.camposDoProjeto3d.tituloEn,
-      descriptionPt: node.camposDoProjeto3d.descricaoPt,
-      descriptionEn: node.camposDoProjeto3d.descricaoEn,
-      thumbnail: node.camposDoProjeto3d.thumbnail?.node?.sourceUrl ?? "",
-      reelsUrl: node.camposDoProjeto3d.reelsUrl ?? "",
-      buyUrl: node.camposDoProjeto3d.buyUrl ?? undefined,
-      order: node.camposDoProjeto3d.ordem ?? 0,
-    }))
-    .sort((a, b) => a.order - b.order);
+  try {
+    const data = await client.request<{ projetos3d: { nodes: WPPrint3DNode[] } }>(
+      PRINT3D_QUERY,
+    );
+    return data.projetos3d.nodes
+      .map((node) => ({
+        id: node.id,
+        titlePt: node.camposDoProjeto3d.tituloPt,
+        titleEn: node.camposDoProjeto3d.tituloEn,
+        descriptionPt: node.camposDoProjeto3d.descricaoPt,
+        descriptionEn: node.camposDoProjeto3d.descricaoEn,
+        thumbnail: node.camposDoProjeto3d.thumbnail?.node?.sourceUrl ?? "",
+        reelsUrl: node.camposDoProjeto3d.reelsUrl ?? "",
+        buyUrl: node.camposDoProjeto3d.buyUrl ?? undefined,
+        order: node.camposDoProjeto3d.ordem ?? 0,
+      }))
+      .sort((a, b) => a.order - b.order);
+  } catch {
+    return [];
+  }
 }
