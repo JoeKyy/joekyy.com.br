@@ -1,0 +1,64 @@
+# Deploy automático — build Next.js + upload via FTP para HostGator
+#
+# Triggers:
+#   1. Webhook do WordPress (via repository_dispatch)
+#   2. Push na branch main
+#   3. Manual (workflow_dispatch)
+
+name: Build & Deploy
+
+on:
+  repository_dispatch:
+    types: [wordpress_content_updated]
+  push:
+    branches: [main]
+    paths:
+      - "next/**"
+      - "docs/**"
+      - "build-prod.sh"
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: next/package-lock.json
+
+      - name: Install dependencies
+        working-directory: next
+        run: npm ci
+
+      - name: Copy resumes to public/docs
+        run: |
+          mkdir -p next/public/docs
+          cp "docs/Jhomar Nando - Resume Portuguese.docx" next/public/docs/resume-pt.docx 2>/dev/null || true
+          cp "docs/Jhomar Nando - Resume English.docx" next/public/docs/resume-en.docx 2>/dev/null || true
+
+      - name: Build static site
+        working-directory: next
+        env:
+          NEXT_PUBLIC_DATA_SOURCE: wordpress
+          WORDPRESS_API_URL: ${{ secrets.WORDPRESS_API_URL }}
+        run: |
+          rm -rf .next/cache/fetch-cache
+          npm run build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: next/out/
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          dangerous-clean-slate: false
