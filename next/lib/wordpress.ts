@@ -125,6 +125,17 @@ const SITE_CONFIG_QUERY = `  query GetSiteConfig {
           clientsHeadingEn
           clientsDescriptionPt
           clientsDescriptionEn
+        }
+      }
+    }
+  }
+`;
+
+const SITE_CONFIG_PRINT3D_QUERY = `
+  query GetSiteConfigPrint3D {
+    configSites(first: 1) {
+      nodes {
+        configDoSite {
           print3dHeadingPt
           print3dHeadingEn
           print3dIntroPt
@@ -207,10 +218,11 @@ interface WPSiteConfigNode {
     clientsHeadingEn: string;
     clientsDescriptionPt: string;
     clientsDescriptionEn: string;
-    print3dHeadingPt: string;
-    print3dHeadingEn: string;
-    print3dIntroPt: string;
-    print3dIntroEn: string;
+    // Optional: added later, may not exist in WP yet
+    print3dHeadingPt?: string;
+    print3dHeadingEn?: string;
+    print3dIntroPt?: string;
+    print3dIntroEn?: string;
   };
 }
 
@@ -279,6 +291,24 @@ export async function getSiteConfigWP(
   const node = data.configSites.nodes[0];
   if (!node) return null;
   const c = node.configDoSite;
+
+  // Fetch print3d fields separately (may not exist in WP yet)
+  let print3d: { print3dHeadingPt?: string; print3dHeadingEn?: string; print3dIntroPt?: string; print3dIntroEn?: string } = {};
+  try {
+    const p3d = await client.request<{ configSites: { nodes: WPSiteConfigNode[] } }>(SITE_CONFIG_PRINT3D_QUERY);
+    const p3dConfig = p3d.configSites.nodes[0]?.configDoSite;
+    if (p3dConfig) {
+      print3d = {
+        print3dHeadingPt: p3dConfig.print3dHeadingPt,
+        print3dHeadingEn: p3dConfig.print3dHeadingEn,
+        print3dIntroPt: p3dConfig.print3dIntroPt,
+        print3dIntroEn: p3dConfig.print3dIntroEn,
+      };
+    }
+  } catch {
+    // Fields not registered in WP yet — use JSON fallback
+  }
+
   return {
     emailPt: c.emailPt,
     emailEn: c.emailEn,
@@ -313,10 +343,7 @@ export async function getSiteConfigWP(
     clientsHeadingEn: c.clientsHeadingEn,
     clientsDescriptionPt: c.clientsDescriptionPt,
     clientsDescriptionEn: c.clientsDescriptionEn,
-    print3dHeadingPt: c.print3dHeadingPt,
-    print3dHeadingEn: c.print3dHeadingEn,
-    print3dIntroPt: c.print3dIntroPt,
-    print3dIntroEn: c.print3dIntroEn,
+    ...print3d,
   };
 }
 
