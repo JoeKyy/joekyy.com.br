@@ -186,6 +186,14 @@ function joekyy_register_config_site_fields() {
             ['key'=>'field_config_clients_desc_en',   'name'=>'clients_description_en','label'=>'Descrição (EN-US)','type'=>'textarea','rows'=>3,'show_in_graphql'=>1],
             array_merge($acc, ['key' => 'acc_clients_end', 'name' => 'acc_clients_end', 'label' => '—', 'endpoint' => 1]),
 
+            // ── Impressão 3D ─────────────────────────────────────
+            array_merge($acc, ['key' => 'acc_print3d', 'name' => 'acc_print3d', 'label' => '🖨️ Impressão 3D']),
+            ['key'=>'field_config_print3d_heading_pt','name'=>'print3d_heading_pt','label'=>'Título (PT-BR)','type'=>'text','show_in_graphql'=>1],
+            ['key'=>'field_config_print3d_heading_en','name'=>'print3d_heading_en','label'=>'Título (EN-US)','type'=>'text','show_in_graphql'=>1],
+            ['key'=>'field_config_print3d_intro_pt',  'name'=>'print3d_intro_pt',  'label'=>'Introdução (PT-BR)','type'=>'textarea','rows'=>4,'show_in_graphql'=>1],
+            ['key'=>'field_config_print3d_intro_en',  'name'=>'print3d_intro_en',  'label'=>'Introdução (EN-US)','type'=>'textarea','rows'=>4,'show_in_graphql'=>1],
+            array_merge($acc, ['key' => 'acc_print3d_end', 'name' => 'acc_print3d_end', 'label' => '—', 'endpoint' => 1]),
+
             // ── Contato ───────────────────────────────────────────
             array_merge($acc, ['key' => 'acc_contact', 'name' => 'acc_contact', 'label' => '📬 Contato']),
             ['key'=>'field_config_contact_heading_pt','name'=>'contact_heading_pt','label'=>'Título (PT-BR)','type'=>'text','show_in_graphql'=>1],

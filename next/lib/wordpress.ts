@@ -125,6 +125,10 @@ const SITE_CONFIG_QUERY = `  query GetSiteConfig {
           clientsHeadingEn
           clientsDescriptionPt
           clientsDescriptionEn
+          print3dHeadingPt
+          print3dHeadingEn
+          print3dIntroPt
+          print3dIntroEn
         }
       }
     }
@@ -203,6 +207,10 @@ interface WPSiteConfigNode {
     clientsHeadingEn: string;
     clientsDescriptionPt: string;
     clientsDescriptionEn: string;
+    print3dHeadingPt: string;
+    print3dHeadingEn: string;
+    print3dIntroPt: string;
+    print3dIntroEn: string;
   };
 }
 
@@ -305,6 +313,10 @@ export async function getSiteConfigWP(
     clientsHeadingEn: c.clientsHeadingEn,
     clientsDescriptionPt: c.clientsDescriptionPt,
     clientsDescriptionEn: c.clientsDescriptionEn,
+    print3dHeadingPt: c.print3dHeadingPt,
+    print3dHeadingEn: c.print3dHeadingEn,
+    print3dIntroPt: c.print3dIntroPt,
+    print3dIntroEn: c.print3dIntroEn,
   };
 }
 

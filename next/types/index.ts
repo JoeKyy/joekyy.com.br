@@ -16,9 +16,9 @@ export interface Print3DProject {
   titleEn: string;
   descriptionPt: string;
   descriptionEn: string;
-  thumbnail: string;       // URL da imagem de capa
-  reelsUrl: string;        // Link do Instagram Reels
-  buyUrl?: string;         // Link de compra (opcional)
+  thumbnail: string; // URL da imagem de capa
+  reelsUrl: string; // Link do Instagram Reels
+  buyUrl?: string; // Link de compra (opcional)
   order: number;
 }
 
@@ -77,6 +77,11 @@ export interface SiteConfig {
   clientsHeadingEn?: string;
   clientsDescriptionPt?: string;
   clientsDescriptionEn?: string;
+  // Print 3D
+  print3dHeadingPt?: string;
+  print3dHeadingEn?: string;
+  print3dIntroPt?: string;
+  print3dIntroEn?: string;
 }
 
 export type Locale = "pt-br" | "en-us";

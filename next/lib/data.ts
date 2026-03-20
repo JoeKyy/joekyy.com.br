@@ -1,10 +1,23 @@
-import type { Project, Client, Skill, SiteConfig, Print3DProject, Locale } from "@/types";
+import type {
+  Project,
+  Client,
+  Skill,
+  SiteConfig,
+  Print3DProject,
+  Locale,
+} from "@/types";
 import portfolioData from "@/data/portfolio.json";
 import clientsData from "@/data/clients.json";
 import skillsData from "@/data/skills.json";
 import ptBr from "@/data/pt-br.json";
 import enUs from "@/data/en-us.json";
-import { getProjectsWP, getClientsWP, getSkillsWP, getSiteConfigWP, getPrint3DProjectsWP } from "@/lib/wordpress";
+import {
+  getProjectsWP,
+  getClientsWP,
+  getSkillsWP,
+  getSiteConfigWP,
+  getPrint3DProjectsWP,
+} from "@/lib/wordpress";
 
 const useWordPress = process.env.NEXT_PUBLIC_DATA_SOURCE === "wordpress";
 
@@ -50,11 +63,24 @@ export async function getSiteConfig(locale: Locale): Promise<SiteConfig> {
   return {
     emailPt: "contato@joekyy.com.br",
     emailEn: "contact@joekyy.com.br",
-    whatsapp: "https://wa.me/5511981753546?text=Vi+o+seu+site+e+estou+interessado.",
+    whatsapp:
+      "https://wa.me/5511981753546?text=Vi+o+seu+site+e+estou+interessado.",
     socialLinks: [
-      { platform: "linkedin", url: "https://www.linkedin.com/in/jhomarnando/", icon: "FaLinkedin" },
-      { platform: "github", url: "https://github.com/JoeKyy", icon: "FaGithub" },
-      { platform: "whatsapp", url: "https://wa.me/5511981753546?text=Vi+o+seu+site+e+estou+interessado.", icon: "FaWhatsapp" },
+      {
+        platform: "linkedin",
+        url: "https://www.linkedin.com/in/jhomarnando/",
+        icon: "FaLinkedin",
+      },
+      {
+        platform: "github",
+        url: "https://github.com/JoeKyy",
+        icon: "FaGithub",
+      },
+      {
+        platform: "whatsapp",
+        url: "https://wa.me/5511981753546?text=Vi+o+seu+site+e+estou+interessado.",
+        icon: "FaWhatsapp",
+      },
     ],
     resumePtUrl: "/docs/resume-pt.docx",
     resumeEnUrl: "/docs/resume-en.docx",
@@ -80,6 +106,10 @@ export async function getSiteConfig(locale: Locale): Promise<SiteConfig> {
     clientsHeadingEn: enUs.clients.heading,
     clientsDescriptionPt: ptBr.clients.description,
     clientsDescriptionEn: enUs.clients.description,
+    print3dHeadingPt: ptBr.print3d.heading,
+    print3dHeadingEn: enUs.print3d.heading,
+    print3dIntroPt: ptBr.print3d.intro,
+    print3dIntroEn: enUs.print3d.intro,
   };
 }
 
@@ -91,11 +121,20 @@ export function getMessages(locale: Locale) {
 export const siteConfig = {
   emailPt: "contato@joekyy.com.br",
   emailEn: "contact@joekyy.com.br",
-  whatsapp: "https://wa.me/5511981753546?text=Vi+o+seu+site+e+estou+interessado.",
+  whatsapp:
+    "https://wa.me/5511981753546?text=Vi+o+seu+site+e+estou+interessado.",
   socialLinks: [
-    { platform: "linkedin", url: "https://www.linkedin.com/in/jhomarnando/", icon: "FaLinkedin" },
+    {
+      platform: "linkedin",
+      url: "https://www.linkedin.com/in/jhomarnando/",
+      icon: "FaLinkedin",
+    },
     { platform: "github", url: "https://github.com/JoeKyy", icon: "FaGithub" },
-    { platform: "whatsapp", url: "https://wa.me/5511981753546?text=Vi+o+seu+site+e+estou+interessado.", icon: "FaWhatsapp" },
+    {
+      platform: "whatsapp",
+      url: "https://wa.me/5511981753546?text=Vi+o+seu+site+e+estou+interessado.",
+      icon: "FaWhatsapp",
+    },
   ],
   resumePtUrl: "/docs/resume-pt.docx",
   resumeEnUrl: "/docs/resume-en.docx",

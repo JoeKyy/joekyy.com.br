@@ -1,5 +1,5 @@
 import type { Locale } from "@/types";
-import { getMessages, getPrint3DProjects } from "@/lib/data";
+import { getMessages, getPrint3DProjects, getSiteConfig } from "@/lib/data";
 import { Print3DCard } from "./Print3DCard";
 
 interface Print3DProps {
@@ -8,8 +8,20 @@ interface Print3DProps {
 
 export async function Print3D({ locale }: Print3DProps) {
   const messages = getMessages(locale);
-  const projects = await getPrint3DProjects();
+  const [projects, config] = await Promise.all([
+    getPrint3DProjects(),
+    getSiteConfig(locale),
+  ]);
   const { print3d } = messages;
+
+  const heading =
+    locale === "pt-br"
+      ? config.print3dHeadingPt || print3d.heading
+      : config.print3dHeadingEn || print3d.heading;
+  const intro =
+    locale === "pt-br"
+      ? config.print3dIntroPt || print3d.intro
+      : config.print3dIntroEn || print3d.intro;
 
   return (
     <section
@@ -32,11 +44,11 @@ export async function Print3D({ locale }: Print3DProps) {
         {/* Intro column */}
         <div className="lg:w-[360px] lg:mr-[56px] shrink-0">
           <h3 className="font-bold text-lg my-4">
-            <span className="border-b-[3px] border-dark">{print3d.heading}</span>
+            <span className="border-b-[3px] border-dark">{heading}</span>
           </h3>
           <p
             className="text-md [&>strong]:font-bold"
-            dangerouslySetInnerHTML={{ __html: print3d.intro }}
+            dangerouslySetInnerHTML={{ __html: intro }}
           />
         </div>
 
