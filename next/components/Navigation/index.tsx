@@ -11,6 +11,47 @@ interface NavigationProps {
   locale: Locale;
 }
 
+function USFlagIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 60 30"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect width="60" height="30" fill="#B22234" />
+      <rect y="2.308" width="60" height="2.308" fill="#fff" />
+      <rect y="6.923" width="60" height="2.308" fill="#fff" />
+      <rect y="11.538" width="60" height="2.308" fill="#fff" />
+      <rect y="16.154" width="60" height="2.308" fill="#fff" />
+      <rect y="20.769" width="60" height="2.308" fill="#fff" />
+      <rect y="25.385" width="60" height="2.308" fill="#fff" />
+      <rect width="24" height="16.154" fill="#3C3B6E" />
+    </svg>
+  );
+}
+
+function BrazilFlagIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 60 42"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect width="60" height="42" fill="#009c3b" />
+      <polygon points="30,3 57,21 30,39 3,21" fill="#ffdf00" />
+      <circle cx="30" cy="21" r="9" fill="#002776" />
+      <path
+        d="M21.5,21Q30,15.5 38.5,21"
+        fill="none"
+        stroke="#fff"
+        strokeWidth="1.2"
+      />
+    </svg>
+  );
+}
+
 export function Navigation({ locale }: NavigationProps) {
   const t = useTranslations("nav");
   const { activeSection, scrollToSection } = useScrollContext();
@@ -113,11 +154,13 @@ export function Navigation({ locale }: NavigationProps) {
               >
                 {locale === "pt-br" ? (
                   <>
-                    <span className="text-xl">🇺🇸</span> <span>English</span>
+                    <USFlagIcon className="w-6 h-4 inline-block" />{" "}
+                    <span>English</span>
                   </>
                 ) : (
                   <>
-                    <span className="text-xl">🇧🇷</span> <span>Português</span>
+                    <BrazilFlagIcon className="w-6 h-4 inline-block" />{" "}
+                    <span>Português</span>
                   </>
                 )}
               </button>
@@ -160,11 +203,17 @@ export function Navigation({ locale }: NavigationProps) {
 
         <button
           onClick={switchLocale}
-          className="text-2xl hover:scale-110 transition-transform"
-          aria-label={locale === "pt-br" ? "Switch to English" : "Mudar para Português"}
+          className="hover:scale-110 transition-transform"
+          aria-label={
+            locale === "pt-br" ? "Switch to English" : "Mudar para Português"
+          }
           title={locale === "pt-br" ? "English" : "Português"}
         >
-          {locale === "pt-br" ? "🇺🇸" : "🇧🇷"}
+          {locale === "pt-br" ? (
+            <USFlagIcon className="w-8 h-6" />
+          ) : (
+            <BrazilFlagIcon className="w-8 h-6" />
+          )}
         </button>
       </header>
     </>
